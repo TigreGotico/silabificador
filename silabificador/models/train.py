@@ -10,11 +10,13 @@ from sklearn.model_selection import train_test_split
 # --------- Syllabifier Features ---------
 
 def validate_entry(entry, region: str = ""):
+    # not really needed since this was done in the dataset itself,
+    # stays here for reference and in case a different dataset is used
     if entry["region_code"] != region:
         return False
     word = entry["word"]
     syllables = entry["syllables"].split("|")
-    if "".join(syllables) != word.replace("-", ""):
+    if "".join(syllables).lower() != word.replace("-", "").lower():
         print(f"BAD ENTRY: word doesn't match syllables - {entry}")
         return False
     return True
@@ -69,7 +71,7 @@ def prepare_nltk_train_data(X, y):
 
 def train_ngram_and_brill(train_data):
     # Ngram chain
-    default_tagger = DefaultTagger('UNK')
+    default_tagger = DefaultTagger('I')
     unigram_tagger = UnigramTagger(train_data, backoff=default_tagger)
     bigram_tagger = BigramTagger(train_data, backoff=unigram_tagger)
 
@@ -80,7 +82,9 @@ def train_ngram_and_brill(train_data):
 
 
 # --------- Main Training Routine ---------
-def train_for_region(region, entries):
+def train_for_region(region, entries=None):
+    print(f"[*] Training tagger for region: {region}")
+    entries = entries or load_dataset_from_huggingface()
     # Syllabifier
     X_syll, y_syll = prepare_syllabifier_dataset(entries, region)
     X_syll_train, X_syll_test, y_syll_train, y_syll_test = train_test_split(X_syll, y_syll, test_size=0.1)
@@ -141,7 +145,8 @@ def train_models():
 
 
 if __name__ == "__main__":
-    train_models()
+    train_for_region("lbx") # [lbx - Syllabifier] Evaluation accuracy: 0.9854
+
     # Accuracy Table:
     # Region        Affix |    Unigram |     Bigram |    Trigram | Brill (bi) | Brill (tri)
     # ----------------------------------------
