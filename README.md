@@ -1,16 +1,14 @@
 # 🧩 Silabificador
 
-A lightweight Portuguese syllabifier with support for multiple regional variants.  
-Built using [NLTK](https://www.nltk.org/) taggers and Brill transformation rules, trained on a phonetic lexicon sourced from the [Portuguese Phonetic Lexicon Dataset](https://huggingface.co/datasets/Jarbas/portuguese_phonetic_lexicon).
+A lightweight Portuguese syllabifier built using [NLTK](https://www.nltk.org/) taggers and Brill transformation rules, trained on a phonetic lexicon sourced from the [Portuguese Phonetic Lexicon Dataset](https://huggingface.co/datasets/Jarbas/portuguese_phonetic_lexicon).
 
 ---
 
 ## 📦 Features
 
-- Rule-based syllabification tuned for **European**, **Brazilian**, **Angolan**, **Mozambican**, and **Timorese** Portuguese.
-- Support for **10 regional dialects**.
+- Syllabification tuned for **Portuguese**.
 - Built on clean, well-structured data from the [Portal da Língua Portuguesa](http://www.portaldalinguaportuguesa.org).
-- Easy to use and extend.
+- Minimal dependencies
 
 ---
 
