@@ -109,8 +109,8 @@ def train_for_region(region, entries=None):
     print(f"[{region} - Syllabifier] Evaluation accuracy: {brill_acc:.4f}")
 
     # Save models
-    save_model(unigram_tagger, f"{region}_unigram_syllabifier.pkl")
-    save_model(bigram_tagger, f"{region}_bigram_syllabifier.pkl")
+    #save_model(unigram_tagger, f"{region}_unigram_syllabifier.pkl")
+    #save_model(bigram_tagger, f"{region}_bigram_syllabifier.pkl")
     save_model(brill_tagger, f"{region}_brill_syllabifier.pkl")
 
     return {

@@ -62,6 +62,11 @@ class Syllabifier:
         if current:
             syllables.append(current)
 
+        # HACK: manually fix known mistakes
+        if syllables[-1] == "l":
+            syllables[-2] = syllables[-2] + "l"
+            syllables = syllables[:-1]
+
         return syllables
 
 
