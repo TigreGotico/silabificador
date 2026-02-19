@@ -35,7 +35,7 @@ print(syllabify("computador"))
 
 ## 📚 Dataset
 
-This project was benchmarked on the [📚 Portuguese Phonetic Lexicon Dataset](https://huggingface.co/datasets/Jarbas/portuguese_phonetic_lexicon), which contains over 100,000 entries sourced from the [Portal da Língua Portuguesa](http://www.portaldalinguaportuguesa.org).
+This project was benchmarked on the [📚 Portuguese Phonetic Lexicon Dataset](https://huggingface.co/datasets/TigreGotico/portuguese_phonetic_lexicon), which contains over 100,000 entries sourced from the [Portal da Língua Portuguesa](http://www.portaldalinguaportuguesa.org).
 
 ---
 
