@@ -1,14 +1,14 @@
 # 🧩 Silabificador
 
-A lightweight Portuguese syllabifier built using [NLTK](https://www.nltk.org/) taggers and Brill transformation rules, trained on a phonetic lexicon sourced from the [Portuguese Phonetic Lexicon Dataset](https://huggingface.co/datasets/Jarbas/portuguese_phonetic_lexicon).
+A lightweight Portuguese syllabifier built with hand crafted rules
 
 ---
 
 ## 📦 Features
 
 - Syllabification tuned for **Portuguese**.
-- Built on clean, well-structured data from the [Portal da Língua Portuguesa](http://www.portaldalinguaportuguesa.org).
-- Minimal dependencies
+- Tested on clean, well-structured data from the [Portal da Língua Portuguesa](http://www.portaldalinguaportuguesa.org).
+- no dependencies
 
 ---
 
@@ -25,10 +25,9 @@ pip install git+https://github.com/TigreGotico/silabificador
 ## 🧠 Usage
 
 ```python
-from silabificador import Syllabifier
+from silabificador import syllabify
 
-s = Syllabifier()
-print(s.syllabify("computador"))
+print(syllabify("computador"))
 # Output: ['com', 'pu', 'ta', 'dor']
 ```
 
@@ -36,7 +35,7 @@ print(s.syllabify("computador"))
 
 ## 📚 Dataset
 
-This project was trained on the [📚 Portuguese Phonetic Lexicon Dataset](https://huggingface.co/datasets/Jarbas/portuguese_phonetic_lexicon), which contains over 100,000 entries sourced from the [Portal da Língua Portuguesa](http://www.portaldalinguaportuguesa.org).
+This project was benchmarked on the [📚 Portuguese Phonetic Lexicon Dataset](https://huggingface.co/datasets/Jarbas/portuguese_phonetic_lexicon), which contains over 100,000 entries sourced from the [Portal da Língua Portuguesa](http://www.portaldalinguaportuguesa.org).
 
 ---
 
