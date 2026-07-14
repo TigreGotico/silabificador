@@ -1,17 +1,18 @@
 """Accuracy regression guard for the rule-based syllabifier.
 
-Promotes the notebook benchmark to CI. The bundled gold sample
-(`tests/gold_sample.json`) is a 500-entry deterministic draw from the
-`TigreGotico/portuguese_phonetic_lexicon` dataset (region ``lbx``), so the
-check runs offline with no dataset download. A regression in the rules drops
-the match rate and fails the test.
+The bundled gold sample (``tests/gold_sample.json``) is a deterministic draw
+from the *held-out* half of the agreement gold: words where Infopédia and the
+Portal da Língua Portuguesa independently produce the same syllabification, and
+whose syllables concatenate back to the headword. It runs offline, with no
+dataset download.
 
-An opt-in full-lexicon benchmark (the original notebook comparison) runs only
-when ``RUN_LEXICON_BENCHMARK=1`` and the ``datasets`` package + network are
-available.
+The draw comes from the held-out split on purpose. Scoring against words the
+rules were tuned on measures memorization, not syllabification.
+
+The full scoreboard -- every set, no sampling, plus the error taxonomy -- lives
+in ``benchmark/`` and is run with ``python -m benchmark.report``.
 """
 import json
-import os
 import pathlib
 
 import pytest
@@ -20,9 +21,9 @@ from silabificador import syllabify
 
 GOLD_PATH = pathlib.Path(__file__).parent / "gold_sample.json"
 
-# Lower bound on the sample match rate. Measured at 0.998; allow headroom so a
-# benign rule tweak that shifts one or two borderline words does not fail CI,
-# while a real regression still trips it.
+# Lower bound on the held-out sample match rate. Measured at 0.997 on the
+# agreement gold; the headroom absorbs a borderline word or two without letting
+# a real regression through.
 MIN_SAMPLE_ACCURACY = 0.98
 
 
@@ -45,21 +46,12 @@ def test_sample_accuracy_does_not_regress(gold):
 
 
 def test_gold_entries_are_self_consistent(gold):
-    # the gold syllables must concatenate back to the word
     for e in gold:
-        assert "".join(e["syllables"]).lower() == e["word"].replace("-", "").lower()
+        assert "".join(e["syllables"]) == e["word"].lower()
 
 
-@pytest.mark.skipif(os.environ.get("RUN_LEXICON_BENCHMARK") != "1",
-                    reason="set RUN_LEXICON_BENCHMARK=1 to run the full lexicon benchmark")
-def test_full_lexicon_benchmark():
-    from datasets import load_dataset
-    ds = load_dataset("TigreGotico/portuguese_phonetic_lexicon", split="train")
-    region = "lbx"
-    rows = [r for r in ds
-            if r.get("region_code") == region
-            and r.get("word") and r.get("syllables")
-            and "".join(r["syllables"].split("|")).lower() == r["word"].replace("-", "").lower()]
-    correct = sum(1 for r in rows if syllabify(r["word"]) == r["syllables"].split("|"))
-    acc = correct / len(rows)
-    assert acc >= 0.99, f"full-lexicon accuracy {acc:.4f} regressed ({correct}/{len(rows)})"
+def test_output_reconstructs_the_input(gold):
+    # Syllabification may not add, drop, or alter a character. An engine that
+    # scores well while quietly deleting material is not syllabifying.
+    for e in gold:
+        assert "".join(syllabify(e["word"])) == e["word"].lower()

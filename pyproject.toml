@@ -21,6 +21,7 @@ classifiers = [
 
 [project.optional-dependencies]
 test = ["pytest"]
+benchmark = ["pandas", "pyarrow", "huggingface_hub"]
 
 [project.urls]
 Homepage = "https://github.com/TigreGotico/silabificador"
