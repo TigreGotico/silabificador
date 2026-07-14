@@ -1,7 +1,7 @@
 # API Reference
 
-Everything importable from `silabificador`, plus the validation helpers in
-`silabificador.syl`. Signatures and return shapes are exactly as implemented.
+Everything importable from `silabificador`. Signatures and return shapes are
+exactly as implemented.
 
 ## `syllabify`
 
@@ -13,11 +13,9 @@ syllabify(word: str) -> List[str]
 
 Divide a Portuguese word into syllables.
 
-- **word** — a single Portuguese word. Case is normalized to lowercase. A space
-  is treated as a hyphen, so a compound like `"guarda-chuva"` is processed as
-  hyphen-joined subwords. Leading/trailing whitespace is stripped.
-- **returns** — a list of syllable strings in order. Accents and digraphs are
-  preserved. `"".join(result)` reconstructs the lowercased input.
+- **word** — a Portuguese word. Case is normalized to lowercase; leading and
+  trailing whitespace is stripped.
+- **returns** — a list of syllable strings in order.
 
 ```python
 syllabify("computador")     # ['com', 'pu', 'ta', 'dor']
@@ -25,12 +23,64 @@ syllabify("Brasil")         # ['bra', 'sil']
 syllabify("português")      # ['por', 'tu', 'guês']
 ```
 
-Edge cases handled directly:
+**`"".join(result)` always reconstructs the lowercased input.** A hyphen, space
+or apostrophe is kept on the syllable it follows, never dropped:
 
-- A single printable character returns itself as a one-element list:
-  `syllabify(".") -> ['.']`.
-- The monosyllabic words `"ao"`, `"ui"`, `"ei"`, `"ai"` return as a single
-  syllable.
+```python
+syllabify("guarda-chuva")       # ['guar', 'da-', 'chu', 'va']
+syllabify("ab-reagir")          # ['ab-', 're', 'a', 'gir']
+syllabify("pau-d'água")         # ['pau-', "d'á", 'gua']
+syllabify("ajudante de campo")  # ['a', 'ju', 'dan', 'te ', 'de ', 'cam', 'po']
+```
+
+A word with no vowel in it has no syllable to find, and is returned whole:
+
+```python
+syllabify("psst")   # ['psst']
+syllabify("")       # []
+```
+
+## `analyze`
+
+```python
+from silabificador import analyze
+
+analyze(word: str) -> List[Syllable]
+```
+
+The same split, with each syllable decomposed. Use it when you need the
+constituents — a phonemizer, a stress rule, a rhyme index — rather than the
+strings.
+
+```python
+for s in analyze("transportar"):
+    print(s.onset, s.nucleus, s.coda)
+# tr a ns
+# p  o r
+# t  a r
+```
+
+## `Syllable`
+
+A frozen dataclass.
+
+| field | meaning |
+|---|---|
+| `onset` | consonants before the nucleus (`tr`, `qu`, `lh`) |
+| `glide_on` | the glide spelled *inside* a `qu`/`gu` onset — the `u` of *qua*dro |
+| `nucleus` | the vowel that heads the syllable |
+| `glide_off` | the offglide of a falling diphthong — the `i` of p*ai* |
+| `coda` | consonants after the nucleus |
+| `separator` | a hyphen, space or apostrophe held by this syllable |
+| `surface` | the syllable as written |
+
+`str(syllable)` returns `surface`. It is stored rather than recomposed from the
+fields, because a separator can sit anywhere inside a syllable (`ra-d'`) and
+reassembling in onset-nucleus-coda order would reorder the letters.
+
+`glide_on` is *reported, not additive*: it is already inside `onset`, since the
+`u` of `qu` is part of that digraph. `str(analyze("quadro")[0])` is `"qua"`, not
+`"quuа"`.
 
 ## `Syllabifier`
 
@@ -38,93 +88,21 @@ Edge cases handled directly:
 from silabificador import Syllabifier
 
 s = Syllabifier()
-s.syllabify(word: str) -> List[str]
+s.syllabify("computador")   # ['com', 'pu', 'ta', 'dor']
+s.analyze("casa")           # [Syllable(onset='c', ...), ...]
 ```
 
-A stateless object wrapper. `Syllabifier().syllabify(w)` is equivalent to
-`syllabify(w)`. Construct it with no arguments. Use it when an interface in your
-code expects an object that exposes a `.syllabify` method; otherwise call the
-function.
+A stateless wrapper; there is nothing to configure and no model to load.
 
-```python
-Syllabifier().syllabify("caça")   # ['ca', 'ça']
-```
+## The layers
 
-## Validation helpers
+The engine is four modules, each with one job. They are importable, and reading
+them is the documentation of the rules:
 
-These live in `silabificador.syl` and back the boundary decisions inside
-`syllabify`. They are pure predicates — useful when you want to inspect why a
-vowel sequence does or does not stay in one syllable.
-
-### `validate_diphthong`
-
-```python
-from silabificador.syl import validate_diphthong
-
-validate_diphthong(diph: str, prev_char: str = "") -> bool
-```
-
-`True` if a two-character vowel sequence is a valid diphthong (one syllable),
-`False` if it is treated as hiatus or is not a vowel pair. An acute accent on
-the first vowel forces `False` (except `"áu"`); several sequences such as `"ea"`,
-`"io"`, `"ui"` are always treated as hiatus.
-
-```python
-validate_diphthong("ai")   # True
-validate_diphthong("ea")   # False
-validate_diphthong("ui")   # False
-```
-
-### `validate_triphthong`
-
-```python
-from silabificador.syl import validate_triphthong
-
-validate_triphthong(triph: str, prev_char: str = "") -> bool
-```
-
-`True` if a three-character vowel sequence is a valid triphthong (glide + vowel
-+ glide, all in one syllable). The first character must be a semivowel; accents
-are allowed only on the middle vowel.
-
-```python
-validate_triphthong("uai")   # True  (as in Uruguai)
-validate_triphthong("eau")   # False
-```
-
-### `check_for_hiatus`
-
-```python
-from silabificador.syl import check_for_hiatus
-
-check_for_hiatus(diph: str, is_end: bool = False, prev_char: str = "") -> bool
-```
-
-Context-sensitive hiatus test. `True` means the two vowels should be split into
-separate syllables. Repeated vowels (`"aa"`) are hiatus; after `r` most vowel
-pairs are hiatus except `"ei"`. Nasal first vowels stay as diphthongs.
-
-```python
-check_for_hiatus("ai", is_end=True)                 # False  (diphthong)
-check_for_hiatus("ai", is_end=False, prev_char="r") # True   (hiatus after r)
-check_for_hiatus("aa")                              # True   (repeated vowel)
-```
-
-## Module constants
-
-`silabificador.syl` also exposes the phonotactic tables the algorithm reads. You
-will rarely import these, but they document the rule set:
-
-| Name | What it holds |
+| module | job |
 |---|---|
-| `VOWELS` | every character treated as a vowel (plain, accented, foreign `y`/`w`) |
-| `SEMIVOWEL` | glide-capable letters (`i`, `u`, `y`, `w`) |
-| `INSEPARABLE_DIGRAPHS` | `ch`, `lh`, `nh`, `gu`, `qu` — always one syllable |
-| `SEPARABLE_DIGRAPHS` | clusters split across a boundary (`rr`, `ss`, `ct`, …) |
-| `CONSONANT_DIGRAPHS` | clusters that can start a syllable (`pr`, `bl`, `tr`, …) |
-| `ACUTE`, `CIRCUMFLEX`, `NASAL`, `GRAVE` | the diacritic classes |
-
-## Where next
-
-- [quickstart.md](quickstart.md) — install and first calls
-- [advanced.md](advanced.md) — recipes, batch use, diphthong/hiatus internals
+| `silabificador.phonotactics` | what Portuguese licenses — data only, no logic |
+| `silabificador.graphemes` | orthography → grapheme units (layer 1) |
+| `silabificador.nucleus` | nucleus and glide resolution (layer 2) |
+| `silabificador.morphology` | morpheme boundaries, which outrank the rules |
+| `silabificador.parser` | syllable assembly (layer 3) |

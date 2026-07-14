@@ -1,18 +1,22 @@
-import os
-from typing import List, Optional, Tuple, Any
-from silabificador.syl import syllabify
+from typing import List
+
+from silabificador.syl import analyze, syllabify
+from silabificador.syllable import Syllable
+
+__all__ = ["Syllabifier", "Syllable", "analyze", "syllabify"]
 
 
 class Syllabifier:
-    """
-    A Portuguese syllabifier that splits words into syllables using hand-crafted
-    phonotactic rules (onset/nucleus/coda, sonority sequencing, diphthong/hiatus
-    handling). Rule-based and dependency-free; no model is loaded.
+    """A Portuguese syllabifier.
+
+    Rule-based and dependency-free; no model is loaded. Orthography is resolved
+    into grapheme units, vowel runs into nuclei and glides, and consonants are
+    placed by onset maximization bounded by the licit onset inventory, with
+    transparent prefix boundaries overriding it.
     """
 
     def syllabify(self, word: str) -> List[str]:
-        """
-        Split a Portuguese word into syllables.
+        """Split a Portuguese word into syllables.
 
         Args:
             word (str): The input word to be syllabified.
@@ -22,8 +26,13 @@ class Syllabifier:
         """
         return syllabify(word)
 
+    def analyze(self, word: str) -> List[Syllable]:
+        """Split a word into syllables decomposed into onset, nucleus and coda.
 
-if __name__ == "__main__":
-    s = Syllabifier()
-    print(s.syllabify("computador"))
-    # ['com', 'pu', 'ta', 'dor']
+        Args:
+            word (str): The input word to be syllabified.
+
+        Returns:
+            List[Syllable]: One :class:`Syllable` per syllable.
+        """
+        return analyze(word)
