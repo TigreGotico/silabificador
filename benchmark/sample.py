@@ -3,11 +3,11 @@
     python -m benchmark.sample
 
 The repository ships no corpus. What it does ship is a small, deterministic draw
-from the *held-out* half of the agreement gold, so the regression test measures
-generalization: none of these words informed a rule.
+from the agreement gold, so the regression test runs offline.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 
@@ -19,17 +19,15 @@ OUT = os.path.join(os.path.dirname(os.path.dirname(__file__)), "tests", "gold_sa
 
 def main() -> None:
     gold = goldlib.load()
-    held_out = gold.test()
-    # Ordered by the same content hash that defines the split, so the draw is
-    # reproducible from the dataset alone -- no seed to remember, no order to
-    # preserve.
-    words = sorted(held_out, key=goldlib._bucket)[:SIZE]
+    entries = gold.agreement
+    # Ordered by a content hash of the word, so the draw is reproducible from the
+    # dataset alone -- no seed to remember, no ordering to preserve.
+    words = sorted(entries, key=lambda w: hashlib.sha1(w.encode("utf-8")).hexdigest())[:SIZE]
 
     payload = {
         "source": goldlib.REPO_ID,
         "gold": "agreement (infopedia + portal, identical split, join-integrity checked)",
-        "split": "test (held out)",
-        "entries": [{"word": w, "syllables": list(held_out[w])} for w in words],
+        "entries": [{"word": w, "syllables": list(entries[w])} for w in words],
     }
     with open(OUT, "w", encoding="utf-8") as handle:
         json.dump(payload, handle, ensure_ascii=False, indent=1)

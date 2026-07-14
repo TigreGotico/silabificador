@@ -60,6 +60,22 @@ for s in analyze("transportar"):
 # t  a r
 ```
 
+## `stressed_index`
+
+```python
+from silabificador import stressed_index
+
+stressed_index(word: str) -> int
+```
+
+The index of the syllable carrying the primary stress.
+
+```python
+stressed_index("computador")   # 3   com.pu.ta.DOR
+stressed_index("casa")         # 0   CA.sa
+stressed_index("sílaba")       # 0   SÍ.la.ba
+```
+
 ## `Syllable`
 
 A frozen dataclass.
@@ -73,6 +89,8 @@ A frozen dataclass.
 | `coda` | consonants after the nucleus |
 | `separator` | a hyphen, space or apostrophe held by this syllable |
 | `surface` | the syllable as written |
+| `stressed` | carries the word's primary stress — exactly one syllable does |
+| `secondary` | carries a secondary stress (compounds only) |
 
 `str(syllable)` returns `surface`. It is stored rather than recomposed from the
 fields, because a separator can sit anywhere inside a syllable (`ra-d'`) and
@@ -106,3 +124,4 @@ them is the documentation of the rules:
 | `silabificador.nucleus` | nucleus and glide resolution (layer 2) |
 | `silabificador.morphology` | morpheme boundaries, which outrank the rules |
 | `silabificador.parser` | syllable assembly (layer 3) |
+| `silabificador.stress` | which syllable bears the stress |

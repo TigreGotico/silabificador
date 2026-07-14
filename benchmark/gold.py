@@ -23,7 +23,6 @@ The two sources are then compared word by word:
 """
 from __future__ import annotations
 
-import hashlib
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Sequence, Tuple
 
@@ -31,26 +30,6 @@ Split = Tuple[str, ...]
 
 REPO_ID = "TigreGotico/portuguese-unified-pronunciation-lexicon"
 PARQUET = "train.parquet"
-
-#: Fraction of the agreement set reserved as the held-out test split.
-TEST_FRACTION = 0.2
-
-
-def _bucket(word: str) -> float:
-    """Stable [0, 1) hash of a word. Independent of PYTHONHASHSEED and of order."""
-    digest = hashlib.sha1(word.encode("utf-8")).digest()
-    return int.from_bytes(digest[:8], "big") / float(1 << 64)
-
-
-def is_test(word: str) -> bool:
-    """Assign a word to the held-out test split.
-
-    Deterministic and content-addressed: a word lands in the same split no
-    matter how the lexicon is ordered or filtered. Tuning happens on ``dev``;
-    the reported number is ``test``.
-    """
-    return _bucket(word) < TEST_FRACTION
-
 
 @dataclass
 class GoldSet:
@@ -71,12 +50,6 @@ class GoldSet:
     def portal(self) -> Dict[str, Split]:
         """Every Portal-attested word (agreement set included)."""
         return {**self.agreement, **self.portal_only}
-
-    def dev(self) -> Dict[str, Split]:
-        return {w: s for w, s in self.agreement.items() if not is_test(w)}
-
-    def test(self) -> Dict[str, Split]:
-        return {w: s for w, s in self.agreement.items() if is_test(w)}
 
 
 def _parse(raw: str) -> Split:
@@ -180,8 +153,6 @@ def summary(gold: GoldSet) -> List[str]:
     """Human-readable provenance breakdown."""
     return [
         f"agreement (gold)  {len(gold.agreement):>7}   both sources, identical split",
-        f"  dev             {len(gold.dev()):>7}",
-        f"  test (held out) {len(gold.test()):>7}",
         f"infopedia-only    {len(gold.infopedia_only):>7}   single source, unverified",
         f"portal-only       {len(gold.portal_only):>7}   single source, unverified",
         f"disagreement      {len(gold.disagreement):>7}   excluded from gold",

@@ -5,7 +5,7 @@ lexicon is not downloaded. Rows are ``(word, syllables, infopedia_url)`` --
 an Infopédia row carries a dictionary URL and dot separators, a Portal row has
 neither and uses pipes.
 """
-from benchmark.gold import TEST_FRACTION, _collect, is_test
+from benchmark.gold import _collect, fuse
 
 URL = "https://www.infopedia.pt/dicionarios/lingua-portuguesa/x"
 
@@ -70,9 +70,8 @@ def test_portal_regional_duplicates_collapse():
     assert gold.dropped["portal"] == 0
 
 
-def test_split_assignment_is_content_addressed_and_stable():
-    words = [f"palavra{i}" for i in range(2000)]
-    held = [w for w in words if is_test(w)]
-    assert held == [w for w in words if is_test(w)]  # no order or seed dependence
-    assert 0.15 < len(held) / len(words) < 0.25  # ~TEST_FRACTION
-    assert TEST_FRACTION == 0.2
+def test_fuse_merges_across_a_separator():
+    # The dictionaries mark hyphenation points and never break at a hyphen, so
+    # their token holds two nuclei. Fusing puts both notations in one shape.
+    assert fuse(("a-", "his", "tó", "ri", "co")) == ("a-his", "tó", "ri", "co")
+    assert fuse(("ca", "sa")) == ("ca", "sa")

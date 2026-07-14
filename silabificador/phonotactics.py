@@ -18,7 +18,7 @@ from __future__ import annotations
 from typing import FrozenSet
 
 #: Letters that can head a syllable nucleus.
-VOWELS: FrozenSet[str] = frozenset("aeiouáéíóúâêôàãõäëïöüy")
+VOWELS: FrozenSet[str] = frozenset("aeiouáéíóúâêîôûàèìòùãõäëïöüy")
 
 #: The only vowels that can surrender their nucleus and become glides. Portuguese
 #: has no mid or low glides: in ``coelho`` the ``e`` cannot be a glide, so the
@@ -26,7 +26,9 @@ VOWELS: FrozenSet[str] = frozenset("aeiouáéíóúâêôàãõäëïöüy")
 GLIDE_CAPABLE: FrozenSet[str] = frozenset("iuy")
 
 #: An accent mark on a close vowel pins it as a nucleus, which is precisely how
-#: Portuguese spelling disambiguates ``pais`` (pais) from ``país`` (pa.ís).
+#: Portuguese spelling disambiguates ``pais`` (pais) from ``país`` (pa.ís). The
+#: grave is included: pre-1990 spelling used it on ``i``/``u`` too, and it marks
+#: a nucleus wherever it lands.
 STRESS_MARKED: FrozenSet[str] = frozenset("áéíóúâêîôûàèìòù")
 
 #: Nasal vowels. A nasal nucleus licenses an offglide that a plain vowel would

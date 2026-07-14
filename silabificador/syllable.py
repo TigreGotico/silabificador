@@ -39,6 +39,12 @@ class Syllable:
     #: (``ra-d'``) and reassembling in onset-nucleus-coda order would silently
     #: reorder the letters.
     surface: str = ""
+    #: Whether this syllable carries the word's primary stress. Exactly one
+    #: syllable of a word does. See :mod:`silabificador.stress`.
+    stressed: bool = False
+    #: Whether it carries a secondary stress. Only a compound has one: each
+    #: element keeps its own stress, and only the last element's is primary.
+    secondary: bool = False
 
     @classmethod
     def of(cls, units: Sequence[Grapheme], nucleus: Optional[Sequence[int]] = None) -> "Syllable":
