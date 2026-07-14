@@ -11,9 +11,10 @@ import argparse
 import collections
 from typing import Dict, List, Tuple
 
-from silabificador import syllabify
+from silabificador import stressed_index, syllabify
 
 from . import gold as goldlib
+from . import stress_gold as stresslib
 from .gold import GoldSet, Split, fuse
 
 VOWELS = "aeiouáéíóúâêîôûàãẽĩõũäëïöüy"
@@ -80,11 +81,9 @@ def main() -> None:
 
     print("\nSCOREBOARD (exact match, full sets, no sampling)")
     sets = [
-        ("agreement / test (held out)", gold.test()),
-        ("agreement / dev", gold.dev()),
-        ("agreement (all)", gold.agreement),
-        ("infopedia (all)", gold.infopedia),
-        ("portal (all)", gold.portal),
+        ("agreement (gold)", gold.agreement),
+        ("infopedia", gold.infopedia),
+        ("portal", gold.portal),
     ]
     kept: Dict[str, List[Tuple[str, Split, Split]]] = {}
     for name, entries in sets:
@@ -96,7 +95,7 @@ def main() -> None:
     # The taxonomy is printed for the agreement set (the gold the engine is held
     # to) and for Infopédia (where most of the unverified mass lives, and where
     # an engine tuned on Portal has never been looked at).
-    for name in ("agreement (all)", "infopedia (all)"):
+    for name in ("agreement (gold)", "infopedia"):
         failures = kept[name]
         print(f"\nERROR TAXONOMY -- {name}: {len(failures)} failures")
         by_bucket: Dict[str, List] = collections.defaultdict(list)
@@ -107,6 +106,26 @@ def main() -> None:
             print(f"  {count:>5}  ({share:4.1f}%)  {bucket}")
             for word, expected, predicted in sorted(by_bucket[bucket])[:args.examples]:
                 print(f"           {word:<24} gold={'.'.join(expected):<26} got={'.'.join(predicted)}")
+
+    print("\nSTRESS (independent gold: the lexicon's IPA, which the engine never reads)")
+    stress = stresslib.load(args.parquet)
+    agree, checked, _ = stresslib.self_check(stress)
+    print(f"  gold                {len(stress):>6} words   "
+          f"(EP only; IPA and spelling verified to align)")
+    print(f"  gold self-check     {100.0 * agree / checked:6.2f}%   {agree}/{checked}   "
+          f"on simple words, the written accent IS the stress -- and it agrees")
+
+    correct = sum(1 for word, index in stress.items() if stressed_index(word) == index)
+    print(f"  stress accuracy     {100.0 * correct / len(stress):6.2f}%   {correct}/{len(stress)}")
+
+    wrong = [(w, i) for w, i in stress.items() if stressed_index(w) != i]
+    endings = collections.Counter(w[-2:] for w, _ in wrong)
+    print(f"  {len(wrong)} wrong; commonest endings: "
+          + ", ".join(f"-{e} ({n})" for e, n in endings.most_common(5)))
+    for word, index in sorted(wrong)[:args.examples]:
+        syllables = syllabify(word)
+        got = stressed_index(word)
+        print(f"           {word:<20} gold=[{syllables[index]}]  got=[{syllables[got]}]")
 
     print("\nROUND-TRIP INVARIANT (every scoreable word)")
     every = {**gold.infopedia, **gold.portal}

@@ -17,6 +17,8 @@ nucleus        vowel run → nuclei and glides     "pai" → one nucleus, one of
 morphology     morpheme boundaries (lexical)     sub|liminar, distribu|idor
    ↓
 parser         onset maximization → syllables
+   ↓
+stress         which syllable bears the stress
 ```
 
 ## Layer 1 — digraphs are decided in context
@@ -94,10 +96,50 @@ dis.tri.bu.i.dor  but   cui.da.do      (cuidado has no seam in it)
 rules then derive `sub.lo.car`. One `loc` entry covers *sublocar, sublocação,
 sublocatário, sublocador* — including words nobody tested.
 
-## Known limits
+## Stress
 
-**Stress is not predicted.** The library gives you the segmentation; computing
-stress from it is the caller's job.
+Portuguese stress is not guessed at. The orthography is *designed* to encode it:
+an accent is obligatory on any word whose stress departs from the default, so the
+accent is not a hint, it is a statement — and its **absence** is a statement too.
+
+```
+1. ACCENT    a syllable with an acute or circumflex is the stressed one
+2. TILDE     failing that, a nasal ã/õ carries it (ir.MÃ, co.ra.ÇÃO)
+3. ENDING    failing both, the ending chooses between the last two syllables
+             oxytone:    r l z x n ps, i u (+s), im um om (+s)
+             paroxytone: everything else, and -as -es -os -am -em -ens
+```
+
+Rule 3 is a two-way choice, not a guess: an unaccented word *cannot* be
+proparoxytone, because the spelling rules would have required an accent to say
+so. That is why `sá.bi.a`, `sa.bi.a` and `sa.bi.á` are three words.
+
+### Secondary stress
+
+A hyphenated compound is two words wearing one coat, and each element keeps the
+stress it had alone. The last element takes the primary; the earlier ones are
+demoted to secondary:
+
+```python
+[str(s) for s in analyze("guarda-chuva") if s.secondary]   # ['guar']
+[str(s) for s in analyze("guarda-chuva") if s.stressed]    # ['chu']
+```
+
+An element that is an unstressed monosyllable carries nothing. Portuguese grammar
+names that class — the *monossílabos átonos* (articles, prepositions,
+conjunctions, clitic pronouns) — and it is closed, so it is listed rather than
+guessed: in `chapéu de chuva`, the `de` is one of them.
+
+Before 1990 a grave accent marked secondary stress (`sòmente`, `cafèzinho`). It is
+still honoured where it appears. The grave on `à` is *not* a stress mark — it is
+crasis, and it is unstressed.
+
+**The secondary stress of `-mente` and `-zinho` words is not marked.** `rapidamente`
+comes from `rápida`, but the suffix drops the base's accent, and nothing left in
+the spelling says where `rápida` was stressed. Recovering it needs a lexicon of
+bases, which this library does not carry.
+
+## Known limits
 
 **The productive prefixes are not implemented** — `ciber-`, `hiper-`, `super-`,
 `inter-`. Infopédia often keeps them intact (`ci.ber.as.sé.di.o`,
