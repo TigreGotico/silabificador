@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.0a1](https://github.com/TigreGotico/silabificador/tree/2.1.0a1) (2026-07-14)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.0.0a1...2.1.0a1)
+
+**Merged pull requests:**
+
+- feat: assign primary and secondary stress [\#13](https://github.com/TigreGotico/silabificador/pull/13) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [2.0.0a1](https://github.com/TigreGotico/silabificador/tree/2.0.0a1) (2026-07-14)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/1.1.0a1...2.0.0a1)
