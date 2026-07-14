@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.0a1](https://github.com/TigreGotico/silabificador/tree/2.0.0a1) (2026-07-14)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/1.1.0a1...2.0.0a1)
+
+**Breaking changes:**
+
+- feat!: derive syllabification from Portuguese phonotactics [\#11](https://github.com/TigreGotico/silabificador/pull/11) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [1.1.0a1](https://github.com/TigreGotico/silabificador/tree/1.1.0a1) (2026-07-14)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/1.0.1a1...1.1.0a1)
