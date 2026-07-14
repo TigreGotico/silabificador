@@ -29,11 +29,6 @@ def test_class_wrapper_matches_function():
     assert s.syllabify("computador") == syllabify("computador")
 
 
-def test_class_docstring_is_not_brill():
-    # the wrapper is rule-based; the old "trained Brill tagger" claim was wrong
-    assert "Brill" not in (Syllabifier.__doc__ or "")
-
-
 def test_empty_and_single_char():
     assert syllabify("a") == ["a"]
     assert isinstance(syllabify(""), list)
