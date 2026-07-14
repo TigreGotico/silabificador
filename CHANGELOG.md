@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0a1](https://github.com/TigreGotico/silabificador/tree/1.1.0a1) (2026-07-14)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/1.0.1a1...1.1.0a1)
+
+**Merged pull requests:**
+
+- feat: build the gold from the unified lexicon and score the full set [\#9](https://github.com/TigreGotico/silabificador/pull/9) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [1.0.1a1](https://github.com/TigreGotico/silabificador/tree/1.0.1a1) (2026-05-29)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/1.0.0...1.0.1a1)
