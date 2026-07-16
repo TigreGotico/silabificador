@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "silabificador"
+dynamic = ["version"]
+description = "A lightweight, dependency-free Portuguese syllabifier built on hand-crafted rules"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "JarbasAi", email = "jarbasai@mailfence.com" }]
+requires-python = ">=3.8"
+keywords = ["portuguese", "syllabifier", "syllabification", "phonetics", "nlp", "tts"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Text Processing :: Linguistic",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+benchmark = ["pandas", "pyarrow", "huggingface_hub"]
+
+[project.urls]
+Homepage = "https://github.com/TigreGotico/silabificador"
+Repository = "https://github.com/TigreGotico/silabificador"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["silabificador*"]
+
+[tool.setuptools.dynamic]
+version = { attr = "silabificador.version.VERSION_STR" }

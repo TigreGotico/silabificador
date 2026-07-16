@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+.env
+.pytest_cache/
+.ruff_cache/
+
+# --- Agent pipeline / local-only docs (not part of the published package) ---
+AGENTS.md
+TODO.md
+ROADMAP.md

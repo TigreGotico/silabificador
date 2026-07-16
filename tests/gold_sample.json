@@ -1,0 +1,4403 @@
+{
+ "source": "TigreGotico/portuguese-unified-pronunciation-lexicon",
+ "gold": "agreement (infopedia + portal, identical split, join-integrity checked)",
+ "split": "test (held out)",
+ "entries": [
+  {
+   "word": "moqueca",
+   "syllables": [
+    "mo",
+    "que",
+    "ca"
+   ]
+  },
+  {
+   "word": "cosmógrafo",
+   "syllables": [
+    "cos",
+    "mó",
+    "gra",
+    "fo"
+   ]
+  },
+  {
+   "word": "embalsamar",
+   "syllables": [
+    "em",
+    "bal",
+    "sa",
+    "mar"
+   ]
+  },
+  {
+   "word": "toga",
+   "syllables": [
+    "to",
+    "ga"
+   ]
+  },
+  {
+   "word": "geladeira",
+   "syllables": [
+    "ge",
+    "la",
+    "dei",
+    "ra"
+   ]
+  },
+  {
+   "word": "boletim",
+   "syllables": [
+    "bo",
+    "le",
+    "tim"
+   ]
+  },
+  {
+   "word": "antidemocrático",
+   "syllables": [
+    "an",
+    "ti",
+    "de",
+    "mo",
+    "crá",
+    "ti",
+    "co"
+   ]
+  },
+  {
+   "word": "grato",
+   "syllables": [
+    "gra",
+    "to"
+   ]
+  },
+  {
+   "word": "larvar",
+   "syllables": [
+    "lar",
+    "var"
+   ]
+  },
+  {
+   "word": "fécula",
+   "syllables": [
+    "fé",
+    "cu",
+    "la"
+   ]
+  },
+  {
+   "word": "repousar",
+   "syllables": [
+    "re",
+    "pou",
+    "sar"
+   ]
+  },
+  {
+   "word": "dentada",
+   "syllables": [
+    "den",
+    "ta",
+    "da"
+   ]
+  },
+  {
+   "word": "chupeta",
+   "syllables": [
+    "chu",
+    "pe",
+    "ta"
+   ]
+  },
+  {
+   "word": "beluga",
+   "syllables": [
+    "be",
+    "lu",
+    "ga"
+   ]
+  },
+  {
+   "word": "reimportação",
+   "syllables": [
+    "re",
+    "im",
+    "por",
+    "ta",
+    "ção"
+   ]
+  },
+  {
+   "word": "defraudar",
+   "syllables": [
+    "de",
+    "frau",
+    "dar"
+   ]
+  },
+  {
+   "word": "blocagem",
+   "syllables": [
+    "blo",
+    "ca",
+    "gem"
+   ]
+  },
+  {
+   "word": "imediatismo",
+   "syllables": [
+    "i",
+    "me",
+    "di",
+    "a",
+    "tis",
+    "mo"
+   ]
+  },
+  {
+   "word": "constantemente",
+   "syllables": [
+    "cons",
+    "tan",
+    "te",
+    "men",
+    "te"
+   ]
+  },
+  {
+   "word": "chassis",
+   "syllables": [
+    "chas",
+    "sis"
+   ]
+  },
+  {
+   "word": "desaforro",
+   "syllables": [
+    "de",
+    "sa",
+    "for",
+    "ro"
+   ]
+  },
+  {
+   "word": "alforriar",
+   "syllables": [
+    "al",
+    "for",
+    "ri",
+    "ar"
+   ]
+  },
+  {
+   "word": "figura",
+   "syllables": [
+    "fi",
+    "gu",
+    "ra"
+   ]
+  },
+  {
+   "word": "seda",
+   "syllables": [
+    "se",
+    "da"
+   ]
+  },
+  {
+   "word": "escarificação",
+   "syllables": [
+    "es",
+    "ca",
+    "ri",
+    "fi",
+    "ca",
+    "ção"
+   ]
+  },
+  {
+   "word": "crespo",
+   "syllables": [
+    "cres",
+    "po"
+   ]
+  },
+  {
+   "word": "acasalado",
+   "syllables": [
+    "a",
+    "ca",
+    "sa",
+    "la",
+    "do"
+   ]
+  },
+  {
+   "word": "traquitana",
+   "syllables": [
+    "tra",
+    "qui",
+    "ta",
+    "na"
+   ]
+  },
+  {
+   "word": "lata",
+   "syllables": [
+    "la",
+    "ta"
+   ]
+  },
+  {
+   "word": "mutilação",
+   "syllables": [
+    "mu",
+    "ti",
+    "la",
+    "ção"
+   ]
+  },
+  {
+   "word": "descuriosidade",
+   "syllables": [
+    "des",
+    "cu",
+    "ri",
+    "o",
+    "si",
+    "da",
+    "de"
+   ]
+  },
+  {
+   "word": "furador",
+   "syllables": [
+    "fu",
+    "ra",
+    "dor"
+   ]
+  },
+  {
+   "word": "cagarola",
+   "syllables": [
+    "ca",
+    "ga",
+    "ro",
+    "la"
+   ]
+  },
+  {
+   "word": "bilião",
+   "syllables": [
+    "bi",
+    "li",
+    "ão"
+   ]
+  },
+  {
+   "word": "desempacotar",
+   "syllables": [
+    "de",
+    "sem",
+    "pa",
+    "co",
+    "tar"
+   ]
+  },
+  {
+   "word": "bolsista",
+   "syllables": [
+    "bol",
+    "sis",
+    "ta"
+   ]
+  },
+  {
+   "word": "rocinante",
+   "syllables": [
+    "ro",
+    "ci",
+    "nan",
+    "te"
+   ]
+  },
+  {
+   "word": "dicção",
+   "syllables": [
+    "dic",
+    "ção"
+   ]
+  },
+  {
+   "word": "seta",
+   "syllables": [
+    "se",
+    "ta"
+   ]
+  },
+  {
+   "word": "inumar",
+   "syllables": [
+    "i",
+    "nu",
+    "mar"
+   ]
+  },
+  {
+   "word": "descortejar",
+   "syllables": [
+    "des",
+    "cor",
+    "te",
+    "jar"
+   ]
+  },
+  {
+   "word": "espinheira",
+   "syllables": [
+    "es",
+    "pi",
+    "nhei",
+    "ra"
+   ]
+  },
+  {
+   "word": "metafisicar",
+   "syllables": [
+    "me",
+    "ta",
+    "fi",
+    "si",
+    "car"
+   ]
+  },
+  {
+   "word": "cromossómico",
+   "syllables": [
+    "cro",
+    "mos",
+    "só",
+    "mi",
+    "co"
+   ]
+  },
+  {
+   "word": "degelo",
+   "syllables": [
+    "de",
+    "ge",
+    "lo"
+   ]
+  },
+  {
+   "word": "dissaboroso",
+   "syllables": [
+    "dis",
+    "sa",
+    "bo",
+    "ro",
+    "so"
+   ]
+  },
+  {
+   "word": "fresquidão",
+   "syllables": [
+    "fres",
+    "qui",
+    "dão"
+   ]
+  },
+  {
+   "word": "urgência",
+   "syllables": [
+    "ur",
+    "gên",
+    "ci",
+    "a"
+   ]
+  },
+  {
+   "word": "inferiorização",
+   "syllables": [
+    "in",
+    "fe",
+    "ri",
+    "o",
+    "ri",
+    "za",
+    "ção"
+   ]
+  },
+  {
+   "word": "aditar",
+   "syllables": [
+    "a",
+    "di",
+    "tar"
+   ]
+  },
+  {
+   "word": "bifana",
+   "syllables": [
+    "bi",
+    "fa",
+    "na"
+   ]
+  },
+  {
+   "word": "dessalinizar",
+   "syllables": [
+    "des",
+    "sa",
+    "li",
+    "ni",
+    "zar"
+   ]
+  },
+  {
+   "word": "fardo",
+   "syllables": [
+    "far",
+    "do"
+   ]
+  },
+  {
+   "word": "melena",
+   "syllables": [
+    "me",
+    "le",
+    "na"
+   ]
+  },
+  {
+   "word": "agrogeologia",
+   "syllables": [
+    "a",
+    "gro",
+    "ge",
+    "o",
+    "lo",
+    "gi",
+    "a"
+   ]
+  },
+  {
+   "word": "confidente",
+   "syllables": [
+    "con",
+    "fi",
+    "den",
+    "te"
+   ]
+  },
+  {
+   "word": "juliano",
+   "syllables": [
+    "ju",
+    "li",
+    "a",
+    "no"
+   ]
+  },
+  {
+   "word": "carestia",
+   "syllables": [
+    "ca",
+    "res",
+    "ti",
+    "a"
+   ]
+  },
+  {
+   "word": "obcecado",
+   "syllables": [
+    "ob",
+    "ce",
+    "ca",
+    "do"
+   ]
+  },
+  {
+   "word": "alfanumérico",
+   "syllables": [
+    "al",
+    "fa",
+    "nu",
+    "mé",
+    "ri",
+    "co"
+   ]
+  },
+  {
+   "word": "oncogénese",
+   "syllables": [
+    "on",
+    "co",
+    "gé",
+    "ne",
+    "se"
+   ]
+  },
+  {
+   "word": "epifania",
+   "syllables": [
+    "e",
+    "pi",
+    "fa",
+    "ni",
+    "a"
+   ]
+  },
+  {
+   "word": "faroleiro",
+   "syllables": [
+    "fa",
+    "ro",
+    "lei",
+    "ro"
+   ]
+  },
+  {
+   "word": "retardar",
+   "syllables": [
+    "re",
+    "tar",
+    "dar"
+   ]
+  },
+  {
+   "word": "chamejante",
+   "syllables": [
+    "cha",
+    "me",
+    "jan",
+    "te"
+   ]
+  },
+  {
+   "word": "microgravidade",
+   "syllables": [
+    "mi",
+    "cro",
+    "gra",
+    "vi",
+    "da",
+    "de"
+   ]
+  },
+  {
+   "word": "espalmado",
+   "syllables": [
+    "es",
+    "pal",
+    "ma",
+    "do"
+   ]
+  },
+  {
+   "word": "nenhum",
+   "syllables": [
+    "ne",
+    "nhum"
+   ]
+  },
+  {
+   "word": "curiosamente",
+   "syllables": [
+    "cu",
+    "ri",
+    "o",
+    "sa",
+    "men",
+    "te"
+   ]
+  },
+  {
+   "word": "capuchar",
+   "syllables": [
+    "ca",
+    "pu",
+    "char"
+   ]
+  },
+  {
+   "word": "chui",
+   "syllables": [
+    "chui"
+   ]
+  },
+  {
+   "word": "rugir",
+   "syllables": [
+    "ru",
+    "gir"
+   ]
+  },
+  {
+   "word": "bianual",
+   "syllables": [
+    "bi",
+    "a",
+    "nu",
+    "al"
+   ]
+  },
+  {
+   "word": "inalienável",
+   "syllables": [
+    "i",
+    "na",
+    "li",
+    "e",
+    "ná",
+    "vel"
+   ]
+  },
+  {
+   "word": "egoísmo",
+   "syllables": [
+    "e",
+    "go",
+    "ís",
+    "mo"
+   ]
+  },
+  {
+   "word": "crescer",
+   "syllables": [
+    "cres",
+    "cer"
+   ]
+  },
+  {
+   "word": "paginação",
+   "syllables": [
+    "pa",
+    "gi",
+    "na",
+    "ção"
+   ]
+  },
+  {
+   "word": "lixeira",
+   "syllables": [
+    "li",
+    "xei",
+    "ra"
+   ]
+  },
+  {
+   "word": "bejense",
+   "syllables": [
+    "be",
+    "jen",
+    "se"
+   ]
+  },
+  {
+   "word": "tábua",
+   "syllables": [
+    "tá",
+    "bu",
+    "a"
+   ]
+  },
+  {
+   "word": "dizimar",
+   "syllables": [
+    "di",
+    "zi",
+    "mar"
+   ]
+  },
+  {
+   "word": "desengrossamento",
+   "syllables": [
+    "de",
+    "sen",
+    "gros",
+    "sa",
+    "men",
+    "to"
+   ]
+  },
+  {
+   "word": "despalmilhar",
+   "syllables": [
+    "des",
+    "pal",
+    "mi",
+    "lhar"
+   ]
+  },
+  {
+   "word": "extrapolação",
+   "syllables": [
+    "ex",
+    "tra",
+    "po",
+    "la",
+    "ção"
+   ]
+  },
+  {
+   "word": "ingente",
+   "syllables": [
+    "in",
+    "gen",
+    "te"
+   ]
+  },
+  {
+   "word": "cabala",
+   "syllables": [
+    "ca",
+    "ba",
+    "la"
+   ]
+  },
+  {
+   "word": "carapeta",
+   "syllables": [
+    "ca",
+    "ra",
+    "pe",
+    "ta"
+   ]
+  },
+  {
+   "word": "surpreendentemente",
+   "syllables": [
+    "sur",
+    "pre",
+    "en",
+    "den",
+    "te",
+    "men",
+    "te"
+   ]
+  },
+  {
+   "word": "deponente",
+   "syllables": [
+    "de",
+    "po",
+    "nen",
+    "te"
+   ]
+  },
+  {
+   "word": "costal",
+   "syllables": [
+    "cos",
+    "tal"
+   ]
+  },
+  {
+   "word": "evidente",
+   "syllables": [
+    "e",
+    "vi",
+    "den",
+    "te"
+   ]
+  },
+  {
+   "word": "malquistar",
+   "syllables": [
+    "mal",
+    "quis",
+    "tar"
+   ]
+  },
+  {
+   "word": "indicado",
+   "syllables": [
+    "in",
+    "di",
+    "ca",
+    "do"
+   ]
+  },
+  {
+   "word": "fortalecimento",
+   "syllables": [
+    "for",
+    "ta",
+    "le",
+    "ci",
+    "men",
+    "to"
+   ]
+  },
+  {
+   "word": "insuflar",
+   "syllables": [
+    "in",
+    "su",
+    "flar"
+   ]
+  },
+  {
+   "word": "airosamente",
+   "syllables": [
+    "ai",
+    "ro",
+    "sa",
+    "men",
+    "te"
+   ]
+  },
+  {
+   "word": "papar",
+   "syllables": [
+    "pa",
+    "par"
+   ]
+  },
+  {
+   "word": "antevoar",
+   "syllables": [
+    "an",
+    "te",
+    "vo",
+    "ar"
+   ]
+  },
+  {
+   "word": "berço",
+   "syllables": [
+    "ber",
+    "ço"
+   ]
+  },
+  {
+   "word": "fornicação",
+   "syllables": [
+    "for",
+    "ni",
+    "ca",
+    "ção"
+   ]
+  },
+  {
+   "word": "desafogado",
+   "syllables": [
+    "de",
+    "sa",
+    "fo",
+    "ga",
+    "do"
+   ]
+  },
+  {
+   "word": "coxim",
+   "syllables": [
+    "co",
+    "xim"
+   ]
+  },
+  {
+   "word": "alerta",
+   "syllables": [
+    "a",
+    "ler",
+    "ta"
+   ]
+  },
+  {
+   "word": "manada",
+   "syllables": [
+    "ma",
+    "na",
+    "da"
+   ]
+  },
+  {
+   "word": "macrocefalia",
+   "syllables": [
+    "ma",
+    "cro",
+    "ce",
+    "fa",
+    "li",
+    "a"
+   ]
+  },
+  {
+   "word": "pegajoso",
+   "syllables": [
+    "pe",
+    "ga",
+    "jo",
+    "so"
+   ]
+  },
+  {
+   "word": "festa",
+   "syllables": [
+    "fes",
+    "ta"
+   ]
+  },
+  {
+   "word": "chapinhar",
+   "syllables": [
+    "cha",
+    "pi",
+    "nhar"
+   ]
+  },
+  {
+   "word": "publicidade",
+   "syllables": [
+    "pu",
+    "bli",
+    "ci",
+    "da",
+    "de"
+   ]
+  },
+  {
+   "word": "neurose",
+   "syllables": [
+    "neu",
+    "ro",
+    "se"
+   ]
+  },
+  {
+   "word": "baldo",
+   "syllables": [
+    "bal",
+    "do"
+   ]
+  },
+  {
+   "word": "apedrejador",
+   "syllables": [
+    "a",
+    "pe",
+    "dre",
+    "ja",
+    "dor"
+   ]
+  },
+  {
+   "word": "contato",
+   "syllables": [
+    "con",
+    "ta",
+    "to"
+   ]
+  },
+  {
+   "word": "fintar",
+   "syllables": [
+    "fin",
+    "tar"
+   ]
+  },
+  {
+   "word": "falange",
+   "syllables": [
+    "fa",
+    "lan",
+    "ge"
+   ]
+  },
+  {
+   "word": "apostolicamente",
+   "syllables": [
+    "a",
+    "pos",
+    "to",
+    "li",
+    "ca",
+    "men",
+    "te"
+   ]
+  },
+  {
+   "word": "planeamento",
+   "syllables": [
+    "pla",
+    "ne",
+    "a",
+    "men",
+    "to"
+   ]
+  },
+  {
+   "word": "afélio",
+   "syllables": [
+    "a",
+    "fé",
+    "li",
+    "o"
+   ]
+  },
+  {
+   "word": "assenhorar",
+   "syllables": [
+    "as",
+    "se",
+    "nho",
+    "rar"
+   ]
+  },
+  {
+   "word": "giga",
+   "syllables": [
+    "gi",
+    "ga"
+   ]
+  },
+  {
+   "word": "garantia",
+   "syllables": [
+    "ga",
+    "ran",
+    "ti",
+    "a"
+   ]
+  },
+  {
+   "word": "maldição",
+   "syllables": [
+    "mal",
+    "di",
+    "ção"
+   ]
+  },
+  {
+   "word": "discipulado",
+   "syllables": [
+    "dis",
+    "ci",
+    "pu",
+    "la",
+    "do"
+   ]
+  },
+  {
+   "word": "sectarismo",
+   "syllables": [
+    "sec",
+    "ta",
+    "ris",
+    "mo"
+   ]
+  },
+  {
+   "word": "desparra",
+   "syllables": [
+    "des",
+    "par",
+    "ra"
+   ]
+  },
+  {
+   "word": "deslaçar",
+   "syllables": [
+    "des",
+    "la",
+    "çar"
+   ]
+  },
+  {
+   "word": "mantra",
+   "syllables": [
+    "man",
+    "tra"
+   ]
+  },
+  {
+   "word": "anotar",
+   "syllables": [
+    "a",
+    "no",
+    "tar"
+   ]
+  },
+  {
+   "word": "frequentar",
+   "syllables": [
+    "fre",
+    "quen",
+    "tar"
+   ]
+  },
+  {
+   "word": "junça",
+   "syllables": [
+    "jun",
+    "ça"
+   ]
+  },
+  {
+   "word": "respeitável",
+   "syllables": [
+    "res",
+    "pei",
+    "tá",
+    "vel"
+   ]
+  },
+  {
+   "word": "depauperamento",
+   "syllables": [
+    "de",
+    "pau",
+    "pe",
+    "ra",
+    "men",
+    "to"
+   ]
+  },
+  {
+   "word": "cintar",
+   "syllables": [
+    "cin",
+    "tar"
+   ]
+  },
+  {
+   "word": "longínquo",
+   "syllables": [
+    "lon",
+    "gín",
+    "quo"
+   ]
+  },
+  {
+   "word": "reflorescer",
+   "syllables": [
+    "re",
+    "flo",
+    "res",
+    "cer"
+   ]
+  },
+  {
+   "word": "hidromecânica",
+   "syllables": [
+    "hi",
+    "dro",
+    "me",
+    "câ",
+    "ni",
+    "ca"
+   ]
+  },
+  {
+   "word": "bordoada",
+   "syllables": [
+    "bor",
+    "do",
+    "a",
+    "da"
+   ]
+  },
+  {
+   "word": "dica",
+   "syllables": [
+    "di",
+    "ca"
+   ]
+  },
+  {
+   "word": "ganguela",
+   "syllables": [
+    "gan",
+    "gue",
+    "la"
+   ]
+  },
+  {
+   "word": "derretido",
+   "syllables": [
+    "der",
+    "re",
+    "ti",
+    "do"
+   ]
+  },
+  {
+   "word": "inacreditável",
+   "syllables": [
+    "i",
+    "na",
+    "cre",
+    "di",
+    "tá",
+    "vel"
+   ]
+  },
+  {
+   "word": "caide",
+   "syllables": [
+    "cai",
+    "de"
+   ]
+  },
+  {
+   "word": "caudaloso",
+   "syllables": [
+    "cau",
+    "da",
+    "lo",
+    "so"
+   ]
+  },
+  {
+   "word": "demasiar",
+   "syllables": [
+    "de",
+    "ma",
+    "si",
+    "ar"
+   ]
+  },
+  {
+   "word": "revide",
+   "syllables": [
+    "re",
+    "vi",
+    "de"
+   ]
+  },
+  {
+   "word": "prometedoramente",
+   "syllables": [
+    "pro",
+    "me",
+    "te",
+    "do",
+    "ra",
+    "men",
+    "te"
+   ]
+  },
+  {
+   "word": "augar",
+   "syllables": [
+    "au",
+    "gar"
+   ]
+  },
+  {
+   "word": "cadelo",
+   "syllables": [
+    "ca",
+    "de",
+    "lo"
+   ]
+  },
+  {
+   "word": "exão",
+   "syllables": [
+    "e",
+    "xão"
+   ]
+  },
+  {
+   "word": "catamarã",
+   "syllables": [
+    "ca",
+    "ta",
+    "ma",
+    "rã"
+   ]
+  },
+  {
+   "word": "antifurto",
+   "syllables": [
+    "an",
+    "ti",
+    "fur",
+    "to"
+   ]
+  },
+  {
+   "word": "traçado",
+   "syllables": [
+    "tra",
+    "ça",
+    "do"
+   ]
+  },
+  {
+   "word": "improdutivo",
+   "syllables": [
+    "im",
+    "pro",
+    "du",
+    "ti",
+    "vo"
+   ]
+  },
+  {
+   "word": "rocha",
+   "syllables": [
+    "ro",
+    "cha"
+   ]
+  },
+  {
+   "word": "anacronicamente",
+   "syllables": [
+    "a",
+    "na",
+    "cro",
+    "ni",
+    "ca",
+    "men",
+    "te"
+   ]
+  },
+  {
+   "word": "bronzeamento",
+   "syllables": [
+    "bron",
+    "ze",
+    "a",
+    "men",
+    "to"
+   ]
+  },
+  {
+   "word": "impensável",
+   "syllables": [
+    "im",
+    "pen",
+    "sá",
+    "vel"
+   ]
+  },
+  {
+   "word": "garganta",
+   "syllables": [
+    "gar",
+    "gan",
+    "ta"
+   ]
+  },
+  {
+   "word": "estéril",
+   "syllables": [
+    "es",
+    "té",
+    "ril"
+   ]
+  },
+  {
+   "word": "atleticamente",
+   "syllables": [
+    "a",
+    "tle",
+    "ti",
+    "ca",
+    "men",
+    "te"
+   ]
+  },
+  {
+   "word": "domar",
+   "syllables": [
+    "do",
+    "mar"
+   ]
+  },
+  {
+   "word": "vicariato",
+   "syllables": [
+    "vi",
+    "ca",
+    "ri",
+    "a",
+    "to"
+   ]
+  },
+  {
+   "word": "síria",
+   "syllables": [
+    "sí",
+    "ri",
+    "a"
+   ]
+  },
+  {
+   "word": "acautelado",
+   "syllables": [
+    "a",
+    "cau",
+    "te",
+    "la",
+    "do"
+   ]
+  },
+  {
+   "word": "cardal",
+   "syllables": [
+    "car",
+    "dal"
+   ]
+  },
+  {
+   "word": "bramanismo",
+   "syllables": [
+    "bra",
+    "ma",
+    "nis",
+    "mo"
+   ]
+  },
+  {
+   "word": "ortigar",
+   "syllables": [
+    "or",
+    "ti",
+    "gar"
+   ]
+  },
+  {
+   "word": "destilar",
+   "syllables": [
+    "des",
+    "ti",
+    "lar"
+   ]
+  },
+  {
+   "word": "congratulação",
+   "syllables": [
+    "con",
+    "gra",
+    "tu",
+    "la",
+    "ção"
+   ]
+  },
+  {
+   "word": "gando",
+   "syllables": [
+    "gan",
+    "do"
+   ]
+  },
+  {
+   "word": "glote",
+   "syllables": [
+    "glo",
+    "te"
+   ]
+  },
+  {
+   "word": "excremento",
+   "syllables": [
+    "ex",
+    "cre",
+    "men",
+    "to"
+   ]
+  },
+  {
+   "word": "hematúria",
+   "syllables": [
+    "he",
+    "ma",
+    "tú",
+    "ri",
+    "a"
+   ]
+  },
+  {
+   "word": "bicorcovado",
+   "syllables": [
+    "bi",
+    "cor",
+    "co",
+    "va",
+    "do"
+   ]
+  },
+  {
+   "word": "cossecante",
+   "syllables": [
+    "cos",
+    "se",
+    "can",
+    "te"
+   ]
+  },
+  {
+   "word": "tradicionalista",
+   "syllables": [
+    "tra",
+    "di",
+    "ci",
+    "o",
+    "na",
+    "lis",
+    "ta"
+   ]
+  },
+  {
+   "word": "reforma",
+   "syllables": [
+    "re",
+    "for",
+    "ma"
+   ]
+  },
+  {
+   "word": "recalcificação",
+   "syllables": [
+    "re",
+    "cal",
+    "ci",
+    "fi",
+    "ca",
+    "ção"
+   ]
+  },
+  {
+   "word": "marista",
+   "syllables": [
+    "ma",
+    "ris",
+    "ta"
+   ]
+  },
+  {
+   "word": "desaprovação",
+   "syllables": [
+    "de",
+    "sa",
+    "pro",
+    "va",
+    "ção"
+   ]
+  },
+  {
+   "word": "anavalhar",
+   "syllables": [
+    "a",
+    "na",
+    "va",
+    "lhar"
+   ]
+  },
+  {
+   "word": "agonizar",
+   "syllables": [
+    "a",
+    "go",
+    "ni",
+    "zar"
+   ]
+  },
+  {
+   "word": "catarse",
+   "syllables": [
+    "ca",
+    "tar",
+    "se"
+   ]
+  },
+  {
+   "word": "contundir",
+   "syllables": [
+    "con",
+    "tun",
+    "dir"
+   ]
+  },
+  {
+   "word": "analista",
+   "syllables": [
+    "a",
+    "na",
+    "lis",
+    "ta"
+   ]
+  },
+  {
+   "word": "cangalheiro",
+   "syllables": [
+    "can",
+    "ga",
+    "lhei",
+    "ro"
+   ]
+  },
+  {
+   "word": "ressequir",
+   "syllables": [
+    "res",
+    "se",
+    "quir"
+   ]
+  },
+  {
+   "word": "arpão",
+   "syllables": [
+    "ar",
+    "pão"
+   ]
+  },
+  {
+   "word": "descobrir",
+   "syllables": [
+    "des",
+    "co",
+    "brir"
+   ]
+  },
+  {
+   "word": "enfornar",
+   "syllables": [
+    "en",
+    "for",
+    "nar"
+   ]
+  },
+  {
+   "word": "autobus",
+   "syllables": [
+    "au",
+    "to",
+    "bus"
+   ]
+  },
+  {
+   "word": "sabido",
+   "syllables": [
+    "sa",
+    "bi",
+    "do"
+   ]
+  },
+  {
+   "word": "pedinte",
+   "syllables": [
+    "pe",
+    "din",
+    "te"
+   ]
+  },
+  {
+   "word": "arguente",
+   "syllables": [
+    "ar",
+    "guen",
+    "te"
+   ]
+  },
+  {
+   "word": "salgueiral",
+   "syllables": [
+    "sal",
+    "guei",
+    "ral"
+   ]
+  },
+  {
+   "word": "rasca",
+   "syllables": [
+    "ras",
+    "ca"
+   ]
+  },
+  {
+   "word": "cambal",
+   "syllables": [
+    "cam",
+    "bal"
+   ]
+  },
+  {
+   "word": "keynesianismo",
+   "syllables": [
+    "key",
+    "ne",
+    "si",
+    "a",
+    "nis",
+    "mo"
+   ]
+  },
+  {
+   "word": "dopar",
+   "syllables": [
+    "do",
+    "par"
+   ]
+  },
+  {
+   "word": "rabugice",
+   "syllables": [
+    "ra",
+    "bu",
+    "gi",
+    "ce"
+   ]
+  },
+  {
+   "word": "assinante",
+   "syllables": [
+    "as",
+    "si",
+    "nan",
+    "te"
+   ]
+  },
+  {
+   "word": "circunflexo",
+   "syllables": [
+    "cir",
+    "cun",
+    "fle",
+    "xo"
+   ]
+  },
+  {
+   "word": "bolsinho",
+   "syllables": [
+    "bol",
+    "si",
+    "nho"
+   ]
+  },
+  {
+   "word": "gandaiar",
+   "syllables": [
+    "gan",
+    "dai",
+    "ar"
+   ]
+  },
+  {
+   "word": "fulguração",
+   "syllables": [
+    "ful",
+    "gu",
+    "ra",
+    "ção"
+   ]
+  },
+  {
+   "word": "peno",
+   "syllables": [
+    "pe",
+    "no"
+   ]
+  },
+  {
+   "word": "desagastar",
+   "syllables": [
+    "de",
+    "sa",
+    "gas",
+    "tar"
+   ]
+  },
+  {
+   "word": "mangação",
+   "syllables": [
+    "man",
+    "ga",
+    "ção"
+   ]
+  },
+  {
+   "word": "debotado",
+   "syllables": [
+    "de",
+    "bo",
+    "ta",
+    "do"
+   ]
+  },
+  {
+   "word": "anarquicamente",
+   "syllables": [
+    "a",
+    "nar",
+    "qui",
+    "ca",
+    "men",
+    "te"
+   ]
+  },
+  {
+   "word": "protozoário",
+   "syllables": [
+    "pro",
+    "to",
+    "zo",
+    "á",
+    "ri",
+    "o"
+   ]
+  },
+  {
+   "word": "cooperador",
+   "syllables": [
+    "co",
+    "o",
+    "pe",
+    "ra",
+    "dor"
+   ]
+  },
+  {
+   "word": "ralação",
+   "syllables": [
+    "ra",
+    "la",
+    "ção"
+   ]
+  },
+  {
+   "word": "mana",
+   "syllables": [
+    "ma",
+    "na"
+   ]
+  },
+  {
+   "word": "diretiva",
+   "syllables": [
+    "di",
+    "re",
+    "ti",
+    "va"
+   ]
+  },
+  {
+   "word": "caramanchão",
+   "syllables": [
+    "ca",
+    "ra",
+    "man",
+    "chão"
+   ]
+  },
+  {
+   "word": "maiêutica",
+   "syllables": [
+    "mai",
+    "êu",
+    "ti",
+    "ca"
+   ]
+  },
+  {
+   "word": "geniturinário",
+   "syllables": [
+    "ge",
+    "ni",
+    "tu",
+    "ri",
+    "ná",
+    "ri",
+    "o"
+   ]
+  },
+  {
+   "word": "cortelha",
+   "syllables": [
+    "cor",
+    "te",
+    "lha"
+   ]
+  },
+  {
+   "word": "mirense",
+   "syllables": [
+    "mi",
+    "ren",
+    "se"
+   ]
+  },
+  {
+   "word": "toco",
+   "syllables": [
+    "to",
+    "co"
+   ]
+  },
+  {
+   "word": "assinar",
+   "syllables": [
+    "as",
+    "si",
+    "nar"
+   ]
+  },
+  {
+   "word": "cachaço",
+   "syllables": [
+    "ca",
+    "cha",
+    "ço"
+   ]
+  },
+  {
+   "word": "incomodado",
+   "syllables": [
+    "in",
+    "co",
+    "mo",
+    "da",
+    "do"
+   ]
+  },
+  {
+   "word": "pretalhão",
+   "syllables": [
+    "pre",
+    "ta",
+    "lhão"
+   ]
+  },
+  {
+   "word": "cabritar",
+   "syllables": [
+    "ca",
+    "bri",
+    "tar"
+   ]
+  },
+  {
+   "word": "vilanagem",
+   "syllables": [
+    "vi",
+    "la",
+    "na",
+    "gem"
+   ]
+  },
+  {
+   "word": "carreteiro",
+   "syllables": [
+    "car",
+    "re",
+    "tei",
+    "ro"
+   ]
+  },
+  {
+   "word": "golfar",
+   "syllables": [
+    "gol",
+    "far"
+   ]
+  },
+  {
+   "word": "ganga",
+   "syllables": [
+    "gan",
+    "ga"
+   ]
+  },
+  {
+   "word": "contralto",
+   "syllables": [
+    "con",
+    "tral",
+    "to"
+   ]
+  },
+  {
+   "word": "monoteísta",
+   "syllables": [
+    "mo",
+    "no",
+    "te",
+    "ís",
+    "ta"
+   ]
+  },
+  {
+   "word": "jarrinha",
+   "syllables": [
+    "jar",
+    "ri",
+    "nha"
+   ]
+  },
+  {
+   "word": "herege",
+   "syllables": [
+    "he",
+    "re",
+    "ge"
+   ]
+  },
+  {
+   "word": "dramaticidade",
+   "syllables": [
+    "dra",
+    "ma",
+    "ti",
+    "ci",
+    "da",
+    "de"
+   ]
+  },
+  {
+   "word": "pedraria",
+   "syllables": [
+    "pe",
+    "dra",
+    "ri",
+    "a"
+   ]
+  },
+  {
+   "word": "genesíaco",
+   "syllables": [
+    "ge",
+    "ne",
+    "sí",
+    "a",
+    "co"
+   ]
+  },
+  {
+   "word": "casamento",
+   "syllables": [
+    "ca",
+    "sa",
+    "men",
+    "to"
+   ]
+  },
+  {
+   "word": "recortador",
+   "syllables": [
+    "re",
+    "cor",
+    "ta",
+    "dor"
+   ]
+  },
+  {
+   "word": "arredor",
+   "syllables": [
+    "ar",
+    "re",
+    "dor"
+   ]
+  },
+  {
+   "word": "proceder",
+   "syllables": [
+    "pro",
+    "ce",
+    "der"
+   ]
+  },
+  {
+   "word": "estelar",
+   "syllables": [
+    "es",
+    "te",
+    "lar"
+   ]
+  },
+  {
+   "word": "digressão",
+   "syllables": [
+    "di",
+    "gres",
+    "são"
+   ]
+  },
+  {
+   "word": "plantio",
+   "syllables": [
+    "plan",
+    "ti",
+    "o"
+   ]
+  },
+  {
+   "word": "diacrónico",
+   "syllables": [
+    "di",
+    "a",
+    "cró",
+    "ni",
+    "co"
+   ]
+  },
+  {
+   "word": "desarrufo",
+   "syllables": [
+    "de",
+    "sar",
+    "ru",
+    "fo"
+   ]
+  },
+  {
+   "word": "orientar",
+   "syllables": [
+    "o",
+    "ri",
+    "en",
+    "tar"
+   ]
+  },
+  {
+   "word": "rimance",
+   "syllables": [
+    "ri",
+    "man",
+    "ce"
+   ]
+  },
+  {
+   "word": "pedral",
+   "syllables": [
+    "pe",
+    "dral"
+   ]
+  },
+  {
+   "word": "corvina",
+   "syllables": [
+    "cor",
+    "vi",
+    "na"
+   ]
+  },
+  {
+   "word": "volframite",
+   "syllables": [
+    "vol",
+    "fra",
+    "mi",
+    "te"
+   ]
+  },
+  {
+   "word": "ajuntador",
+   "syllables": [
+    "a",
+    "jun",
+    "ta",
+    "dor"
+   ]
+  },
+  {
+   "word": "amigo",
+   "syllables": [
+    "a",
+    "mi",
+    "go"
+   ]
+  },
+  {
+   "word": "globalista",
+   "syllables": [
+    "glo",
+    "ba",
+    "lis",
+    "ta"
+   ]
+  },
+  {
+   "word": "beringela",
+   "syllables": [
+    "be",
+    "rin",
+    "ge",
+    "la"
+   ]
+  },
+  {
+   "word": "avião",
+   "syllables": [
+    "a",
+    "vi",
+    "ão"
+   ]
+  },
+  {
+   "word": "coutar",
+   "syllables": [
+    "cou",
+    "tar"
+   ]
+  },
+  {
+   "word": "reabsorvível",
+   "syllables": [
+    "re",
+    "ab",
+    "sor",
+    "ví",
+    "vel"
+   ]
+  },
+  {
+   "word": "cedinho",
+   "syllables": [
+    "ce",
+    "di",
+    "nho"
+   ]
+  },
+  {
+   "word": "serrano",
+   "syllables": [
+    "ser",
+    "ra",
+    "no"
+   ]
+  },
+  {
+   "word": "arrifana",
+   "syllables": [
+    "ar",
+    "ri",
+    "fa",
+    "na"
+   ]
+  },
+  {
+   "word": "voluntário",
+   "syllables": [
+    "vo",
+    "lun",
+    "tá",
+    "ri",
+    "o"
+   ]
+  },
+  {
+   "word": "amblíope",
+   "syllables": [
+    "am",
+    "blí",
+    "o",
+    "pe"
+   ]
+  },
+  {
+   "word": "antipelicular",
+   "syllables": [
+    "an",
+    "ti",
+    "pe",
+    "li",
+    "cu",
+    "lar"
+   ]
+  },
+  {
+   "word": "depurado",
+   "syllables": [
+    "de",
+    "pu",
+    "ra",
+    "do"
+   ]
+  },
+  {
+   "word": "frescura",
+   "syllables": [
+    "fres",
+    "cu",
+    "ra"
+   ]
+  },
+  {
+   "word": "equalizador",
+   "syllables": [
+    "e",
+    "qua",
+    "li",
+    "za",
+    "dor"
+   ]
+  },
+  {
+   "word": "fotocopiar",
+   "syllables": [
+    "fo",
+    "to",
+    "co",
+    "pi",
+    "ar"
+   ]
+  },
+  {
+   "word": "decência",
+   "syllables": [
+    "de",
+    "cên",
+    "ci",
+    "a"
+   ]
+  },
+  {
+   "word": "cipo",
+   "syllables": [
+    "ci",
+    "po"
+   ]
+  },
+  {
+   "word": "equilíbrio",
+   "syllables": [
+    "e",
+    "qui",
+    "lí",
+    "bri",
+    "o"
+   ]
+  },
+  {
+   "word": "carregar",
+   "syllables": [
+    "car",
+    "re",
+    "gar"
+   ]
+  },
+  {
+   "word": "despela",
+   "syllables": [
+    "des",
+    "pe",
+    "la"
+   ]
+  },
+  {
+   "word": "prerromper",
+   "syllables": [
+    "prer",
+    "rom",
+    "per"
+   ]
+  },
+  {
+   "word": "dianético",
+   "syllables": [
+    "di",
+    "a",
+    "né",
+    "ti",
+    "co"
+   ]
+  },
+  {
+   "word": "desimplicar",
+   "syllables": [
+    "de",
+    "sim",
+    "pli",
+    "car"
+   ]
+  },
+  {
+   "word": "desacobardar",
+   "syllables": [
+    "de",
+    "sa",
+    "co",
+    "bar",
+    "dar"
+   ]
+  },
+  {
+   "word": "encaixotado",
+   "syllables": [
+    "en",
+    "cai",
+    "xo",
+    "ta",
+    "do"
+   ]
+  },
+  {
+   "word": "sumidouro",
+   "syllables": [
+    "su",
+    "mi",
+    "dou",
+    "ro"
+   ]
+  },
+  {
+   "word": "desagradecimento",
+   "syllables": [
+    "de",
+    "sa",
+    "gra",
+    "de",
+    "ci",
+    "men",
+    "to"
+   ]
+  },
+  {
+   "word": "abastado",
+   "syllables": [
+    "a",
+    "bas",
+    "ta",
+    "do"
+   ]
+  },
+  {
+   "word": "inadequado",
+   "syllables": [
+    "i",
+    "na",
+    "de",
+    "qua",
+    "do"
+   ]
+  },
+  {
+   "word": "congelamento",
+   "syllables": [
+    "con",
+    "ge",
+    "la",
+    "men",
+    "to"
+   ]
+  },
+  {
+   "word": "psicossomatismo",
+   "syllables": [
+    "psi",
+    "cos",
+    "so",
+    "ma",
+    "tis",
+    "mo"
+   ]
+  },
+  {
+   "word": "campina",
+   "syllables": [
+    "cam",
+    "pi",
+    "na"
+   ]
+  },
+  {
+   "word": "bíblia",
+   "syllables": [
+    "bí",
+    "bli",
+    "a"
+   ]
+  },
+  {
+   "word": "esfericidade",
+   "syllables": [
+    "es",
+    "fe",
+    "ri",
+    "ci",
+    "da",
+    "de"
+   ]
+  },
+  {
+   "word": "siglar",
+   "syllables": [
+    "si",
+    "glar"
+   ]
+  },
+  {
+   "word": "impelir",
+   "syllables": [
+    "im",
+    "pe",
+    "lir"
+   ]
+  },
+  {
+   "word": "enduro",
+   "syllables": [
+    "en",
+    "du",
+    "ro"
+   ]
+  },
+  {
+   "word": "rabejar",
+   "syllables": [
+    "ra",
+    "be",
+    "jar"
+   ]
+  },
+  {
+   "word": "pedregulho",
+   "syllables": [
+    "pe",
+    "dre",
+    "gu",
+    "lho"
+   ]
+  },
+  {
+   "word": "desconcertado",
+   "syllables": [
+    "des",
+    "con",
+    "cer",
+    "ta",
+    "do"
+   ]
+  },
+  {
+   "word": "melopeia",
+   "syllables": [
+    "me",
+    "lo",
+    "pei",
+    "a"
+   ]
+  },
+  {
+   "word": "perigo",
+   "syllables": [
+    "pe",
+    "ri",
+    "go"
+   ]
+  },
+  {
+   "word": "afinação",
+   "syllables": [
+    "a",
+    "fi",
+    "na",
+    "ção"
+   ]
+  },
+  {
+   "word": "cadaval",
+   "syllables": [
+    "ca",
+    "da",
+    "val"
+   ]
+  },
+  {
+   "word": "pouquinho",
+   "syllables": [
+    "pou",
+    "qui",
+    "nho"
+   ]
+  },
+  {
+   "word": "abcesso",
+   "syllables": [
+    "ab",
+    "ces",
+    "so"
+   ]
+  },
+  {
+   "word": "batotar",
+   "syllables": [
+    "ba",
+    "to",
+    "tar"
+   ]
+  },
+  {
+   "word": "assoprar",
+   "syllables": [
+    "as",
+    "so",
+    "prar"
+   ]
+  },
+  {
+   "word": "ajanotar",
+   "syllables": [
+    "a",
+    "ja",
+    "no",
+    "tar"
+   ]
+  },
+  {
+   "word": "exato",
+   "syllables": [
+    "e",
+    "xa",
+    "to"
+   ]
+  },
+  {
+   "word": "polir",
+   "syllables": [
+    "po",
+    "lir"
+   ]
+  },
+  {
+   "word": "viação",
+   "syllables": [
+    "vi",
+    "a",
+    "ção"
+   ]
+  },
+  {
+   "word": "pelame",
+   "syllables": [
+    "pe",
+    "la",
+    "me"
+   ]
+  },
+  {
+   "word": "recobrável",
+   "syllables": [
+    "re",
+    "co",
+    "brá",
+    "vel"
+   ]
+  },
+  {
+   "word": "conservação",
+   "syllables": [
+    "con",
+    "ser",
+    "va",
+    "ção"
+   ]
+  },
+  {
+   "word": "fisiatria",
+   "syllables": [
+    "fi",
+    "si",
+    "a",
+    "tri",
+    "a"
+   ]
+  },
+  {
+   "word": "alcatear",
+   "syllables": [
+    "al",
+    "ca",
+    "te",
+    "ar"
+   ]
+  },
+  {
+   "word": "concentracionário",
+   "syllables": [
+    "con",
+    "cen",
+    "tra",
+    "ci",
+    "o",
+    "ná",
+    "ri",
+    "o"
+   ]
+  },
+  {
+   "word": "incinerado",
+   "syllables": [
+    "in",
+    "ci",
+    "ne",
+    "ra",
+    "do"
+   ]
+  },
+  {
+   "word": "fontana",
+   "syllables": [
+    "fon",
+    "ta",
+    "na"
+   ]
+  },
+  {
+   "word": "caribe",
+   "syllables": [
+    "ca",
+    "ri",
+    "be"
+   ]
+  },
+  {
+   "word": "injunção",
+   "syllables": [
+    "in",
+    "jun",
+    "ção"
+   ]
+  },
+  {
+   "word": "laminação",
+   "syllables": [
+    "la",
+    "mi",
+    "na",
+    "ção"
+   ]
+  },
+  {
+   "word": "descoagulação",
+   "syllables": [
+    "des",
+    "co",
+    "a",
+    "gu",
+    "la",
+    "ção"
+   ]
+  },
+  {
+   "word": "fogaréu",
+   "syllables": [
+    "fo",
+    "ga",
+    "réu"
+   ]
+  },
+  {
+   "word": "torrado",
+   "syllables": [
+    "tor",
+    "ra",
+    "do"
+   ]
+  },
+  {
+   "word": "redoma",
+   "syllables": [
+    "re",
+    "do",
+    "ma"
+   ]
+  },
+  {
+   "word": "tomar",
+   "syllables": [
+    "to",
+    "mar"
+   ]
+  },
+  {
+   "word": "montanhês",
+   "syllables": [
+    "mon",
+    "ta",
+    "nhês"
+   ]
+  },
+  {
+   "word": "autonomizar",
+   "syllables": [
+    "au",
+    "to",
+    "no",
+    "mi",
+    "zar"
+   ]
+  },
+  {
+   "word": "acabamento",
+   "syllables": [
+    "a",
+    "ca",
+    "ba",
+    "men",
+    "to"
+   ]
+  },
+  {
+   "word": "zinco",
+   "syllables": [
+    "zin",
+    "co"
+   ]
+  },
+  {
+   "word": "certificar",
+   "syllables": [
+    "cer",
+    "ti",
+    "fi",
+    "car"
+   ]
+  },
+  {
+   "word": "antiar",
+   "syllables": [
+    "an",
+    "ti",
+    "ar"
+   ]
+  },
+  {
+   "word": "contratação",
+   "syllables": [
+    "con",
+    "tra",
+    "ta",
+    "ção"
+   ]
+  },
+  {
+   "word": "acessivelmente",
+   "syllables": [
+    "a",
+    "ces",
+    "si",
+    "vel",
+    "men",
+    "te"
+   ]
+  },
+  {
+   "word": "marafona",
+   "syllables": [
+    "ma",
+    "ra",
+    "fo",
+    "na"
+   ]
+  },
+  {
+   "word": "categoria",
+   "syllables": [
+    "ca",
+    "te",
+    "go",
+    "ri",
+    "a"
+   ]
+  },
+  {
+   "word": "compensador",
+   "syllables": [
+    "com",
+    "pen",
+    "sa",
+    "dor"
+   ]
+  },
+  {
+   "word": "adocicado",
+   "syllables": [
+    "a",
+    "do",
+    "ci",
+    "ca",
+    "do"
+   ]
+  },
+  {
+   "word": "enxovalhado",
+   "syllables": [
+    "en",
+    "xo",
+    "va",
+    "lha",
+    "do"
+   ]
+  },
+  {
+   "word": "articulação",
+   "syllables": [
+    "ar",
+    "ti",
+    "cu",
+    "la",
+    "ção"
+   ]
+  },
+  {
+   "word": "grandíssimo",
+   "syllables": [
+    "gran",
+    "dís",
+    "si",
+    "mo"
+   ]
+  },
+  {
+   "word": "gracioso",
+   "syllables": [
+    "gra",
+    "ci",
+    "o",
+    "so"
+   ]
+  },
+  {
+   "word": "passiva",
+   "syllables": [
+    "pas",
+    "si",
+    "va"
+   ]
+  },
+  {
+   "word": "bolha",
+   "syllables": [
+    "bo",
+    "lha"
+   ]
+  },
+  {
+   "word": "pegão",
+   "syllables": [
+    "pe",
+    "gão"
+   ]
+  },
+  {
+   "word": "expeditivo",
+   "syllables": [
+    "ex",
+    "pe",
+    "di",
+    "ti",
+    "vo"
+   ]
+  },
+  {
+   "word": "terapeuta",
+   "syllables": [
+    "te",
+    "ra",
+    "peu",
+    "ta"
+   ]
+  },
+  {
+   "word": "nó",
+   "syllables": [
+    "nó"
+   ]
+  },
+  {
+   "word": "indeterminador",
+   "syllables": [
+    "in",
+    "de",
+    "ter",
+    "mi",
+    "na",
+    "dor"
+   ]
+  },
+  {
+   "word": "orbital",
+   "syllables": [
+    "or",
+    "bi",
+    "tal"
+   ]
+  },
+  {
+   "word": "coadministrador",
+   "syllables": [
+    "co",
+    "ad",
+    "mi",
+    "nis",
+    "tra",
+    "dor"
+   ]
+  },
+  {
+   "word": "trincadela",
+   "syllables": [
+    "trin",
+    "ca",
+    "de",
+    "la"
+   ]
+  },
+  {
+   "word": "telecopiador",
+   "syllables": [
+    "te",
+    "le",
+    "co",
+    "pi",
+    "a",
+    "dor"
+   ]
+  },
+  {
+   "word": "avençar",
+   "syllables": [
+    "a",
+    "ven",
+    "çar"
+   ]
+  },
+  {
+   "word": "aforismo",
+   "syllables": [
+    "a",
+    "fo",
+    "ris",
+    "mo"
+   ]
+  },
+  {
+   "word": "coiote",
+   "syllables": [
+    "coi",
+    "o",
+    "te"
+   ]
+  },
+  {
+   "word": "desabordar",
+   "syllables": [
+    "de",
+    "sa",
+    "bor",
+    "dar"
+   ]
+  },
+  {
+   "word": "designação",
+   "syllables": [
+    "de",
+    "sig",
+    "na",
+    "ção"
+   ]
+  },
+  {
+   "word": "episodiar",
+   "syllables": [
+    "e",
+    "pi",
+    "so",
+    "di",
+    "ar"
+   ]
+  },
+  {
+   "word": "espalhafatar",
+   "syllables": [
+    "es",
+    "pa",
+    "lha",
+    "fa",
+    "tar"
+   ]
+  },
+  {
+   "word": "feeria",
+   "syllables": [
+    "fe",
+    "e",
+    "ri",
+    "a"
+   ]
+  },
+  {
+   "word": "parido",
+   "syllables": [
+    "pa",
+    "ri",
+    "do"
+   ]
+  },
+  {
+   "word": "computadorizado",
+   "syllables": [
+    "com",
+    "pu",
+    "ta",
+    "do",
+    "ri",
+    "za",
+    "do"
+   ]
+  },
+  {
+   "word": "palanque",
+   "syllables": [
+    "pa",
+    "lan",
+    "que"
+   ]
+  },
+  {
+   "word": "aleijão",
+   "syllables": [
+    "a",
+    "lei",
+    "jão"
+   ]
+  },
+  {
+   "word": "siba",
+   "syllables": [
+    "si",
+    "ba"
+   ]
+  },
+  {
+   "word": "chorrilhar",
+   "syllables": [
+    "chor",
+    "ri",
+    "lhar"
+   ]
+  },
+  {
+   "word": "basear",
+   "syllables": [
+    "ba",
+    "se",
+    "ar"
+   ]
+  },
+  {
+   "word": "fiandeira",
+   "syllables": [
+    "fi",
+    "an",
+    "dei",
+    "ra"
+   ]
+  },
+  {
+   "word": "engate",
+   "syllables": [
+    "en",
+    "ga",
+    "te"
+   ]
+  },
+  {
+   "word": "inibição",
+   "syllables": [
+    "i",
+    "ni",
+    "bi",
+    "ção"
+   ]
+  },
+  {
+   "word": "emergir",
+   "syllables": [
+    "e",
+    "mer",
+    "gir"
+   ]
+  },
+  {
+   "word": "mármore",
+   "syllables": [
+    "már",
+    "mo",
+    "re"
+   ]
+  },
+  {
+   "word": "apertão",
+   "syllables": [
+    "a",
+    "per",
+    "tão"
+   ]
+  },
+  {
+   "word": "desassanhar",
+   "syllables": [
+    "de",
+    "sas",
+    "sa",
+    "nhar"
+   ]
+  },
+  {
+   "word": "flavor",
+   "syllables": [
+    "fla",
+    "vor"
+   ]
+  },
+  {
+   "word": "descolorido",
+   "syllables": [
+    "des",
+    "co",
+    "lo",
+    "ri",
+    "do"
+   ]
+  },
+  {
+   "word": "camone",
+   "syllables": [
+    "ca",
+    "mo",
+    "ne"
+   ]
+  },
+  {
+   "word": "predileto",
+   "syllables": [
+    "pre",
+    "di",
+    "le",
+    "to"
+   ]
+  },
+  {
+   "word": "ininterrompido",
+   "syllables": [
+    "i",
+    "nin",
+    "ter",
+    "rom",
+    "pi",
+    "do"
+   ]
+  },
+  {
+   "word": "pragana",
+   "syllables": [
+    "pra",
+    "ga",
+    "na"
+   ]
+  },
+  {
+   "word": "relego",
+   "syllables": [
+    "re",
+    "le",
+    "go"
+   ]
+  },
+  {
+   "word": "rebotar",
+   "syllables": [
+    "re",
+    "bo",
+    "tar"
+   ]
+  },
+  {
+   "word": "arrebentar",
+   "syllables": [
+    "ar",
+    "re",
+    "ben",
+    "tar"
+   ]
+  },
+  {
+   "word": "consolidado",
+   "syllables": [
+    "con",
+    "so",
+    "li",
+    "da",
+    "do"
+   ]
+  },
+  {
+   "word": "antecedente",
+   "syllables": [
+    "an",
+    "te",
+    "ce",
+    "den",
+    "te"
+   ]
+  },
+  {
+   "word": "irrespirabilidade",
+   "syllables": [
+    "ir",
+    "res",
+    "pi",
+    "ra",
+    "bi",
+    "li",
+    "da",
+    "de"
+   ]
+  },
+  {
+   "word": "consciente",
+   "syllables": [
+    "cons",
+    "ci",
+    "en",
+    "te"
+   ]
+  },
+  {
+   "word": "antipolítico",
+   "syllables": [
+    "an",
+    "ti",
+    "po",
+    "lí",
+    "ti",
+    "co"
+   ]
+  },
+  {
+   "word": "audácia",
+   "syllables": [
+    "au",
+    "dá",
+    "ci",
+    "a"
+   ]
+  },
+  {
+   "word": "maiato",
+   "syllables": [
+    "mai",
+    "a",
+    "to"
+   ]
+  },
+  {
+   "word": "alabardar",
+   "syllables": [
+    "a",
+    "la",
+    "bar",
+    "dar"
+   ]
+  },
+  {
+   "word": "avençado",
+   "syllables": [
+    "a",
+    "ven",
+    "ça",
+    "do"
+   ]
+  },
+  {
+   "word": "conjuntivite",
+   "syllables": [
+    "con",
+    "jun",
+    "ti",
+    "vi",
+    "te"
+   ]
+  },
+  {
+   "word": "abalienação",
+   "syllables": [
+    "a",
+    "ba",
+    "li",
+    "e",
+    "na",
+    "ção"
+   ]
+  },
+  {
+   "word": "neblina",
+   "syllables": [
+    "ne",
+    "bli",
+    "na"
+   ]
+  },
+  {
+   "word": "iniquamente",
+   "syllables": [
+    "i",
+    "ni",
+    "qua",
+    "men",
+    "te"
+   ]
+  },
+  {
+   "word": "fisga",
+   "syllables": [
+    "fis",
+    "ga"
+   ]
+  },
+  {
+   "word": "descaída",
+   "syllables": [
+    "des",
+    "ca",
+    "í",
+    "da"
+   ]
+  },
+  {
+   "word": "riscada",
+   "syllables": [
+    "ris",
+    "ca",
+    "da"
+   ]
+  },
+  {
+   "word": "mando",
+   "syllables": [
+    "man",
+    "do"
+   ]
+  },
+  {
+   "word": "desconceito",
+   "syllables": [
+    "des",
+    "con",
+    "cei",
+    "to"
+   ]
+  },
+  {
+   "word": "antiterrorista",
+   "syllables": [
+    "an",
+    "ti",
+    "ter",
+    "ro",
+    "ris",
+    "ta"
+   ]
+  },
+  {
+   "word": "constrangido",
+   "syllables": [
+    "cons",
+    "tran",
+    "gi",
+    "do"
+   ]
+  },
+  {
+   "word": "microclimático",
+   "syllables": [
+    "mi",
+    "cro",
+    "cli",
+    "má",
+    "ti",
+    "co"
+   ]
+  },
+  {
+   "word": "mexilhoeira",
+   "syllables": [
+    "me",
+    "xi",
+    "lho",
+    "ei",
+    "ra"
+   ]
+  },
+  {
+   "word": "batávico",
+   "syllables": [
+    "ba",
+    "tá",
+    "vi",
+    "co"
+   ]
+  },
+  {
+   "word": "imolado",
+   "syllables": [
+    "i",
+    "mo",
+    "la",
+    "do"
+   ]
+  },
+  {
+   "word": "atabalhoadamente",
+   "syllables": [
+    "a",
+    "ta",
+    "ba",
+    "lho",
+    "a",
+    "da",
+    "men",
+    "te"
+   ]
+  },
+  {
+   "word": "foder",
+   "syllables": [
+    "fo",
+    "der"
+   ]
+  },
+  {
+   "word": "hiparco",
+   "syllables": [
+    "hi",
+    "par",
+    "co"
+   ]
+  },
+  {
+   "word": "male",
+   "syllables": [
+    "ma",
+    "le"
+   ]
+  },
+  {
+   "word": "insuperável",
+   "syllables": [
+    "in",
+    "su",
+    "pe",
+    "rá",
+    "vel"
+   ]
+  },
+  {
+   "word": "cinzelado",
+   "syllables": [
+    "cin",
+    "ze",
+    "la",
+    "do"
+   ]
+  },
+  {
+   "word": "bitoque",
+   "syllables": [
+    "bi",
+    "to",
+    "que"
+   ]
+  },
+  {
+   "word": "historial",
+   "syllables": [
+    "his",
+    "to",
+    "ri",
+    "al"
+   ]
+  },
+  {
+   "word": "participar",
+   "syllables": [
+    "par",
+    "ti",
+    "ci",
+    "par"
+   ]
+  },
+  {
+   "word": "transitoriedade",
+   "syllables": [
+    "tran",
+    "si",
+    "to",
+    "ri",
+    "e",
+    "da",
+    "de"
+   ]
+  },
+  {
+   "word": "tolerar",
+   "syllables": [
+    "to",
+    "le",
+    "rar"
+   ]
+  },
+  {
+   "word": "implícito",
+   "syllables": [
+    "im",
+    "plí",
+    "ci",
+    "to"
+   ]
+  },
+  {
+   "word": "intuicionista",
+   "syllables": [
+    "in",
+    "tu",
+    "i",
+    "ci",
+    "o",
+    "nis",
+    "ta"
+   ]
+  },
+  {
+   "word": "adenda",
+   "syllables": [
+    "a",
+    "den",
+    "da"
+   ]
+  },
+  {
+   "word": "delambido",
+   "syllables": [
+    "de",
+    "lam",
+    "bi",
+    "do"
+   ]
+  },
+  {
+   "word": "poente",
+   "syllables": [
+    "po",
+    "en",
+    "te"
+   ]
+  },
+  {
+   "word": "austrálio",
+   "syllables": [
+    "aus",
+    "trá",
+    "li",
+    "o"
+   ]
+  },
+  {
+   "word": "enxergar",
+   "syllables": [
+    "en",
+    "xer",
+    "gar"
+   ]
+  },
+  {
+   "word": "espiritualista",
+   "syllables": [
+    "es",
+    "pi",
+    "ri",
+    "tu",
+    "a",
+    "lis",
+    "ta"
+   ]
+  },
+  {
+   "word": "refilar",
+   "syllables": [
+    "re",
+    "fi",
+    "lar"
+   ]
+  },
+  {
+   "word": "frangir",
+   "syllables": [
+    "fran",
+    "gir"
+   ]
+  },
+  {
+   "word": "pantera",
+   "syllables": [
+    "pan",
+    "te",
+    "ra"
+   ]
+  },
+  {
+   "word": "fermentação",
+   "syllables": [
+    "fer",
+    "men",
+    "ta",
+    "ção"
+   ]
+  },
+  {
+   "word": "conclusão",
+   "syllables": [
+    "con",
+    "clu",
+    "são"
+   ]
+  },
+  {
+   "word": "perdido",
+   "syllables": [
+    "per",
+    "di",
+    "do"
+   ]
+  },
+  {
+   "word": "alpinismo",
+   "syllables": [
+    "al",
+    "pi",
+    "nis",
+    "mo"
+   ]
+  },
+  {
+   "word": "fungibilidade",
+   "syllables": [
+    "fun",
+    "gi",
+    "bi",
+    "li",
+    "da",
+    "de"
+   ]
+  },
+  {
+   "word": "obra",
+   "syllables": [
+    "o",
+    "bra"
+   ]
+  },
+  {
+   "word": "computacional",
+   "syllables": [
+    "com",
+    "pu",
+    "ta",
+    "ci",
+    "o",
+    "nal"
+   ]
+  },
+  {
+   "word": "ossário",
+   "syllables": [
+    "os",
+    "sá",
+    "ri",
+    "o"
+   ]
+  },
+  {
+   "word": "canejo",
+   "syllables": [
+    "ca",
+    "ne",
+    "jo"
+   ]
+  },
+  {
+   "word": "fotossíntese",
+   "syllables": [
+    "fo",
+    "tos",
+    "sín",
+    "te",
+    "se"
+   ]
+  },
+  {
+   "word": "contrariado",
+   "syllables": [
+    "con",
+    "tra",
+    "ri",
+    "a",
+    "do"
+   ]
+  },
+  {
+   "word": "palmado",
+   "syllables": [
+    "pal",
+    "ma",
+    "do"
+   ]
+  },
+  {
+   "word": "bosse",
+   "syllables": [
+    "bos",
+    "se"
+   ]
+  },
+  {
+   "word": "suco",
+   "syllables": [
+    "su",
+    "co"
+   ]
+  },
+  {
+   "word": "ritmicamente",
+   "syllables": [
+    "rit",
+    "mi",
+    "ca",
+    "men",
+    "te"
+   ]
+  },
+  {
+   "word": "ampola",
+   "syllables": [
+    "am",
+    "po",
+    "la"
+   ]
+  },
+  {
+   "word": "pregnância",
+   "syllables": [
+    "preg",
+    "nân",
+    "ci",
+    "a"
+   ]
+  },
+  {
+   "word": "fajardo",
+   "syllables": [
+    "fa",
+    "jar",
+    "do"
+   ]
+  },
+  {
+   "word": "arrevesado",
+   "syllables": [
+    "ar",
+    "re",
+    "ve",
+    "sa",
+    "do"
+   ]
+  },
+  {
+   "word": "federalismo",
+   "syllables": [
+    "fe",
+    "de",
+    "ra",
+    "lis",
+    "mo"
+   ]
+  },
+  {
+   "word": "acrisolar",
+   "syllables": [
+    "a",
+    "cri",
+    "so",
+    "lar"
+   ]
+  },
+  {
+   "word": "inquisidor",
+   "syllables": [
+    "in",
+    "qui",
+    "si",
+    "dor"
+   ]
+  },
+  {
+   "word": "determinar",
+   "syllables": [
+    "de",
+    "ter",
+    "mi",
+    "nar"
+   ]
+  },
+  {
+   "word": "galega",
+   "syllables": [
+    "ga",
+    "le",
+    "ga"
+   ]
+  },
+  {
+   "word": "inalado",
+   "syllables": [
+    "i",
+    "na",
+    "la",
+    "do"
+   ]
+  },
+  {
+   "word": "expropriação",
+   "syllables": [
+    "ex",
+    "pro",
+    "pri",
+    "a",
+    "ção"
+   ]
+  },
+  {
+   "word": "manchado",
+   "syllables": [
+    "man",
+    "cha",
+    "do"
+   ]
+  },
+  {
+   "word": "indiferente",
+   "syllables": [
+    "in",
+    "di",
+    "fe",
+    "ren",
+    "te"
+   ]
+  },
+  {
+   "word": "amovível",
+   "syllables": [
+    "a",
+    "mo",
+    "ví",
+    "vel"
+   ]
+  },
+  {
+   "word": "desinquietante",
+   "syllables": [
+    "de",
+    "sin",
+    "qui",
+    "e",
+    "tan",
+    "te"
+   ]
+  },
+  {
+   "word": "hierarquizar",
+   "syllables": [
+    "hi",
+    "e",
+    "rar",
+    "qui",
+    "zar"
+   ]
+  },
+  {
+   "word": "latejar",
+   "syllables": [
+    "la",
+    "te",
+    "jar"
+   ]
+  },
+  {
+   "word": "mexida",
+   "syllables": [
+    "me",
+    "xi",
+    "da"
+   ]
+  },
+  {
+   "word": "palmo",
+   "syllables": [
+    "pal",
+    "mo"
+   ]
+  },
+  {
+   "word": "pedinchar",
+   "syllables": [
+    "pe",
+    "din",
+    "char"
+   ]
+  },
+  {
+   "word": "granir",
+   "syllables": [
+    "gra",
+    "nir"
+   ]
+  },
+  {
+   "word": "invocável",
+   "syllables": [
+    "in",
+    "vo",
+    "cá",
+    "vel"
+   ]
+  },
+  {
+   "word": "lesão",
+   "syllables": [
+    "le",
+    "são"
+   ]
+  },
+  {
+   "word": "eletrofisiológico",
+   "syllables": [
+    "e",
+    "le",
+    "tro",
+    "fi",
+    "si",
+    "o",
+    "ló",
+    "gi",
+    "co"
+   ]
+  },
+  {
+   "word": "festejar",
+   "syllables": [
+    "fes",
+    "te",
+    "jar"
+   ]
+  },
+  {
+   "word": "detenção",
+   "syllables": [
+    "de",
+    "ten",
+    "ção"
+   ]
+  },
+  {
+   "word": "inenarrável",
+   "syllables": [
+    "i",
+    "ne",
+    "nar",
+    "rá",
+    "vel"
+   ]
+  },
+  {
+   "word": "tareia",
+   "syllables": [
+    "ta",
+    "rei",
+    "a"
+   ]
+  },
+  {
+   "word": "eutanásia",
+   "syllables": [
+    "eu",
+    "ta",
+    "ná",
+    "si",
+    "a"
+   ]
+  },
+  {
+   "word": "astracã",
+   "syllables": [
+    "as",
+    "tra",
+    "cã"
+   ]
+  },
+  {
+   "word": "vedro",
+   "syllables": [
+    "ve",
+    "dro"
+   ]
+  },
+  {
+   "word": "farrar",
+   "syllables": [
+    "far",
+    "rar"
+   ]
+  },
+  {
+   "word": "excecional",
+   "syllables": [
+    "ex",
+    "ce",
+    "ci",
+    "o",
+    "nal"
+   ]
+  },
+  {
+   "word": "pinote",
+   "syllables": [
+    "pi",
+    "no",
+    "te"
+   ]
+  },
+  {
+   "word": "mercador",
+   "syllables": [
+    "mer",
+    "ca",
+    "dor"
+   ]
+  },
+  {
+   "word": "filamento",
+   "syllables": [
+    "fi",
+    "la",
+    "men",
+    "to"
+   ]
+  },
+  {
+   "word": "boça",
+   "syllables": [
+    "bo",
+    "ça"
+   ]
+  },
+  {
+   "word": "desnorteamento",
+   "syllables": [
+    "des",
+    "nor",
+    "te",
+    "a",
+    "men",
+    "to"
+   ]
+  },
+  {
+   "word": "nazi",
+   "syllables": [
+    "na",
+    "zi"
+   ]
+  },
+  {
+   "word": "bica",
+   "syllables": [
+    "bi",
+    "ca"
+   ]
+  },
+  {
+   "word": "afónico",
+   "syllables": [
+    "a",
+    "fó",
+    "ni",
+    "co"
+   ]
+  },
+  {
+   "word": "gaza",
+   "syllables": [
+    "ga",
+    "za"
+   ]
+  },
+  {
+   "word": "desamolgar",
+   "syllables": [
+    "de",
+    "sa",
+    "mol",
+    "gar"
+   ]
+  },
+  {
+   "word": "sacerdócio",
+   "syllables": [
+    "sa",
+    "cer",
+    "dó",
+    "ci",
+    "o"
+   ]
+  },
+  {
+   "word": "dopado",
+   "syllables": [
+    "do",
+    "pa",
+    "do"
+   ]
+  },
+  {
+   "word": "confortavelmente",
+   "syllables": [
+    "con",
+    "for",
+    "ta",
+    "vel",
+    "men",
+    "te"
+   ]
+  },
+  {
+   "word": "supletivo",
+   "syllables": [
+    "su",
+    "ple",
+    "ti",
+    "vo"
+   ]
+  },
+  {
+   "word": "cataclísmico",
+   "syllables": [
+    "ca",
+    "ta",
+    "clís",
+    "mi",
+    "co"
+   ]
+  },
+  {
+   "word": "achincalhamento",
+   "syllables": [
+    "a",
+    "chin",
+    "ca",
+    "lha",
+    "men",
+    "to"
+   ]
+  },
+  {
+   "word": "âncora",
+   "syllables": [
+    "ân",
+    "co",
+    "ra"
+   ]
+  },
+  {
+   "word": "vigília",
+   "syllables": [
+    "vi",
+    "gí",
+    "li",
+    "a"
+   ]
+  },
+  {
+   "word": "desarquear",
+   "syllables": [
+    "de",
+    "sar",
+    "que",
+    "ar"
+   ]
+  },
+  {
+   "word": "adubado",
+   "syllables": [
+    "a",
+    "du",
+    "ba",
+    "do"
+   ]
+  },
+  {
+   "word": "frágil",
+   "syllables": [
+    "frá",
+    "gil"
+   ]
+  },
+  {
+   "word": "atracão",
+   "syllables": [
+    "a",
+    "tra",
+    "cão"
+   ]
+  },
+  {
+   "word": "obreiro",
+   "syllables": [
+    "o",
+    "brei",
+    "ro"
+   ]
+  },
+  {
+   "word": "esvanecer",
+   "syllables": [
+    "es",
+    "va",
+    "ne",
+    "cer"
+   ]
+  },
+  {
+   "word": "delfim",
+   "syllables": [
+    "del",
+    "fim"
+   ]
+  },
+  {
+   "word": "lenitivo",
+   "syllables": [
+    "le",
+    "ni",
+    "ti",
+    "vo"
+   ]
+  },
+  {
+   "word": "falhanço",
+   "syllables": [
+    "fa",
+    "lhan",
+    "ço"
+   ]
+  }
+ ]
+}
