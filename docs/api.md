@@ -1,7 +1,7 @@
 # API Reference
 
-Everything importable from `silabificador`. Signatures and return shapes are
-exactly as implemented.
+This page lists everything importable from `silabificador`. Signatures and
+return shapes match the implementation exactly.
 
 ## `syllabify`
 
@@ -11,11 +11,11 @@ from silabificador import syllabify
 syllabify(word: str) -> List[str]
 ```
 
-Divide a Portuguese word into syllables.
+Divides a Portuguese word into syllables.
 
-- **word** — a Portuguese word. Case is normalized to lowercase; leading and
-  trailing whitespace is stripped.
-- **returns** — a list of syllable strings in order.
+- **word**: a Portuguese word. The function normalizes case to lowercase and
+  strips leading and trailing whitespace.
+- **returns**: a list of syllable strings, in order.
 
 ```python
 syllabify("computador")     # ['com', 'pu', 'ta', 'dor']
@@ -23,8 +23,8 @@ syllabify("Brasil")         # ['bra', 'sil']
 syllabify("português")      # ['por', 'tu', 'guês']
 ```
 
-**`"".join(result)` always reconstructs the lowercased input.** A hyphen, space
-or apostrophe is kept on the syllable it follows, never dropped:
+`"".join(result)` always reconstructs the lowercased input. A hyphen, space,
+or apostrophe stays on the syllable it follows, and is never dropped:
 
 ```python
 syllabify("guarda-chuva")       # ['guar', 'da-', 'chu', 'va']
@@ -33,7 +33,8 @@ syllabify("pau-d'água")         # ['pau-', "d'á", 'gua']
 syllabify("ajudante de campo")  # ['a', 'ju', 'dan', 'te ', 'de ', 'cam', 'po']
 ```
 
-A word with no vowel in it has no syllable to find, and is returned whole:
+A word with no vowel in it has no syllable to find, and the function returns
+it whole:
 
 ```python
 syllabify("psst")   # ['psst']
@@ -49,8 +50,8 @@ analyze(word: str) -> List[Syllable]
 ```
 
 The same split, with each syllable decomposed. Use it when you need the
-constituents — a phonemizer, a stress rule, a rhyme index — rather than the
-strings.
+constituents, for example in a phonemizer, a stress rule, or a rhyme index,
+rather than the plain strings.
 
 ```python
 for s in analyze("transportar"):
@@ -68,7 +69,7 @@ from silabificador import stressed_index
 stressed_index(word: str) -> int
 ```
 
-The index of the syllable carrying the primary stress.
+Returns the index of the syllable that carries the primary stress.
 
 ```python
 stressed_index("computador")   # 3   com.pu.ta.DOR
@@ -83,22 +84,29 @@ A frozen dataclass.
 | field | meaning |
 |---|---|
 | `onset` | consonants before the nucleus (`tr`, `qu`, `lh`) |
-| `glide_on` | the glide spelled *inside* a `qu`/`gu` onset — the `u` of *qua*dro |
+| `glide_on` | the glide spelled inside a `qu`/`gu` onset, for example the `u` of *qua*dro |
 | `nucleus` | the vowel that heads the syllable |
-| `glide_off` | the offglide of a falling diphthong — the `i` of p*ai* |
+
+| field | meaning |
+|---|---|
+| `glide_off` | the offglide of a falling diphthong, for example the `i` of p*ai* |
 | `coda` | consonants after the nucleus |
-| `separator` | a hyphen, space or apostrophe held by this syllable |
+| `separator` | a hyphen, space, or apostrophe held by this syllable |
+
+| field | meaning |
+|---|---|
 | `surface` | the syllable as written |
-| `stressed` | carries the word's primary stress — exactly one syllable does |
-| `secondary` | carries a secondary stress (compounds only) |
+| `stressed` | true for the syllable that carries the word's primary stress. Exactly one syllable does |
+| `secondary` | true for a syllable that carries a secondary stress (compounds only) |
 
-`str(syllable)` returns `surface`. It is stored rather than recomposed from the
-fields, because a separator can sit anywhere inside a syllable (`ra-d'`) and
-reassembling in onset-nucleus-coda order would reorder the letters.
+`str(syllable)` returns `surface`. The class stores this value rather than
+recomposing it from the fields, because a separator can sit anywhere inside a
+syllable (`ra-d'`), and reassembling in onset-nucleus-coda order would
+reorder the letters.
 
-`glide_on` is *reported, not additive*: it is already inside `onset`, since the
-`u` of `qu` is part of that digraph. `str(analyze("quadro")[0])` is `"qua"`, not
-`"quuа"`.
+`glide_on` is reported, not additive: it is already part of `onset`, because
+the `u` of `qu` belongs to that digraph. `str(analyze("quadro")[0])` returns
+`"qua"`, not `"quuа"`.
 
 ## `Syllabifier`
 
@@ -110,18 +118,24 @@ s.syllabify("computador")   # ['com', 'pu', 'ta', 'dor']
 s.analyze("casa")           # [Syllable(onset='c', ...), ...]
 ```
 
-A stateless wrapper; there is nothing to configure and no model to load.
+A stateless wrapper. There is nothing to configure, and it loads no model.
 
 ## The layers
 
-The engine is four modules, each with one job. They are importable, and reading
-them is the documentation of the rules:
+The engine has four modules, each with one job. They are importable, and
+reading them documents the rules directly.
 
 | module | job |
 |---|---|
-| `silabificador.phonotactics` | what Portuguese licenses — data only, no logic |
-| `silabificador.graphemes` | orthography → grapheme units (layer 1) |
+| `silabificador.phonotactics` | what Portuguese licenses: data only, no logic |
+| `silabificador.graphemes` | orthography to grapheme units (layer 1) |
 | `silabificador.nucleus` | nucleus and glide resolution (layer 2) |
+
+| module | job |
+|---|---|
 | `silabificador.morphology` | morpheme boundaries, which outrank the rules |
 | `silabificador.parser` | syllable assembly (layer 3) |
 | `silabificador.stress` | which syllable bears the stress |
+
+---
+[← Quickstart](quickstart.md) · [Home](../README.md) · [Next →](advanced.md)

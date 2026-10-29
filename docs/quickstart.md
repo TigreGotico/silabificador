@@ -1,8 +1,8 @@
-# Quickstart — zero to hero
+# Quickstart
 
-`silabificador` splits a Portuguese word into syllables. One function, pure
-Python, no runtime dependencies. If you can call `str.split`, you already know
-the shape of the API.
+`silabificador` splits a Portuguese word into syllables. It is one function,
+pure Python, with no runtime dependencies. If you can call `str.split`, you
+already know the shape of the API.
 
 ## 1. Install
 
@@ -16,13 +16,13 @@ From a checkout:
 pip install -e .
 ```
 
-Requires Python >= 3.7. Nothing else — the algorithm is hand-crafted rules, no
-models to download.
+This requires Python 3.7 or later. Nothing else is needed. The algorithm is a
+set of hand-crafted rules, and there are no models to download.
 
 ## 2. The one thing to understand
 
 `syllabify(word)` takes one word and returns a list of syllable strings, in
-order. Accents and digraphs are preserved exactly as written.
+order. It preserves accents and digraphs exactly as written.
 
 ```python
 from silabificador import syllabify
@@ -31,8 +31,7 @@ print(syllabify("computador"))
 # ['com', 'pu', 'ta', 'dor']
 ```
 
-The returned syllables join back into the input (lowercased): `"".join(...)`
-reconstructs the word.
+`"".join(...)` on the returned syllables reconstructs the word (lowercased).
 
 ```python
 word = "português"
@@ -44,7 +43,7 @@ print(len(syls))         # 3  -> syllable count
 
 ## 3. Real Portuguese, real splits
 
-The rules handle the structures that make Portuguese tricky — consonant
+The rules handle the structures that make Portuguese tricky: consonant
 clusters, diphthongs, hiatus, nasal vowels, and the inseparable digraphs
 (`ch`, `lh`, `nh`, `gu`, `qu`).
 
@@ -64,7 +63,7 @@ syllabify("carro")        # ['car', 'ro']     'rr' splits across the boundary
 ## 4. The class wrapper
 
 If you prefer an object, `Syllabifier` exposes the same call as a method. It
-holds no state — it is a thin handle over `syllabify`.
+holds no state. It is a thin handle over `syllabify`.
 
 ```python
 from silabificador import Syllabifier
@@ -73,12 +72,12 @@ s = Syllabifier()
 print(s.syllabify("caça"))   # ['ca', 'ça']
 ```
 
-Use the bare `syllabify` function unless an interface in your code expects an
-object with a `.syllabify` method.
+Use the bare `syllabify` function, unless an interface in your code expects
+an object with a `.syllabify` method.
 
 ## 5. Counting and joining
 
-Because the output is a plain list, everything you do with lists works:
+Because the output is a plain list, everything you do with lists works.
 
 ```python
 from silabificador import syllabify
@@ -92,5 +91,8 @@ print("hyphenated:", "-".join(syls))   # ex-tra-or-di-ná-ri-o
 
 ## Where next
 
-- [api.md](api.md) — every public symbol, real signatures, return shapes
-- [advanced.md](advanced.md) — digraphs, diphthong vs. hiatus, batch use, gotchas
+- [api.md](api.md) — every public symbol, with real signatures and return shapes
+- [advanced.md](advanced.md) — digraphs, diphthong vs. hiatus, batch use, and known gotchas
+
+---
+[Home](../README.md) · [Next →](api.md)
