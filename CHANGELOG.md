@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.1a2](https://github.com/TigreGotico/silabificador/tree/2.1.1a2) (2026-10-29)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a1...2.1.1a2)
+
+**Merged pull requests:**
+
+- test: load the benchmark harness by path, not through sys.path [\#17](https://github.com/TigreGotico/silabificador/pull/17) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [2.1.1a1](https://github.com/TigreGotico/silabificador/tree/2.1.1a1) (2026-07-30)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.0...2.1.1a1)
