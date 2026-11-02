@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.1a4](https://github.com/TigreGotico/silabificador/tree/2.1.1a4) (2026-11-02)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a3...2.1.1a4)
+
+**Merged pull requests:**
+
+- chore: require Python 3.11, the oldest version not past end of life [\#21](https://github.com/TigreGotico/silabificador/pull/21) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [2.1.1a3](https://github.com/TigreGotico/silabificador/tree/2.1.1a3) (2026-11-02)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a2...2.1.1a3)
