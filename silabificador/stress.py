@@ -56,8 +56,8 @@ References
 * Cunha, C. & Cintra, L. (1984). *Nova Gramática do Português Contemporâneo*,
   "Acentuação" and "Monossílabos átonos".
 * Acordo Ortográfico da Língua Portuguesa (1990), Bases VIII-XI (when an accent
-  is obligatory, and therefore when its absence is informative) and Base IX §9
-  (abolishing the grave as a secondary-stress mark).
+  is obligatory, and therefore when its absence is informative) and Base XIII 1.º
+  (an adverb in ``-mente`` drops its base's accent: somente, from só).
 """
 from __future__ import annotations
 
