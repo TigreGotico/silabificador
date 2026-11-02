@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.1a3](https://github.com/TigreGotico/silabificador/tree/2.1.1a3) (2026-11-02)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a2...2.1.1a3)
+
+**Merged pull requests:**
+
+- docs: cite AO1990 Base XIII for the accent dropped in derived words [\#19](https://github.com/TigreGotico/silabificador/pull/19) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [2.1.1a2](https://github.com/TigreGotico/silabificador/tree/2.1.1a2) (2026-10-29)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a1...2.1.1a2)
