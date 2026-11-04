@@ -18,6 +18,8 @@ Divides a Portuguese word into syllables.
 - **returns**: a list of syllable strings, in order.
 
 ```python
+from silabificador import syllabify
+
 syllabify("computador")     # ['com', 'pu', 'ta', 'dor']
 syllabify("Brasil")         # ['bra', 'sil']
 syllabify("português")      # ['por', 'tu', 'guês']
@@ -29,9 +31,13 @@ or apostrophe stays on the syllable it follows, and is never dropped:
 ```python
 syllabify("guarda-chuva")       # ['guar', 'da-', 'chu', 'va']
 syllabify("ab-reagir")          # ['ab-', 're', 'a', 'gir']
-syllabify("pau-d'água")         # ['pau-', "d'á", 'gua']
 syllabify("ajudante de campo")  # ['a', 'ju', 'dan', 'te ', 'de ', 'cam', 'po']
+syllabify("pau-d'água")         # ["pau-d'", 'á', 'gua']
 ```
+
+The last split is a known defect: the `d` belongs with `á`, and the syllable
+`pau-d'` spans the hyphen
+([#23](https://github.com/TigreGotico/silabificador/issues/23)).
 
 A word with no vowel in it has no syllable to find, and the function returns
 it whole:
@@ -54,6 +60,8 @@ constituents, for example in a phonemizer, a stress rule, or a rhyme index,
 rather than the plain strings.
 
 ```python
+from silabificador import analyze
+
 for s in analyze("transportar"):
     print(s.onset, s.nucleus, s.coda)
 # tr a ns
@@ -69,9 +77,12 @@ from silabificador import stressed_index
 stressed_index(word: str) -> int
 ```
 
-Returns the index of the syllable that carries the primary stress.
+Returns the index of the syllable that carries the primary stress, or `0` for
+an empty word.
 
 ```python
+from silabificador import stressed_index
+
 stressed_index("computador")   # 3   com.pu.ta.DOR
 stressed_index("casa")         # 0   CA.sa
 stressed_index("sílaba")       # 0   SÍ.la.ba
@@ -106,7 +117,7 @@ reorder the letters.
 
 `glide_on` is reported, not additive: it is already part of `onset`, because
 the `u` of `qu` belongs to that digraph. `str(analyze("quadro")[0])` returns
-`"qua"`, not `"quuа"`.
+`"qua"`, not `"quua"`.
 
 ## `Syllabifier`
 
@@ -116,13 +127,15 @@ from silabificador import Syllabifier
 s = Syllabifier()
 s.syllabify("computador")   # ['com', 'pu', 'ta', 'dor']
 s.analyze("casa")           # [Syllable(onset='c', ...), ...]
+s.stressed_index("casa")    # 0
 ```
 
-A stateless wrapper. There is nothing to configure, and it loads no model.
+A stateless wrapper with the three functions as methods. There is nothing to
+configure, and it loads no model.
 
 ## The layers
 
-The engine has four modules, each with one job. They are importable, and
+The engine has six modules, each with one job. They are importable, and
 reading them documents the rules directly.
 
 | module | job |
@@ -138,4 +151,4 @@ reading them documents the rules directly.
 | `silabificador.stress` | which syllable bears the stress |
 
 ---
-[← Quickstart](quickstart.md) · [Home](../README.md) · [Next →](advanced.md)
+[← Quickstart](quickstart.md) · [Home](../README.md) · [Advanced →](advanced.md)

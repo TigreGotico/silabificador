@@ -5,8 +5,8 @@ wrong.
 
 ## The shape of the engine
 
-The engine has four layers. Each layer can be read, tested, and corrected
-without touching the others.
+The engine has six modules, stacked in layers. Each one can be read, tested,
+and corrected without touching the others.
 
 ```
 phonotactics   what Portuguese licenses (data: onsets, glides, accents)
@@ -22,13 +22,15 @@ parser         onset maximization → syllables
 stress         which syllable bears the stress
 ```
 
-## Layer 1 — digraphs are decided in context
+## Layer 1: digraphs are decided in context
 
 Portuguese spelling does not use one letter per segment. `lh` is a single
 consonant, and so is the `qu` of *quero*, whose `u` spells nothing at all.
 But the `u` of *agudo* is a full vowel, and the letters are the same.
 
 ```python
+from silabificador import syllabify
+
 syllabify("quero")     # ['que', 'ro']   -- qu is one consonant, u is silent
 syllabify("quadro")    # ['qua', 'dro']  -- u is a glide, still inside the onset
 syllabify("agudo")     # ['a', 'gu', 'do'] -- u is a nucleus
@@ -39,7 +41,7 @@ The rule: after `q`/`g`, a `u` immediately followed by another vowel never
 heads a syllable. A `u` followed by a consonant keeps its nucleus. The
 engine decides the digraph per occurrence, from what follows it.
 
-## Layer 2 — a vowel pair has no answer of its own
+## Layer 2: a vowel pair has no answer of its own
 
 Asking whether `ai` is a diphthong asks the wrong question. It is one in
 *pai* and not one in *ainda*. Each row below is a minimal pair: same vowels,
@@ -61,7 +63,7 @@ Triphthongs need no rule either. In *quais* and *Uruguai* the leading glide
 is spelled inside the `qu`/`gu` onset, so layer 1 has already absorbed it,
 and what reaches layer 2 is a plain nucleus with one offglide.
 
-## Layer 3 — one principle for consonants
+## Layer 3: one principle for consonants
 
 Onset maximization, bounded by the licit onset inventory. A consonant
 cluster between two nuclei gives as much of its right edge as possible to
@@ -128,6 +130,8 @@ the stress it had alone. The last element takes the primary stress; the
 earlier ones are demoted to secondary:
 
 ```python
+from silabificador import analyze
+
 [str(s) for s in analyze("guarda-chuva") if s.secondary]   # ['guar']
 [str(s) for s in analyze("guarda-chuva") if s.stressed]    # ['chu']
 ```
@@ -140,7 +144,7 @@ one of them.
 
 Before 1990, a grave accent marked secondary stress (`sòmente`, `cafèzinho`).
 The engine still honors it where it appears. The grave on `à` is not a
-stress mark; it is crasis, and it is unstressed.
+stress mark; it is crasis, and the engine marks no secondary stress for it.
 
 The secondary stress of `-mente` and `-zinho` words is not marked.
 `rapidamente` comes from `rápida`, but the suffix drops the base's accent,
@@ -154,15 +158,16 @@ The productive prefixes are not implemented: `ciber-`, `hiper-`, `super-`,
 `hi.per.es.pe.ci.a.li.zar`) but not consistently. It also writes
 `hi.pe.ra.gu.do` and `a.dre.na.li.na` beside `ad.re.nal`, and the Portal da
 Língua Portuguesa never splits them this way. The two authorities disagree,
-so there is no fact to encode. This is the largest single class of residual
-mismatch against Infopédia.
+so there is no fact to encode. Most of the residual mismatches against
+Infopédia are diphthong-or-hiatus choices, and the prefix words are a small
+share of them.
 
-Foreign onsets are not in the inventory. `sof.twa.re` is written
-`soft.wa.re`, because `tw` is not a Portuguese onset. The lexicon has
-roughly 20 such loanwords.
+Foreign onsets are not in the inventory. Where the gold has `sof.twa.re`, the
+engine writes `soft.wa.re`, because `tw` is not a Portuguese onset. A few
+loanwords in the lexicon fail for this reason.
 
 The engine counts both classes rather than hiding them: `python -m
 benchmark.report` prints every remaining failure bucketed by cause.
 
 ---
-[← API Reference](api.md) · [Home](../README.md)
+[← API Reference](api.md) · [Home](../README.md) · [Accuracy →](accuracy.md)
