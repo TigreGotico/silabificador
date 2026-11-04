@@ -1,36 +1,44 @@
 # Changelog
 
-## [2.1.0a1](https://github.com/TigreGotico/silabificador/tree/2.1.0a1) (2026-07-14)
+## [2.1.1a5](https://github.com/TigreGotico/silabificador/tree/2.1.1a5) (2026-11-04)
 
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.0.0a1...2.1.0a1)
-
-**Merged pull requests:**
-
-- feat: assign primary and secondary stress [\#13](https://github.com/TigreGotico/silabificador/pull/13) ([JarbasAl](https://github.com/JarbasAl))
-
-## [2.0.0a1](https://github.com/TigreGotico/silabificador/tree/2.0.0a1) (2026-07-14)
-
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/1.1.0a1...2.0.0a1)
-
-**Breaking changes:**
-
-- feat!: derive syllabification from Portuguese phonotactics [\#11](https://github.com/TigreGotico/silabificador/pull/11) ([JarbasAl](https://github.com/JarbasAl))
-
-## [1.1.0a1](https://github.com/TigreGotico/silabificador/tree/1.1.0a1) (2026-07-14)
-
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/1.0.1a1...1.1.0a1)
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a4...2.1.1a5)
 
 **Merged pull requests:**
 
-- feat: build the gold from the unified lexicon and score the full set [\#9](https://github.com/TigreGotico/silabificador/pull/9) ([JarbasAl](https://github.com/JarbasAl))
+- docs: correct claims that no longer match dev [\#24](https://github.com/TigreGotico/silabificador/pull/24) ([JarbasAl](https://github.com/JarbasAl))
 
-## [1.0.1a1](https://github.com/TigreGotico/silabificador/tree/1.0.1a1) (2026-05-29)
+## [2.1.1a4](https://github.com/TigreGotico/silabificador/tree/2.1.1a4) (2026-11-02)
 
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/1.0.0...1.0.1a1)
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a3...2.1.1a4)
 
 **Merged pull requests:**
 
-- docs: add docs/ and examples/ [\#6](https://github.com/TigreGotico/silabificador/pull/6) ([JarbasAl](https://github.com/JarbasAl))
+- chore: require Python 3.11, the oldest version not past end of life [\#21](https://github.com/TigreGotico/silabificador/pull/21) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
+## [2.1.1a3](https://github.com/TigreGotico/silabificador/tree/2.1.1a3) (2026-11-02)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a2...2.1.1a3)
+
+**Merged pull requests:**
+
+- docs: cite AO1990 Base XIII for the accent dropped in derived words [\#19](https://github.com/TigreGotico/silabificador/pull/19) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
+## [2.1.1a2](https://github.com/TigreGotico/silabificador/tree/2.1.1a2) (2026-10-29)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a1...2.1.1a2)
+
+**Merged pull requests:**
+
+- test: load the benchmark harness by path, not through sys.path [\#17](https://github.com/TigreGotico/silabificador/pull/17) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
+## [2.1.1a1](https://github.com/TigreGotico/silabificador/tree/2.1.1a1) (2026-07-30)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.0...2.1.1a1)
+
+**Merged pull requests:**
+
+- docs: rewrite README in Simplified Technical English [\#15](https://github.com/TigreGotico/silabificador/pull/15) ([JarbasAl](https://github.com/JarbasAl))
 
 
 

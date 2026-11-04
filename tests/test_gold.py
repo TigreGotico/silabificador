@@ -5,7 +5,28 @@ lexicon is not downloaded. Rows are ``(word, syllables, infopedia_url)`` --
 an Infopédia row carries a dictionary URL and dot separators, a Portal row has
 neither and uses pipes.
 """
-from benchmark.gold import _collect, fuse
+import importlib.util
+import sys
+from pathlib import Path
+
+# ``benchmark`` is a development harness, and the wheel does not ship it:
+# packages.find includes only ``silabificador*``. So it cannot be imported by
+# name once the checkout is off sys.path, which is what --import-mode=importlib
+# gives us. Load the package from its own path and register it, so that its
+# absolute imports keep resolving. Nothing is added to sys.path, so the
+# INSTALLED silabificador stays the one under test.
+_BENCHMARK = Path(__file__).resolve().parent.parent / "benchmark"
+if "benchmark" not in sys.modules:
+    _spec = importlib.util.spec_from_file_location(
+        "benchmark",
+        _BENCHMARK / "__init__.py",
+        submodule_search_locations=[str(_BENCHMARK)],
+    )
+    _module = importlib.util.module_from_spec(_spec)
+    sys.modules["benchmark"] = _module
+    _spec.loader.exec_module(_module)
+
+from benchmark.gold import _collect, fuse  # noqa: E402
 
 URL = "https://www.infopedia.pt/dicionarios/lingua-portuguesa/x"
 
