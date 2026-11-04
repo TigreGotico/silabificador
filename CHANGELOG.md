@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.1a5](https://github.com/TigreGotico/silabificador/tree/2.1.1a5) (2026-11-04)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a4...2.1.1a5)
+
+**Merged pull requests:**
+
+- docs: correct claims that no longer match dev [\#24](https://github.com/TigreGotico/silabificador/pull/24) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [2.1.1a4](https://github.com/TigreGotico/silabificador/tree/2.1.1a4) (2026-11-02)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a3...2.1.1a4)
