@@ -1600,6 +1600,163 @@
      "reason": "joins the d of Ad- to the l of -ler"
     }
    ]
+  },
+  {
+   "word": "alzheimer",
+   "class": "medial cluster",
+   "accepted": [
+    {
+     "split": "al.zhei.mer",
+     "sources": [
+      "AO90 Base I 3",
+      "Infopédia",
+      "pt.wiktionary"
+     ],
+     "reason": "AO90 Base I 3 keeps in words derived from foreign names 'quaisquer combinações gráficas [...] não peculiares à nossa escrita'; zh is one consonant spelling (pinyin zh, the romanization of Russian ж), and before ei the h is mute in Portuguese, so z + h opens the syllable"
+    }
+   ]
+  },
+  {
+   "word": "kubitschek",
+   "class": "medial cluster",
+   "accepted": [
+    {
+     "split": "ku.bi.tschek",
+     "sources": [
+      "AO90 Base I 3",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "AO90 Base I 3 keeps in words derived from foreign names 'quaisquer combinações gráficas [...] não peculiares à nossa escrita'; German tsch spells one affricate [tʃ], so it is one onset"
+    }
+   ]
+  },
+  {
+   "word": "boxeur",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "bo.xeur",
+     "sources": [
+      "AO90 Base I 3",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "French eu before a final r spells one vowel [œ]; no Portuguese word ends in eur"
+    }
+   ]
+  },
+  {
+   "word": "playground",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "play.ground",
+     "sources": [
+      "AO90 Base I 2",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "AO90 Base I 2 keeps y for foreign words; English ou spells one diphthong [aʊ], so the n after it does not make a Portuguese hiatus of it"
+    }
+   ]
+  },
+  {
+   "word": "gourmet",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "gour.met",
+     "sources": [
+      "AO90 Base I 5",
+      "pt.wiktionary"
+     ],
+     "reason": "French ou spells one vowel [u]; the final t marks the word as foreign (AO90 Base I 5 admits a final b, c, d, g or t only in names fixed by usage)"
+    }
+   ]
+  },
+  {
+   "word": "rousseau",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "rous.seau",
+     "sources": [
+      "AO90 Base I 3",
+      "en.wiktionary"
+     ],
+     "reason": "French final eau spells one vowel [o]; AO90 Base I 3 keeps in words derived from foreign names 'quaisquer combinações gráficas [...] não peculiares à nossa escrita'"
+    }
+   ]
+  },
+  {
+   "word": "bureau",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "bu.reau",
+     "sources": [
+      "AO90 Base I 3",
+      "pt.wiktionary"
+     ],
+     "reason": "French final eau spells one vowel [o]"
+    }
+   ]
+  },
+  {
+   "word": "anteaurora",
+   "class": "prefix seam",
+   "accepted": [
+    {
+     "split": "an.te.au.ro.ra",
+     "sources": [
+      "Infopédia",
+      "Portal"
+     ],
+     "reason": "ante- + aurora: Portuguese eau occurs only at a prefix seam, before more of the word, so the French eau unit is anchored on the end of the word"
+    }
+   ]
+  },
+  {
+   "word": "teleaula",
+   "class": "prefix seam",
+   "accepted": [
+    {
+     "split": "te.le.au.la",
+     "sources": [
+      "Infopédia"
+     ],
+     "reason": "tele- + aula: Portuguese eau occurs only at a prefix seam, before more of the word, so the French eau unit is anchored on the end of the word"
+    }
+   ]
+  },
+  {
+   "word": "teurgia",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "te.ur.gi.a",
+     "sources": [
+      "AO90 Base X 2",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "Greek theourgia, a Portuguese word: u closed by r is a nucleus (AO90 Base X 2). The French eu unit is anchored on a final r, so it does not reach te.ur.gi.a"
+    }
+   ]
+  },
+  {
+   "word": "pneumoultramicroscopicossilicovulcanoconiose",
+   "class": "prefix seam",
+   "accepted": [
+    {
+     "split": "pneu.mo.ul.tra.mi.cros.co.pi.cos.si.li.co.vul.ca.no.co.ni.o.se",
+     "sources": [
+      "pt.wiktionary"
+     ],
+     "reason": "pneumo- + ultra-: the u closed by l is a nucleus at the seam. The foreign ou unit needs a word that AO90 Base I 2-3 and 5 mark as foreign, and this word has no such mark"
+    }
+   ]
   }
  ]
 }

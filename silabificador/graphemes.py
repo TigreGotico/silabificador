@@ -15,7 +15,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List
 
-from .phonotactics import (CONSONANT_DIGRAPHS, FOREIGN_DIGRAPHS, VOWELS)
+from .phonotactics import (CONSONANT_DIGRAPHS, FOREIGN_DIGRAPHS, FOREIGN_MARKS,
+                           FOREIGN_TETRAGRAPHS, VOWELS)
 
 #: Characters that hold a word together without being part of any syllable's
 #: sound: the hyphen of *guarda-chuva*, the space of *ajudante de campo*, the
@@ -76,6 +77,34 @@ def _u_is_mute(word: str, index: int) -> bool:
     return nxt < len(word) and word[nxt] in VOWELS
 
 
+def _foreign_vowel(word: str, index: int) -> str:
+    """The loanword vowel spelling that starts at ``index``, or ``""``.
+
+    Each spelling is one vowel in its donor language, and each is anchored on a
+    context that no Portuguese word has, because the same letters are a
+    Portuguese hiatus or a Portuguese diphthong elsewhere:
+
+    * French ``eau`` [o], at the end of a word or before a final ``s``/``x``:
+      bu.reau, rous.seau, bor.deaux. Portuguese has ``eau`` only at a prefix
+      seam, before more of the word: an.te.au.ro.ra, te.le.au.la.
+    * French ``eu`` [œ] before a final ``r``: bo.xeur, chauf.feur. No
+      Portuguese word ends in ``eur``.
+    * French and English ``ou`` [u], [aʊ], in a word that :data:`FOREIGN_MARKS`
+      marks as foreign: gour.met, coun.try, play.ground. In a Portuguese word
+      ``ou`` is already a diphthong, but a following ``n`` or ``r`` closes the
+      syllable and AO90 Base X 2 reads the ``u`` as a nucleus (go.ur.met); that
+      rule describes Portuguese stress, not the donor's spelling.
+    """
+    rest = word[index:]
+    if rest.startswith("eau") and rest[3:] in ("", "s", "x"):
+        return "eau"
+    if rest.startswith("eu") and rest[2:] in ("r", "rs"):
+        return "eu"
+    if rest.startswith("ou") and FOREIGN_MARKS.search(word):
+        return "ou"
+    return ""
+
+
 def tokenize(word: str) -> List[Grapheme]:
     """Segment ``word`` (already lowercased) into grapheme units."""
     units: List[Grapheme] = []
@@ -86,9 +115,17 @@ def tokenize(word: str) -> List[Grapheme]:
         char = word[i]
         pair = word[i:i + 2]
 
+        foreign_vowel = _foreign_vowel(word, i) if char in VOWELS else ""
+
         if char in SEPARATORS:
             units.append(Grapheme(char, SEPARATOR))
             i += 1
+        elif word[i:i + 4] in FOREIGN_TETRAGRAPHS:
+            units.append(Grapheme(word[i:i + 4], CONSONANT))
+            i += 4
+        elif foreign_vowel:
+            units.append(Grapheme(foreign_vowel, VOWEL))
+            i += len(foreign_vowel)
         elif pair in CONSONANT_DIGRAPHS or pair in FOREIGN_DIGRAPHS:
             units.append(Grapheme(pair, CONSONANT))
             i += 2
