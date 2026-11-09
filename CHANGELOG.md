@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.1.3a1](https://github.com/TigreGotico/silabificador/tree/2.1.3a1) (2026-11-09)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a5...2.1.3a1)
+
+**Merged pull requests:**
+
+- fix: split iu by stress and regroup the stressed iu/ui of -iu verbs [\#28](https://github.com/TigreGotico/silabificador/pull/28) ([JarbasAl](https://github.com/JarbasAl))
+- fix: score against a multi-split gold and treat the Portal as generated [\#26](https://github.com/TigreGotico/silabificador/pull/26) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [2.1.1a5](https://github.com/TigreGotico/silabificador/tree/2.1.1a5) (2026-11-04)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a4...2.1.1a5)
