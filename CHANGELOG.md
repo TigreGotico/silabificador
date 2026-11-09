@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.7a1](https://github.com/TigreGotico/silabificador/tree/2.1.7a1) (2026-11-09)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.6a1...2.1.7a1)
+
+**Merged pull requests:**
+
+- fix: read five foreign spellings as one grapheme unit [\#33](https://github.com/TigreGotico/silabificador/pull/33) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [2.1.6a1](https://github.com/TigreGotico/silabificador/tree/2.1.6a1) (2026-11-09)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.5a1...2.1.6a1)
