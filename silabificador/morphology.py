@@ -47,6 +47,7 @@ References
 """
 from __future__ import annotations
 
+import re
 from typing import Sequence, Set
 
 from .graphemes import Grapheme
@@ -137,6 +138,18 @@ VOWEL_FINAL_STEMS = (
 _VOCALIC_SUFFIXES = ("i",)
 
 
+#: Nouns in -idade from adjectives in -uo and -ue: ár.du.o gives ar.du.i.da.de,
+#: in.gé.nu.o gives in.ge.nu.i.da.de, té.nu.e gives te.nu.i.da.de. The ``u`` is a
+#: nucleus in the base: Mateus & d'Andrade (1998, p. 20) write that a [+high]
+#: segment before a [-high] vowel "is perceived by Portuguese speakers as
+#: syllabic, that is, a vowel and not a glide", and such segments "are syllable
+#: nuclei at the base level" (p. 21). The suffix replaces the final vowel of the
+#: base and keeps its ``u``, so the ``ui`` is two nuclei, as AO90 Base XX 4
+#: divides "flu-idez". A ``u`` after ``g`` or ``q`` is part of the onset and
+#: never a nucleus (AO90 Base XX 5), so con.ti.gui.da.de is not touched.
+_UO_IDADE = re.compile(r"(?<=[^gq]u)idades?$")
+
+
 def _prefix_boundary(word: str) -> int:
     """Character offset of a prefix boundary, or 0 for none."""
     for prefix in sorted(LATINATE_PREFIX_STEMS, key=len, reverse=True):
@@ -153,6 +166,9 @@ def _prefix_boundary(word: str) -> int:
 
 def _seam_boundary(word: str) -> int:
     """Character offset of a stem/suffix seam that forces a hiatus, or 0."""
+    suffix = _UO_IDADE.search(word)
+    if suffix:
+        return suffix.start()
     for stem in VOWEL_FINAL_STEMS:
         start = word.find(stem)
         if start < 0:
