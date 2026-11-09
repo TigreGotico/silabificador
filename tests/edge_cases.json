@@ -2243,6 +2243,21 @@
      "reason": "Latin alauda, lark, not alaúde; Infopédia writes a.lau.da, so the alaúde stem is anchored on alaudar and alaudi"
     }
    ]
+  },
+  {
+   "word": "mãinha",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "mã.i.nha",
+     "sources": [
+      "AO90 Base X 2",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "AO90 Base X 2: the stressed i or u after a vowel 'constitui sílaba com a consoante seguinte, como é o caso de nh': bainha, moinho, rainha. The rule does not depend on whether the vowel before it is nasal."
+    }
+   ]
   }
  ]
 }
