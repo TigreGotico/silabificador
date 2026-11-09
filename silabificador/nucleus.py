@@ -17,13 +17,16 @@ Rules, in order of application:
     the accent is *for*: it is the only thing that distinguishes ``pais``
     (parents, one syllable) from ``país`` (country, two).
 
+``PRE-PALATAL``
+    A close vowel before ``nh`` reverts to a nucleus: ra.i.nha, mo.i.nho,
+    cam.pa.i.nha, mã.i.nha. The palatal nasal pulls it into its own syllable.
+    AO90 Base X 2 states it for any vowel before the ``i``/``u``: the close
+    vowel "constitui sílaba com a consoante seguinte, como é o caso de nh"
+    (bainha, moinho, rainha). It therefore outranks NASAL-OFFGLIDE.
+
 ``NASAL-OFFGLIDE``
     A nasal nucleus licenses an offglide that a plain vowel does not, including
     the mid vowels: mãe, pão, põe, sa.guão. Without this, *mãe* would break.
-
-``PRE-PALATAL``
-    A close vowel before ``nh`` reverts to a nucleus: ra.i.nha, mo.i.nho,
-    cam.pa.i.nha. The palatal nasal pulls it into its own syllable.
 
 ``CLOSED-BY-LIQUID-OR-NASAL``
     A close vowel closed by ``l m n r z`` is a nucleus: a.in.da, ca.ir, ju.iz,
@@ -127,7 +130,9 @@ def resolve(units: Sequence[Grapheme], start: int, end: int) -> List[Group]:
             is_last = (i + 1) == end
             after = _closes_syllable(units, end) if is_last else ""
 
-            if nucleus in NASAL_VOWELS and glide in "eoiu":
+            if is_last and glide in GLIDE_CAPABLE and _next_units(units, end) in HIATUS_BEFORE:
+                pass  # PRE-PALATAL: ra.i.nha, mo.i.nho, mã.i.nha
+            elif nucleus in NASAL_VOWELS and glide in "eoiu":
                 group.append(i + 1)  # NASAL-OFFGLIDE: mãe, pão, põe
             elif glide not in GLIDE_CAPABLE or glide in STRESS_MARKED:
                 pass  # ACCENT / no mid or low glides: pa.ís, co.e.lho, su.a
@@ -135,8 +140,6 @@ def resolve(units: Sequence[Grapheme], start: int, end: int) -> List[Group]:
                 pass  # IDENTICAL-VOWELS: xi.i.ta, va.di.i.ce
             elif is_last and after in HIATUS_CODAS:
                 pass  # CLOSED-BY-LIQUID-OR-NASAL: a.in.da, ca.ir, ju.iz
-            elif is_last and _next_units(units, end) in HIATUS_BEFORE:
-                pass  # PRE-PALATAL: ra.i.nha, mo.i.nho
             else:
                 group.append(i + 1)  # FALLING-DIPHTHONG: pai, sau.da.de, cui.da.do
 

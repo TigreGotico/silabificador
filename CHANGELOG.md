@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.4a1](https://github.com/TigreGotico/silabificador/tree/2.1.4a1) (2026-11-09)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.3a1...2.1.4a1)
+
+**Merged pull requests:**
+
+- fix: keep the hiatus that a derivative inherits from an accented base [\#30](https://github.com/TigreGotico/silabificador/pull/30) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [2.1.3a1](https://github.com/TigreGotico/silabificador/tree/2.1.3a1) (2026-11-09)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a5...2.1.3a1)
