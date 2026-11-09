@@ -54,6 +54,8 @@ opposite split.
 | `bai.le` | `ra.i.nha`, `mo.i.nho` | a following `nh` pulls the vowel into its own syllable |
 | `bair.ro` | `ca.ir` | a geminate `rr` spells one consonant, so it closes nothing |
 | `mãe`, `pão`, `põe` | `co.e.lho` | a nasal nucleus licenses a mid offglide; a plain one does not |
+| `viu`, `par.tiu` | `ci.u.men.to`, `mi.u.de.za` | `iu` is a diphthong only in the stressed syllable |
+| `flu.iu`, `pa.uis` | `flui.do` | a stressed `iu`/`ui` after a vowel is the diphthong, and the vowel before it stands alone |
 
 Rising sequences (`su.a`, `his.tó.ri.a`, `co.e.lho`) need no rule: Portuguese
 has no mid or low glides, so a vowel that is not `i`/`u` is always a
@@ -62,6 +64,18 @@ nucleus, and hiatus follows for free.
 Triphthongs need no rule either. In *quais* and *Uruguai* the leading glide
 is spelled inside the `qu`/`gu` onset, so layer 1 has already absorbed it,
 and what reaches layer 2 is a plain nucleus with one offglide.
+
+The last two rows depend on stress, so they run after the stress rules have
+read a first pass. Mateus & d'Andrade (1998, p. 18) list the falling
+diphthong [iw] only in a stressed syllable (*viu*). An unstressed `iu`, as in
+*miudeza*, is a glide before a vowel, and such glides "are syllable nuclei at
+the base level" (p. 20-21). The rule does not extend to `ui`, because the
+same table has a pre-stressed [uj] in *cuidado*. For the verb forms, AO90
+Base X 6 writes no accent on "os ditongos tónicos grafados iu e ui, quando
+precedidos de vogal: distraiu, instruiu, pauis", and Base XX 4 divides
+`flu-iu`. A first pass that reads *flui.u* leaves a stressed `u` alone after a
+vowel, which Base X 5 would accent. In a paroxytone, Base X 4 leaves that
+vowel unaccented, so *bai.u.ca* stays as it is.
 
 ## Layer 3: one principle for consonants
 
@@ -171,9 +185,15 @@ gives each.
 
 Some hiatus-or-diphthong choices are lexical. Mateus & d'Andrade (1998, p. 27)
 write that "the phonetic glides of the falling diphthongs are [-cons] segments
-and are lexically marked". Pre-tonic `ui` is the largest class:
-`flu.i.dez` and `a.lu.i.men.to` against `cui.da.do`. A stem entry for `flu`
-would also seize `flui.do`, so these words stay as known failures.
+and are lexically marked". Before the stress, `ai`, `au`, `ei`, `eu`, `oi` and
+`ui` are diphthongs in most words (`cui.da.do`, `sau.da.de`) and a hiatus in
+words whose base has a stressed hiatus (`ru.i.do.so` from *ruído*,
+`a.ba.u.lar` from *baú*) or a morpheme seam (`re.u.nir`, `a.lu.i.men.to`). The
+spelling drops the base's accent, so no rule on the letters can see it, and
+these words stay as known failures. A word that no rule reaches is listed in
+`EXCEPTIONS` in `silabificador/parser.py` with its source: `flu.i.dez`, whose
+base keeps the diphthong (`flui.do`), and `ad.le.ri.a.no`, from the surname
+Adler.
 
 Foreign onsets are not in the inventory. Where the gold has `sof.twa.re`, the
 engine writes `soft.wa.re`, because `tw` is not a Portuguese onset. A few
