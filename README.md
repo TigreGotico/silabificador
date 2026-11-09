@@ -137,13 +137,8 @@ python -m benchmark.report
 Silabificador is part of the [TigreGotico](https://github.com/TigreGotico)
 Portuguese phonetics toolchain, alongside:
 
-- [orthography2ipa](https://github.com/TigreGotico/orthography2ipa): its
-  `portuguese` extra installs silabificador and registers it as the Portuguese
-  plugin in the `orthography2ipa.syllabify` entry-point group.
-- [tugaphone](https://github.com/TigreGotico/tugaphone): depends on
-  silabificador and syllabifies through that orthography2ipa plugin.
+- [tugaphone](https://github.com/TigreGotico/tugaphone): depends on silabificador.
 - [bifonia](https://github.com/TigreGotico/bifonia)
-- [g2p_barranquenho](https://github.com/TigreGotico/g2p_barranquenho)
 
 ## Development
 
