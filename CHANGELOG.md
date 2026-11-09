@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.5a1](https://github.com/TigreGotico/silabificador/tree/2.1.5a1) (2026-11-09)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.4a1...2.1.5a1)
+
+**Merged pull requests:**
+
+- fix: let PRE-PALATAL outrank NASAL-OFFGLIDE \(mã.i.nha\) [\#31](https://github.com/TigreGotico/silabificador/pull/31) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [2.1.4a1](https://github.com/TigreGotico/silabificador/tree/2.1.4a1) (2026-11-09)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.3a1...2.1.4a1)
