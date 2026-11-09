@@ -26,7 +26,7 @@ from __future__ import annotations
 
 from typing import List, Sequence, Set
 
-from . import morphology, nucleus
+from . import morphology, nucleus, stress
 from .graphemes import Grapheme, tokenize
 from .phonotactics import is_complex_onset
 from .syllable import Syllable
@@ -34,6 +34,14 @@ from .syllable import Syllable
 #: Portuguese onsets hold at most two units (an obstruent and a liquid). ``qu``,
 #: ``gu``, ``ch``, ``lh``, ``nh`` are single units by the time they get here.
 MAX_ONSET = 2
+
+#: Words no rule reaches, each with its source. Read before any rule runs.
+EXCEPTIONS = {
+    # From the surname Adler (Ad-ler), so ``dl`` splits; Infopédia ad.le.ri.a.no.
+    "adleriano": "ad.le.ri.a.no",
+    # Its base flui.do keeps the diphthong; AO90 Base XX 4 divides "flu-idez".
+    "fluidez": "flu.i.dez",
+}
 
 
 def _onset_size(cluster: Sequence[Grapheme]) -> int:
@@ -83,6 +91,8 @@ def parse(word: str) -> List[Syllable]:
     units = tokenize(word)
     if not units:
         return []
+    if word in EXCEPTIONS:
+        return _listed(units, EXCEPTIONS[word])
 
     # Indices that a morpheme boundary forces to begin a syllable.
     hard = morphology.boundaries(word, units)
@@ -101,6 +111,35 @@ def parse(word: str) -> List[Syllable]:
         # syllable to find, and inventing one would only corrupt the word.
         return [Syllable.of(units)]
 
+    syllables = _assemble(units, groups, hard)
+    # The stress rules read the first pass, and the nucleus rules that depend on
+    # stress regroup it. The regrouping never moves the stress: it only touches
+    # a syllable that is not stressed, or a final one that stays stressed.
+    stressed = [s.stressed or s.secondary for s in stress.assign(syllables, word)]
+    regrouped = nucleus.by_stress(units, groups, stressed, hard)
+    if regrouped == groups:
+        return syllables
+    return _assemble(units, regrouped, hard)
+
+
+def _listed(units: Sequence[Grapheme], split: str) -> List[Syllable]:
+    """The syllables of a word in :data:`EXCEPTIONS`, from its listed split."""
+    syllables: List[Syllable] = []
+    start = 0
+    for piece in split.split("."):
+        end, length = start, 0
+        while length < len(piece):
+            length += len(units[end])
+            end += 1
+        vowels = [i for i in range(start, end) if units[i].is_vowel]
+        syllables.append(Syllable.of(units[start:end], nucleus=vowels or None))
+        start = end
+    return syllables
+
+
+def _assemble(units: Sequence[Grapheme], groups: Sequence[nucleus.Group],
+              hard: Set[int]) -> List[Syllable]:
+    """Place every consonant around the nuclei in ``groups``."""
     syllables: List[Syllable] = []
     start = 0  # first unit not yet placed
     for position, group in enumerate(groups):

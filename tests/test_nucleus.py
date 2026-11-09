@@ -118,3 +118,51 @@ def test_onset_glides_never_reach_this_layer(word, expected):
     # That is why "quais" needs no triphthong rule: it arrives here as a plain
     # nucleus plus one offglide.
     assert syllabify(word) == expected
+
+
+@pytest.mark.parametrize("word,expected", [
+    ("fluiu", ["flu", "iu"]),               # AO90 Base XX 4 "flu-iu"
+    ("distraiu", ["dis", "tra", "iu"]),     # AO90 Base X 6
+    ("instruiu", ["ins", "tru", "iu"]),     # AO90 Base X 6
+    ("pauis", ["pa", "uis"]),               # AO90 Base X 6
+    ("possuiu", ["pos", "su", "iu"]),       # en.wiktionary, pt.wiktionary
+])
+def test_a_stressed_iu_or_ui_after_a_vowel_is_the_diphthong(word, expected):
+    # STRESSED-IU-UI. The stressed diphthong takes no accent after a vowel (Base X
+    # 6); read as flui.u, the final u would be a stressed vowel in hiatus, which
+    # Base X 5 accents (tuiuiú).
+    assert syllabify(word) == expected
+
+
+@pytest.mark.parametrize("word,expected", [
+    ("baiuca", ["bai", "u", "ca"]),         # AO90 Base X 4
+    ("boiuno", ["boi", "u", "no"]),         # AO90 Base X 4
+    ("partiu", ["par", "tiu"]),             # C&C p. 83 "par-tiu"
+    ("viu", ["viu"]),                       # Mateus & d'Andrade 1998 p. 18
+    ("maláui", ["ma", "láu", "i"]),         # pt.wiktionary
+])
+def test_the_stressed_rule_leaves_a_paroxytone_and_a_plain_diphthong_alone(word, expected):
+    # Base X 4: in a paroxytone the stressed vowel after a diphthong stands alone
+    # unaccented, so only a final syllable is regrouped. Base X 6 names tonic
+    # diphthongs only: in maláui the accent puts the stress on láu, and the final
+    # i is left alone.
+    assert syllabify(word) == expected
+
+
+@pytest.mark.parametrize("word,expected", [
+    ("ciumento", ["ci", "u", "men", "to"]),           # Infopédia, pt.wiktionary
+    ("amiudar", ["a", "mi", "u", "dar"]),             # Infopédia, pt.wiktionary
+    ("poliuretano", ["po", "li", "u", "re", "ta", "no"]),  # Infopédia, pt.wiktionary
+    ("abiulense", ["a", "bi", "u", "len", "se"]),     # Infopédia, pt.wiktionary
+    ("vinícius", ["vi", "ní", "ci", "us"]),           # en.wiktionary, pt.wiktionary
+])
+def test_iu_outside_the_stressed_syllable_is_a_hiatus(word, expected):
+    # UNSTRESSED-IU. Mateus & d'Andrade (1998) give [iw] as stressed only, and the
+    # unstressed iu of miudeza as glide + vowel, two nuclei at the base level.
+    assert syllabify(word) == expected
+
+
+def test_the_unstressed_rule_does_not_reach_ui():
+    # Mateus & d'Andrade (1998) p. 18 list a pre-stressed [uj] in cuidado.
+    assert syllabify("cuidado") == ["cui", "da", "do"]
+    assert syllabify("cuidar") == ["cui", "dar"]

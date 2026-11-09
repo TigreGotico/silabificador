@@ -7,7 +7,8 @@ loads no model.
 ## Features
 
 - Syllabification for Portuguese, derived from the licit onset inventory and
-  the diphthong/hiatus rules, not from a table of special cases.
+  the diphthong/hiatus rules. A short list holds only the words no rule
+  reaches, each with its source.
 - Stress, primary and secondary, read from the orthography that encodes it.
 - Syllable structure, not just strings: onset, glide, nucleus, coda.
 - The output always reconstructs the input. Hyphens, spaces, and apostrophes
@@ -89,35 +90,37 @@ correct when it is one of them.
 
 | tier | what it holds | accepted match | |
 |---|---|---|---|
-| edge cases | cited splits from grammars and dictionaries, `tests/edge_cases.json` | 97.37% | 74 / 76 |
-| agreement, 3 sources | all three human sources give the split | 99.86% | 18,265 / 18,290 |
-| agreement, 2 sources | two human sources give the split | 99.60% | 29,904 / 30,025 |
-| **agreement (gold)** | the two rows above | **99.70%** | 48,169 / 48,315 |
-| Infopédia only | one human source | 99.12% | 59,792 / 60,325 |
-| Wiktionary only | one human source | 97.83% | 66,376 / 67,850 |
-| conflict | human sources share no split; any of them is accepted | 98.80% | 740 / 749 |
-| generated: Portal | not gold | 99.78% | 51,880 / 51,996 |
+| edge cases | cited splits from grammars and dictionaries, `tests/edge_cases.json` | 100.00% | 88 / 88 |
+| agreement, 3 sources | all three human sources give the split | 99.87% | 18,266 / 18,290 |
+| agreement, 2 sources | two human sources give the split | 99.68% | 29,928 / 30,025 |
+| **agreement (gold)** | the two rows above | **99.75%** | 48,194 / 48,315 |
+| Infopédia only | one human source | 99.16% | 59,821 / 60,325 |
+| Wiktionary only | one human source | 97.93% | 66,443 / 67,850 |
+| conflict | human sources share no split; any of them is accepted | 98.93% | 741 / 749 |
+| generated: Portal | not gold | 99.72% | 51,852 / 51,996 |
 
 All 184,501 scoreable words reconstruct exactly.
 
-The engine scores highest on the Portal. The rules were first tuned on the
-words where Infopédia and the Portal agree, so this number shows how close the
-engine is to one rule system, not how correct it is.
+The rules were first tuned on the words where Infopédia and the Portal agree,
+so the Portal score shows how close the engine is to one rule system, not how
+correct it is. Where a cited rule and the Portal disagree, the rule wins: the
+Portal joins every `iu` (`miu.de.za`), and the engine follows the human sources
+(`mi.u.de.za`).
 
 The edge cases cover the classes where the sources disagree: medial clusters
 (`ap.to` and `a.pto`), prefix seams (`sub.li.nhar`, `a.brup.to` and
 `ab.rup.to`), hiatus and diphthong (`gló.ri.a` and `gló.ria`), the productive
 prefixes, the hyphenated prefixes of the Agreement (`ab-rogar`, `sub-reino`),
-and words where one source is wrong. Every accepted split names its source.
-Two cases are known failures: `flu.i.dez` and `flu.iu`.
+the hiatus that depends on stress (`flu.iu`, `ci.u.men.to`), and words where
+one source is wrong. Every accepted split names its source.
 
 Stress is measured against a gold the engine cannot see: the lexicon's IPA
 transcriptions, which mark stress with `ˈ`. Nothing in the engine reads IPA.
 
 | | | |
 |---|---|---|
-| stress accuracy | 99.83% | 43,818 / 43,892 |
-| gold self-check | 99.75% | 4,712 / 4,724 |
+| stress accuracy | 99.84% | 43,790 / 43,862 |
+| gold self-check | 99.79% | 4,709 / 4,719 |
 
 The self-check gives a reason to trust the gold: on a simple word, a written
 accent is the stress, by definition of the spelling rules, so the IPA-derived

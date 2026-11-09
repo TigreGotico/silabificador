@@ -51,10 +51,33 @@ not exceptions to this. Their glide is spelled inside the onset (``qu``, ``gu``)
 and layer 1 has already absorbed it, so it never reaches this layer. That is
 also why triphthongs need no rule: by the time *quais* arrives here, it is a
 plain nucleus plus one offglide.
+
+Two more rules need to know which syllable is stressed, so they run in a second
+pass, :func:`by_stress`, after the stress module has read the first one:
+
+``STRESSED-IU-UI``
+    A stressed ``iu`` or ``ui`` after another vowel is the diphthong, and the
+    vowel before it stands alone: flu.iu, dis.tra.iu, pa.uis, not *flui.u*. AO90
+    Base X 6: "Prescinde-se do acento agudo nos ditongos tónicos grafados iu e
+    ui, quando precedidos de vogal: distraiu, instruiu, pauis"; Base XX 4 divides
+    "flu-iu". The first pass reads *flui.u*, which makes the final ``u`` a
+    stressed vowel in hiatus after a diphthong, and Base X 5 would then require
+    an accent on it (*tuiuiú*). Only a final syllable, alone or before ``s``,
+    qualifies: in a paroxytone, Base X 4 leaves the lone vowel unaccented after a
+    diphthong, and *bai.u.ca* is right as it stands.
+
+``UNSTRESSED-IU``
+    ``iu`` outside the stressed syllable is two nuclei: mi.u.de.za, ci.u.men.to,
+    vi.ní.ci.us. Mateus & d'Andrade (1998) list the falling diphthong [iw] among
+    the stressed diphthongs only (p. 18, ex. 5: *viu*). They give the unstressed
+    ``iu`` of *miudeza* as a glide before a vowel, [ju] (p. 20, ex. 8b), and such
+    glides, "even if they are perceived at the phonetic level as glides [...],
+    are syllable nuclei at the base level" (p. 21). The rule does not extend to
+    ``ui``: the same table lists a pre-stressed [uj] in *cuidado* (p. 18, ex. 5b).
 """
 from __future__ import annotations
 
-from typing import List, Sequence
+from typing import List, Sequence, Set
 
 from .graphemes import Grapheme
 from .phonotactics import (GLIDE_CAPABLE, HIATUS_BEFORE, HIATUS_CODAS,
@@ -126,3 +149,33 @@ def resolve(units: Sequence[Grapheme], start: int, end: int) -> List[Group]:
 def _next_units(units: Sequence[Grapheme], run_end: int) -> str:
     nxt = run_end + 1
     return units[nxt].text if nxt < len(units) else ""
+
+
+def by_stress(units: Sequence[Grapheme], groups: Sequence[Group],
+              stressed: Sequence[bool], hard: Set[int]) -> List[Group]:
+    """Regroup ``groups`` once ``stressed[k]`` says whether group ``k`` is stressed.
+
+    ``hard`` holds the morpheme boundaries, which no group may straddle.
+    """
+    regrouped: List[Group] = []
+    for group, is_stressed in zip(groups, stressed):
+        head = group[0]
+        previous = regrouped[-1] if regrouped else []
+        glide = units[head - 1].text if head else ""
+        if (is_stressed and len(group) == 1 and units[head].text in ("i", "u")
+                and previous and previous[-1] == head - 1
+                and glide in ("i", "u") and glide != units[head].text
+                and head not in hard
+                and all(unit.text == "s" for unit in units[head + 1:])):
+            # STRESSED-IU-UI: flu.iu, dis.tra.iu, pa.uis
+            if len(previous) > 1:
+                previous.pop()
+            else:
+                regrouped.pop()
+            regrouped.append([head - 1, head])
+        elif (not is_stressed and len(group) == 2
+                and units[head].text == "i" and units[group[1]].text == "u"):
+            regrouped.extend([[head], [group[1]]])  # UNSTRESSED-IU: mi.u.de.za
+        else:
+            regrouped.append(list(group))
+    return regrouped

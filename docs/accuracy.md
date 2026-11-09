@@ -14,14 +14,14 @@ own tier, never as gold.
 
 | set | accepted match | |
 |---|---|---|
-| edge cases (cited) | 97.37% | 74 / 76 |
-| agreement, 3 sources | 99.86% | 18,265 / 18,290 |
-| agreement, 2 sources | 99.60% | 29,904 / 30,025 |
-| agreement (gold) | 99.70% | 48,169 / 48,315 |
-| infopedia-only | 99.12% | 59,792 / 60,325 |
-| wiktionary-only | 97.83% | 66,376 / 67,850 |
-| conflict (any human split) | 98.80% | 740 / 749 |
-| generated: Portal | 99.78% | 51,880 / 51,996 |
+| edge cases (cited) | 100.00% | 88 / 88 |
+| agreement, 3 sources | 99.87% | 18,266 / 18,290 |
+| agreement, 2 sources | 99.68% | 29,928 / 30,025 |
+| agreement (gold) | 99.75% | 48,194 / 48,315 |
+| infopedia-only | 99.16% | 59,821 / 60,325 |
+| wiktionary-only | 97.93% | 66,443 / 67,850 |
+| conflict (any human split) | 98.93% | 741 / 749 |
+| generated: Portal | 99.72% | 51,852 / 51,996 |
 
 184,501 of 184,501 scoreable words reconstruct exactly.
 
@@ -29,8 +29,8 @@ own tier, never as gold.
 
 | | | |
 |---|---|---|
-| stress accuracy | 99.83% | 43,818 / 43,892 |
-| gold self-check | 99.75% | 4,712 / 4,724 |
+| stress accuracy | 99.84% | 43,790 / 43,862 |
+| gold self-check | 99.79% | 4,709 / 4,719 |
 
 
 ---

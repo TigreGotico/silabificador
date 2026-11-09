@@ -20,7 +20,7 @@ from silabificador import syllabify
 DATA = json.loads((pathlib.Path(__file__).parent / "edge_cases.json").read_text(encoding="utf-8"))
 ENTRIES = DATA["entries"]
 CLASSES = ("medial cluster", "prefix seam", "productive prefix", "hiatus vs diphthong",
-           "AO90 hyphen", "error in one source")
+           "AO90 hyphen", "error in one source", "stress and hiatus")
 
 
 def _params():

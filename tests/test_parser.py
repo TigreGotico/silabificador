@@ -74,3 +74,18 @@ def test_analyze_and_syllabify_agree():
 def test_class_wrapper():
     assert Syllabifier().syllabify("computador") == ["com", "pu", "ta", "dor"]
     assert Syllabifier().analyze("casa")[0].onset == "c"
+
+
+@pytest.mark.parametrize("word,expected,stressed", [
+    ("adleriano", ["ad", "le", "ri", "a", "no"], "a"),   # Infopédia; from the surname Adler
+    ("fluidez", ["flu", "i", "dez"], "dez"),             # AO90 Base XX 4 "flu-idez"
+])
+def test_a_listed_exception_is_read_before_the_rules(word, expected, stressed):
+    assert syllabify(word) == expected
+    # The listed split is still a word: the stress rules run on it as usual.
+    assert [s.surface for s in analyze(word) if s.stressed] == [stressed]
+
+
+def test_a_listed_exception_does_not_reach_its_relatives():
+    # fluido keeps its root diphthong (Infopédia, en.wiktionary, pt.wiktionary).
+    assert syllabify("fluido") == ["flui", "do"]
