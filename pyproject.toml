@@ -31,5 +31,8 @@ Repository = "https://github.com/TigreGotico/silabificador"
 where = ["."]
 include = ["silabificador*"]
 
+[tool.setuptools.package-data]
+silabificador = ["data/*.csv"]
+
 [tool.setuptools.dynamic]
 version = { attr = "silabificador.version.VERSION_STR" }

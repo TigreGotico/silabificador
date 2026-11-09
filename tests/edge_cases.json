@@ -1602,6 +1602,803 @@
    ]
   },
   {
+   "word": "arruinar",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "ar.ru.i.nar",
+     "sources": [
+      "AO90 Base X 1",
+      "Infopédia",
+      "en.wiktionary",
+      "pt.wiktionary",
+      "Portal"
+     ],
+     "reason": "the base ruína has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ]
+  },
+  {
+   "word": "ruidoso",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "ru.i.do.so",
+     "sources": [
+      "AO90 Base X 1",
+      "Infopédia",
+      "pt.wiktionary"
+     ],
+     "reason": "the base ruído has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ],
+   "rejected": [
+    {
+     "split": "rui.do.so",
+     "sources": [
+      "en.wiktionary",
+      "Portal"
+     ],
+     "reason": "a falling diphthong, against the hiatus of the base ruído that the other human sources keep"
+    }
+   ]
+  },
+  {
+   "word": "proibir",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "pro.i.bir",
+     "sources": [
+      "AO90 Base X 1",
+      "Infopédia",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "the base proíbe has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ],
+   "rejected": [
+    {
+     "split": "proi.bir",
+     "sources": [
+      "Portal"
+     ],
+     "reason": "a falling diphthong, against the hiatus of the base proíbe that the other human sources keep"
+    }
+   ]
+  },
+  {
+   "word": "coibir",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "co.i.bir",
+     "sources": [
+      "AO90 Base X 1",
+      "Infopédia",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "the base coíbe has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ],
+   "rejected": [
+    {
+     "split": "coi.bir",
+     "sources": [
+      "Portal"
+     ],
+     "reason": "a falling diphthong, against the hiatus of the base coíbe that the other human sources keep"
+    }
+   ]
+  },
+  {
+   "word": "enraizar",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "en.ra.i.zar",
+     "sources": [
+      "AO90 Base X 1",
+      "Infopédia",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "the base raízes has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ],
+   "rejected": [
+    {
+     "split": "en.rai.zar",
+     "sources": [
+      "Portal"
+     ],
+     "reason": "a falling diphthong, against the hiatus of the base raízes that the other human sources keep"
+    }
+   ]
+  },
+  {
+   "word": "faiscar",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "fa.is.car",
+     "sources": [
+      "AO90 Base X 1",
+      "Infopédia",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "the base faísca has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ],
+   "rejected": [
+    {
+     "split": "fais.car",
+     "sources": [
+      "Portal"
+     ],
+     "reason": "a falling diphthong, against the hiatus of the base faísca that the other human sources keep"
+    }
+   ]
+  },
+  {
+   "word": "gauchismo",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "ga.u.chis.mo",
+     "sources": [
+      "AO90 Base X 1",
+      "Infopédia",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "the base gaúcho has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ]
+  },
+  {
+   "word": "heroicidade",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "he.ro.i.ci.da.de",
+     "sources": [
+      "AO90 Base X 1",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "the base heroísmo has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ],
+   "rejected": [
+    {
+     "split": "he.roi.ci.da.de",
+     "sources": [
+      "Infopédia",
+      "Portal"
+     ],
+     "reason": "a falling diphthong, against the hiatus of the base heroísmo that the other human sources keep"
+    }
+   ]
+  },
+  {
+   "word": "deificar",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "de.i.fi.car",
+     "sources": [
+      "AO90 Base X 1",
+      "Infopédia",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "the base deísmo has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ],
+   "rejected": [
+    {
+     "split": "dei.fi.car",
+     "sources": [
+      "Portal"
+     ],
+     "reason": "a falling diphthong, against the hiatus of the base deísmo that the other human sources keep"
+    }
+   ]
+  },
+  {
+   "word": "deicida",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "de.i.ci.da",
+     "sources": [
+      "AO90 Base X 1",
+      "Infopédia",
+      "pt.wiktionary"
+     ],
+     "reason": "the base deísmo has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ],
+   "rejected": [
+    {
+     "split": "dei.ci.da",
+     "sources": [
+      "Portal"
+     ],
+     "reason": "a falling diphthong, against the hiatus of the base deísmo that the other human sources keep"
+    }
+   ]
+  },
+  {
+   "word": "sanduicheira",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "san.du.i.chei.ra",
+     "sources": [
+      "AO90 Base X 1",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "the base sanduíche has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ],
+   "rejected": [
+    {
+     "split": "san.dui.chei.ra",
+     "sources": [
+      "Infopédia"
+     ],
+     "reason": "a falling diphthong, against the hiatus of the base sanduíche that the other human sources keep"
+    }
+   ]
+  },
+  {
+   "word": "saideira",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "sa.i.dei.ra",
+     "sources": [
+      "AO90 Base X 1",
+      "Infopédia",
+      "pt.wiktionary"
+     ],
+     "reason": "the base saída has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ]
+  },
+  {
+   "word": "suinicultura",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "su.i.ni.cul.tu.ra",
+     "sources": [
+      "AO90 Base X 1",
+      "Mateus & d'Andrade 1998 p. 20",
+      "en.wiktionary",
+      "pt.wiktionary",
+      "Portal"
+     ],
+     "reason": "the base suíno has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus (Mateus & d'Andrade 1998 p. 20 ex. 8b: [wi] in suinicultura, glide + vowel)"
+    }
+   ]
+  },
+  {
+   "word": "cocainómano",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "co.ca.i.nó.ma.no",
+     "sources": [
+      "AO90 Base X 1",
+      "Infopédia",
+      "en.wiktionary"
+     ],
+     "reason": "the base cocaína has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ],
+   "rejected": [
+    {
+     "split": "co.cai.nó.ma.no",
+     "sources": [
+      "Portal"
+     ],
+     "reason": "a falling diphthong, against the hiatus of the base cocaína that the other human sources keep"
+    }
+   ]
+  },
+  {
+   "word": "jesuitismo",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "je.su.i.tis.mo",
+     "sources": [
+      "AO90 Base X 1",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "the base jesuíta has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ]
+  },
+  {
+   "word": "judaizar",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "ju.da.i.zar",
+     "sources": [
+      "AO90 Base X 1",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "the base judaísmo has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ],
+   "rejected": [
+    {
+     "split": "ju.dai.zar",
+     "sources": [
+      "Portal"
+     ],
+     "reason": "a falling diphthong, against the hiatus of the base judaísmo that the other human sources keep"
+    }
+   ]
+  },
+  {
+   "word": "tuitar",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "tu.i.tar",
+     "sources": [
+      "AO90 Base X 1",
+      "Infopédia",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "the base tuíte has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ]
+  },
+  {
+   "word": "tuiteiro",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "tu.i.tei.ro",
+     "sources": [
+      "AO90 Base X 1",
+      "Infopédia",
+      "pt.wiktionary"
+     ],
+     "reason": "the base tuíte has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ]
+  },
+  {
+   "word": "itajaiense",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "i.ta.ja.i.en.se",
+     "sources": [
+      "AO90 Base X 1",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "the base Itajaí has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ]
+  },
+  {
+   "word": "itaiópolis",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "i.ta.i.ó.po.lis",
+     "sources": [
+      "AO90 Base X 1",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "the base Itaí has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ]
+  },
+  {
+   "word": "egoistamente",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "e.go.is.ta.men.te",
+     "sources": [
+      "AO90 Base X 1",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "the base egoísta has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ]
+  },
+  {
+   "word": "altruistamente",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "al.tru.is.ta.men.te",
+     "sources": [
+      "AO90 Base X 1",
+      "Infopédia",
+      "pt.wiktionary"
+     ],
+     "reason": "the base altruísta has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ]
+  },
+  {
+   "word": "carnaubal",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "car.na.u.bal",
+     "sources": [
+      "AO90 Base X 1",
+      "Infopédia",
+      "pt.wiktionary"
+     ],
+     "reason": "the base carnaúba has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ]
+  },
+  {
+   "word": "agraudar",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "a.gra.u.dar",
+     "sources": [
+      "AO90 Base X 1",
+      "Infopédia",
+      "pt.wiktionary"
+     ],
+     "reason": "the base graúdo has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ]
+  },
+  {
+   "word": "pituitário",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "pi.tu.i.tá.ri.o",
+     "sources": [
+      "AO90 Base X 1",
+      "Infopédia",
+      "en.wiktionary"
+     ],
+     "reason": "the base pituíta has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ],
+   "rejected": [
+    {
+     "split": "pi.tui.tá.ri.o",
+     "sources": [
+      "Portal"
+     ],
+     "reason": "a falling diphthong, against the hiatus of the base pituíta that the other human sources keep"
+    }
+   ]
+  },
+  {
+   "word": "açaizeiro",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "a.ça.i.zei.ro",
+     "sources": [
+      "AO90 Base X 1",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "the base açaí has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ],
+   "rejected": [
+    {
+     "split": "a.çai.zei.ro",
+     "sources": [
+      "Infopédia"
+     ],
+     "reason": "a falling diphthong, against the hiatus of the base açaí that the other human sources keep"
+    }
+   ]
+  },
+  {
+   "word": "paraisópolis",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "pa.ra.i.só.po.lis",
+     "sources": [
+      "AO90 Base X 1",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "the base paraíso has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ]
+  },
+  {
+   "word": "alaudar",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "a.la.u.dar",
+     "sources": [
+      "AO90 Base X 1",
+      "Infopédia",
+      "en.wiktionary"
+     ],
+     "reason": "the base alaúde has a stressed i/u in hiatus, which AO90 Base X 1 accents; the derivative moves the stress, drops the accent and keeps the hiatus"
+    }
+   ]
+  },
+  {
+   "word": "heroico",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "he.roi.co",
+     "sources": [
+      "Infopédia",
+      "en.wiktionary",
+      "pt.wiktionary",
+      "Portal"
+     ],
+     "reason": "heroico has the diphthong oi in every source; only the heroísmo stem in heroicid- takes the hiatus"
+    }
+   ]
+  },
+  {
+   "word": "druida",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "drui.da",
+     "sources": [
+      "Infopédia",
+      "en.wiktionary",
+      "pt.wiktionary",
+      "Portal"
+     ],
+     "reason": "no accented base; every source writes drui.da, so the ruído stem is anchored on ruidoso, not ruid"
+    }
+   ]
+  },
+  {
+   "word": "intuito",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "in.tui.to",
+     "sources": [
+      "Infopédia",
+      "en.wiktionary",
+      "pt.wiktionary",
+      "Portal"
+     ],
+     "reason": "Latin intuitus; every source writes in.tui.to, so the tuíte stem is anchored on tuitar and tuitei, not tuit"
+    }
+   ]
+  },
+  {
+   "word": "fortuito",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "for.tui.to",
+     "sources": [
+      "Infopédia",
+      "en.wiktionary",
+      "pt.wiktionary",
+      "Portal"
+     ],
+     "reason": "Latin fortuitus; every source writes for.tui.to, so the tuíte stem is anchored on tuitar and tuitei, not tuit"
+    }
+   ]
+  },
+  {
+   "word": "fideicomisso",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "fi.dei.co.mis.so",
+     "sources": [
+      "Infopédia",
+      "en.wiktionary",
+      "pt.wiktionary",
+      "Portal"
+     ],
+     "reason": "Latin fideicommissum; every source writes fi.dei.co.mis.so, so the deísmo stem is anchored on deicid and deif, not deic"
+    }
+   ]
+  },
+  {
+   "word": "alauda",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "a.lau.da",
+     "sources": [
+      "Infopédia"
+     ],
+     "reason": "Latin alauda, lark, not alaúde; Infopédia writes a.lau.da, so the alaúde stem is anchored on alaudar and alaudi"
+    }
+   ]
+  },
+  {
+   "word": "mãinha",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "mã.i.nha",
+     "sources": [
+      "AO90 Base X 2",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "AO90 Base X 2: the stressed i or u after a vowel 'constitui sílaba com a consoante seguinte, como é o caso de nh': bainha, moinho, rainha. The rule does not depend on whether the vowel before it is nasal."
+    }
+   ]
+  },
+  {
+   "word": "ingenuidade",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "in.ge.nu.i.da.de",
+     "sources": [
+      "Mateus & d'Andrade 1998 p. 20",
+      "Infopédia",
+      "en.wiktionary",
+      "pt.wiktionary",
+      "Portal"
+     ],
+     "reason": "from ingénuo. The u is a nucleus in the base adjective in -uo or -ue: Mateus & d'Andrade 1998 p. 20 write that a [+high] segment before a [-high] vowel 'is perceived by Portuguese speakers as syllabic, that is, a vowel and not a glide', and p. 21 that such segments 'are syllable nuclei at the base level'. The suffix -idade replaces the final vowel and keeps the u, as AO90 Base XX 4 divides 'flu-idez'."
+    }
+   ]
+  },
+  {
+   "word": "assiduidade",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "as.si.du.i.da.de",
+     "sources": [
+      "Mateus & d'Andrade 1998 p. 20",
+      "Infopédia",
+      "en.wiktionary",
+      "pt.wiktionary",
+      "Portal"
+     ],
+     "reason": "from assíduo. The u is a nucleus in the base adjective in -uo or -ue: Mateus & d'Andrade 1998 p. 20 write that a [+high] segment before a [-high] vowel 'is perceived by Portuguese speakers as syllabic, that is, a vowel and not a glide', and p. 21 that such segments 'are syllable nuclei at the base level'. The suffix -idade replaces the final vowel and keeps the u, as AO90 Base XX 4 divides 'flu-idez'."
+    }
+   ]
+  },
+  {
+   "word": "anuidade",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "a.nu.i.da.de",
+     "sources": [
+      "Mateus & d'Andrade 1998 p. 20",
+      "Infopédia",
+      "en.wiktionary",
+      "Portal"
+     ],
+     "reason": "from anual, Latin annuus. The u is a nucleus in the base adjective in -uo or -ue: Mateus & d'Andrade 1998 p. 20 write that a [+high] segment before a [-high] vowel 'is perceived by Portuguese speakers as syllabic, that is, a vowel and not a glide', and p. 21 that such segments 'are syllable nuclei at the base level'. The suffix -idade replaces the final vowel and keeps the u, as AO90 Base XX 4 divides 'flu-idez'."
+    }
+   ]
+  },
+  {
+   "word": "arduidade",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "ar.du.i.da.de",
+     "sources": [
+      "Mateus & d'Andrade 1998 p. 20",
+      "Infopédia",
+      "en.wiktionary"
+     ],
+     "reason": "from árduo. The u is a nucleus in the base adjective in -uo or -ue: Mateus & d'Andrade 1998 p. 20 write that a [+high] segment before a [-high] vowel 'is perceived by Portuguese speakers as syllabic, that is, a vowel and not a glide', and p. 21 that such segments 'are syllable nuclei at the base level'. The suffix -idade replaces the final vowel and keeps the u, as AO90 Base XX 4 divides 'flu-idez'."
+    }
+   ]
+  },
+  {
+   "word": "inocuidade",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "i.no.cu.i.da.de",
+     "sources": [
+      "Mateus & d'Andrade 1998 p. 20",
+      "Infopédia",
+      "en.wiktionary",
+      "Portal"
+     ],
+     "reason": "from inócuo. The u is a nucleus in the base adjective in -uo or -ue: Mateus & d'Andrade 1998 p. 20 write that a [+high] segment before a [-high] vowel 'is perceived by Portuguese speakers as syllabic, that is, a vowel and not a glide', and p. 21 that such segments 'are syllable nuclei at the base level'. The suffix -idade replaces the final vowel and keeps the u, as AO90 Base XX 4 divides 'flu-idez'."
+    }
+   ]
+  },
+  {
+   "word": "vacuidade",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "va.cu.i.da.de",
+     "sources": [
+      "Mateus & d'Andrade 1998 p. 20",
+      "Infopédia",
+      "pt.wiktionary"
+     ],
+     "reason": "from vácuo. The u is a nucleus in the base adjective in -uo or -ue: Mateus & d'Andrade 1998 p. 20 write that a [+high] segment before a [-high] vowel 'is perceived by Portuguese speakers as syllabic, that is, a vowel and not a glide', and p. 21 that such segments 'are syllable nuclei at the base level'. The suffix -idade replaces the final vowel and keeps the u, as AO90 Base XX 4 divides 'flu-idez'."
+    }
+   ],
+   "rejected": [
+    {
+     "split": "va.cui.da.de",
+     "sources": [
+      "Portal"
+     ],
+     "reason": "the Portal is generated by rule"
+    }
+   ]
+  },
+  {
+   "word": "ambiguidade",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "am.bi.gui.da.de",
+     "sources": [
+      "AO90 Base XX 5",
+      "Infopédia",
+      "en.wiktionary",
+      "pt.wiktionary",
+      "Portal"
+     ],
+     "reason": "AO90 Base XX 5: gu 'nunca se separam da vogal ou ditongo imediato'; the u after g is part of the onset, so the -idade seam does not apply"
+    }
+   ]
+  },
+  {
+   "word": "contiguidade",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "con.ti.gui.da.de",
+     "sources": [
+      "AO90 Base XX 5",
+      "Infopédia",
+      "en.wiktionary",
+      "pt.wiktionary",
+      "Portal"
+     ],
+     "reason": "AO90 Base XX 5: gu 'nunca se separam da vogal ou ditongo imediato'; the u after g is part of the onset, so the -idade seam does not apply"
+    }
+   ]
+  },
+  {
    "word": "alzheimer",
    "class": "medial cluster",
    "accepted": [

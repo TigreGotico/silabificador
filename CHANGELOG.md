@@ -1,5 +1,29 @@
 # Changelog
 
+## [2.1.6a1](https://github.com/TigreGotico/silabificador/tree/2.1.6a1) (2026-11-09)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.5a1...2.1.6a1)
+
+**Merged pull requests:**
+
+- fix: keep the u of an -uo adjective as a nucleus before -idade [\#32](https://github.com/TigreGotico/silabificador/pull/32) ([JarbasAl](https://github.com/JarbasAl))
+
+## [2.1.5a1](https://github.com/TigreGotico/silabificador/tree/2.1.5a1) (2026-11-09)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.4a1...2.1.5a1)
+
+**Merged pull requests:**
+
+- fix: let PRE-PALATAL outrank NASAL-OFFGLIDE \(mã.i.nha\) [\#31](https://github.com/TigreGotico/silabificador/pull/31) ([JarbasAl](https://github.com/JarbasAl))
+
+## [2.1.4a1](https://github.com/TigreGotico/silabificador/tree/2.1.4a1) (2026-11-09)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.3a1...2.1.4a1)
+
+**Merged pull requests:**
+
+- fix: keep the hiatus that a derivative inherits from an accented base [\#30](https://github.com/TigreGotico/silabificador/pull/30) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [2.1.3a1](https://github.com/TigreGotico/silabificador/tree/2.1.3a1) (2026-11-09)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a5...2.1.3a1)

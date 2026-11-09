@@ -35,14 +35,6 @@ from .syllable import Syllable
 #: ``gu``, ``ch``, ``lh``, ``nh`` are single units by the time they get here.
 MAX_ONSET = 2
 
-#: Words no rule reaches, each with its source. Read before any rule runs.
-EXCEPTIONS = {
-    # From the surname Adler (Ad-ler), so ``dl`` splits; Infopédia ad.le.ri.a.no.
-    "adleriano": "ad.le.ri.a.no",
-    # Its base flui.do keeps the diphthong; AO90 Base XX 4 divides "flu-idez".
-    "fluidez": "flu.i.dez",
-}
-
 
 def _onset_size(cluster: Sequence[Grapheme]) -> int:
     """How many of ``cluster``'s trailing units the next syllable may claim."""
@@ -91,9 +83,6 @@ def parse(word: str) -> List[Syllable]:
     units = tokenize(word)
     if not units:
         return []
-    if word in EXCEPTIONS:
-        return _listed(units, EXCEPTIONS[word])
-
     # Indices that a morpheme boundary forces to begin a syllable.
     hard = morphology.boundaries(word, units)
 
@@ -120,21 +109,6 @@ def parse(word: str) -> List[Syllable]:
     if regrouped == groups:
         return syllables
     return _assemble(units, regrouped, hard)
-
-
-def _listed(units: Sequence[Grapheme], split: str) -> List[Syllable]:
-    """The syllables of a word in :data:`EXCEPTIONS`, from its listed split."""
-    syllables: List[Syllable] = []
-    start = 0
-    for piece in split.split("."):
-        end, length = start, 0
-        while length < len(piece):
-            length += len(units[end])
-            end += 1
-        vowels = [i for i in range(start, end) if units[i].is_vowel]
-        syllables.append(Syllable.of(units[start:end], nucleus=vowels or None))
-        start = end
-    return syllables
 
 
 def _assemble(units: Sequence[Grapheme], groups: Sequence[nucleus.Group],
