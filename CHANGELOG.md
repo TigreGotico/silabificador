@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.6a1](https://github.com/TigreGotico/silabificador/tree/2.1.6a1) (2026-11-09)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.5a1...2.1.6a1)
+
+**Merged pull requests:**
+
+- fix: keep the u of an -uo adjective as a nucleus before -idade [\#32](https://github.com/TigreGotico/silabificador/pull/32) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [2.1.5a1](https://github.com/TigreGotico/silabificador/tree/2.1.5a1) (2026-11-09)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.4a1...2.1.5a1)
