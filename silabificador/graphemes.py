@@ -64,8 +64,13 @@ def _u_is_mute(word: str, index: int) -> bool:
     A ``u`` followed by a consonant is a plain vowel and keeps its nucleus --
     which is the whole difference between *a.gu.do* and *guer.ra*, and the
     reason this decision cannot be made by string replacement.
+
+    The pre-1990 trema marks the same ``u`` as pronounced (*agüentar*,
+    *qüinqüenal*). It is still a glide in the onset, never a nucleus: AO90 Base
+    XX 5 keeps ``gu`` and ``qu`` with the following vowel whether the ``u`` is
+    pronounced or not.
     """
-    if word[index] != "u":
+    if word[index] not in "uü":
         return False
     nxt = index + 1
     return nxt < len(word) and word[nxt] in VOWELS

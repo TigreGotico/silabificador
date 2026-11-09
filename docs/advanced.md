@@ -103,6 +103,12 @@ the ordinary rules then derive `sub.lo.car`. One `loc` entry covers
 *sublocar, sublocação, sublocatário, sublocador*, including words nobody
 tested.
 
+Base XX 1 of the 1990 Orthographic Agreement names this class, "vários
+compostos cujos prefixos terminam em b ou d: ab-legação, ad-ligar, sub-lunar,
+etc.", but does not list it. An entry joins the lexicon only when a source
+writes the prefix boundary for a word with that stem. *subloja* and
+*sublanço* have no entry, because no source splits them.
+
 ## Stress
 
 Portuguese stress is not guessed at. The orthography is designed to encode
@@ -154,19 +160,26 @@ Recovering it needs a lexicon of bases, which this library does not carry.
 ## Known limits
 
 The productive prefixes are not implemented: `ciber-`, `hiper-`, `super-`,
-`inter-`. Infopédia often keeps them intact (`ci.ber.as.sé.di.o`,
-`hi.per.es.pe.ci.a.li.zar`) but not consistently. It also writes
-`hi.pe.ra.gu.do` and `a.dre.na.li.na` beside `ad.re.nal`, and the Portal da
-Língua Portuguesa never splits them this way. The two authorities disagree,
-so there is no fact to encode. Most of the residual mismatches against
-Infopédia are diphthong-or-hiatus choices, and the prefix words are a small
-share of them.
+`inter-`. Base XX of the 1990 Orthographic Agreement says that syllable
+division "se não tem de atender aos elementos constitutivos dos vocábulos
+segundo a etimologia", and gives `hi-pe-ra-cús-ti-co` and `su-pe-rá-ci-do`.
+That permits the prefix boundary but does not require it. Infopédia often keeps
+it (`ci.ber.as.sé.di.o`) but not consistently, en.wiktionary rarely keeps it,
+and the Portal da Língua Portuguesa never does. The engine follows the
+Agreement's examples. The edge-case gold accepts both splits where a source
+gives each.
+
+Some hiatus-or-diphthong choices are lexical. Mateus & d'Andrade (1998, p. 27)
+write that "the phonetic glides of the falling diphthongs are [-cons] segments
+and are lexically marked". Pre-tonic `ui` is the largest class:
+`flu.i.dez` and `a.lu.i.men.to` against `cui.da.do`. A stem entry for `flu`
+would also seize `flui.do`, so these words stay as known failures.
 
 Foreign onsets are not in the inventory. Where the gold has `sof.twa.re`, the
 engine writes `soft.wa.re`, because `tw` is not a Portuguese onset. A few
 loanwords in the lexicon fail for this reason.
 
-The engine counts both classes rather than hiding them: `python -m
+The engine counts these classes rather than hiding them: `python -m
 benchmark.report` prints every remaining failure bucketed by cause.
 
 ---

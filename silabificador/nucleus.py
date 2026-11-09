@@ -33,6 +33,10 @@ Rules, in order of application:
     hiatus; since stress is not modelled here, the coda that conditions the
     stress is used directly, and it picks out the same words.
 
+``IDENTICAL-VOWELS``
+    Two identical vowels are two nuclei: xi.i.ta, va.di.i.ce, du.un.vi.ro. AO90
+    Base XX 4 separates consecutive vowels "mesmo que sejam iguais".
+
 ``FALLING-DIPHTHONG``
     Otherwise an unaccented ``i``/``u`` after a nucleus is an offglide, and a
     nucleus takes at most one: in *abaiucado* the run ``aiu`` is ``a`` + offglide
@@ -104,6 +108,8 @@ def resolve(units: Sequence[Grapheme], start: int, end: int) -> List[Group]:
                 group.append(i + 1)  # NASAL-OFFGLIDE: mãe, pão, põe
             elif glide not in GLIDE_CAPABLE or glide in STRESS_MARKED:
                 pass  # ACCENT / no mid or low glides: pa.ís, co.e.lho, su.a
+            elif glide == nucleus:
+                pass  # IDENTICAL-VOWELS: xi.i.ta, va.di.i.ce
             elif is_last and after in HIATUS_CODAS:
                 pass  # CLOSED-BY-LIQUID-OR-NASAL: a.in.da, ca.ir, ju.iz
             elif is_last and _next_units(units, end) in HIATUS_BEFORE:

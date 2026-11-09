@@ -42,8 +42,11 @@ CONSONANTS: FrozenSet[str] = frozenset("bcdfghjklmnpqrstvwxyzçñ")
 #: boundary inside a single segment: fi.lho, chu.va, ba.nha.
 CONSONANT_DIGRAPHS: FrozenSet[str] = frozenset({"ch", "lh", "nh"})
 
-#: Loanword spellings that behave as single consonants: show, thriller, graffiti.
-FOREIGN_DIGRAPHS: FrozenSet[str] = frozenset({"sh", "th", "ff", "ph"})
+#: Loanword spellings that behave as single consonants: show, thriller, photo.
+#: A doubled ``ff`` is not one of them. The Portal da Língua Portuguesa divides
+#: loans "segundo as regras de divisão silábica do português", where a doubled
+#: consonant splits like ``rr`` and ``ss`` (Cunha & Cintra, p. 83): graf.fi.ti.
+FOREIGN_DIGRAPHS: FrozenSet[str] = frozenset({"sh", "th", "ph"})
 
 #: Consonants that can be followed by a liquid to form a complex onset. This is
 #: the sonority sequencing principle: onset sonority must rise toward the

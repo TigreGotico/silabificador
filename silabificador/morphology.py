@@ -66,7 +66,19 @@ _LIQUIDS = frozenset("lr")
 #:   lig-   *ligare*, to bind      (adligante, adligação)
 #:   limin- *limen*, threshold     (subliminar, subliminal)
 #:   loc-   *locare*, to let       (sublocar, sublocação, sublocatário)
-#:   liqu-  *liquare*, to slant    (obliquação)
+#:   linh-  *linha*, line          (sublinhar, sublinha, sublinhado)
+#:   linear                        (sublinear)
+#:   lux-   *luxação*, dislocation (subluxação)
+#:
+#: Every entry has a source that writes the prefix boundary. AO90 Base XX 1
+#: names the class -- "vários compostos cujos prefixos terminam em b ou d:
+#: ab-legação, ad-ligar, sub-lunar" -- without listing it, so the members come
+#: from the dictionaries: en.wiktionary marks *sub.li.nhar* as the prescriptive
+#: split, the Portal da Língua Portuguesa gives *sub.li.ne.ar* as an example of
+#: the exception, and Infopédia writes *sub.lu.xa.ção*. A stem that no source
+#: splits does not belong here: *subloja* and *sublanço* are absent for that
+#: reason. *obliquar* is absent too: every source writes *o.bli.quar* and
+#: *o.bli.qui.da.de*.
 #:
 #: The stem is doing real work: ``limin`` and not ``lim``, because *subliminar*
 #: is sub + limen while *sublime* is Latin *sublimis*, one morpheme, su.bli.me.
@@ -79,9 +91,9 @@ _LIQUIDS = frozenset("lr")
 LATINATE_PREFIX_STEMS = {
     "ab": ("leg", "loc", "rog"),
     "ad": ("leg", "lig"),
-    "ob": ("liqu", "rog"),
+    "ob": ("rog",),
     "sub": ("limin", "loc", "lig", "lunar", "lacustre", "lamelar", "lenhoso",
-            "licenc", "licenç"),
+            "licenc", "licenç", "linh", "linear", "lux"),
 }
 
 # Not implemented, deliberately: the *productive* prefixes (ciber-, hiper-,

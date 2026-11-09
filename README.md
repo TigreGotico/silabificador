@@ -64,36 +64,73 @@ primary stress:
 
 ## Accuracy
 
-Silabificador is measured against the
-[Portuguese Unified Pronunciation Lexicon](https://huggingface.co/datasets/TigreGotico/portuguese-unified-pronunciation-lexicon).
-This lexicon carries syllabifications from two independent authorities:
-Infopédia (Porto Editora) and the Portal da Língua Portuguesa.
+Silabificador is measured against four sources of syllabification:
 
-The gold set is the set of words the two sources independently agree on,
-after discarding any entry whose syllables do not reconstruct its headword.
-The engine is also scored against each source on its own. Every word is
-scored. There is no sampling and no cap.
+- Infopédia (Porto Editora), from the
+  [Portuguese Unified Pronunciation Lexicon](https://huggingface.co/datasets/TigreGotico/portuguese-unified-pronunciation-lexicon).
+- en.wiktionary, from the [Kaikki](https://kaikki.org/dictionary/Portuguese/)
+  extract of its `{{hyph|pt}}` templates.
+- pt.wiktionary, from the stress templates (`{{paroxítona|ex|cer|to}}`) in the
+  Wikimedia dump.
+- The Portal da Língua Portuguesa, from the same lexicon.
 
-Where the two authorities disagree, on morpheme boundaries and on etymological
-hiatus, the tool scores against neither answer, because there is no fact of
-the matter to be right about.
+The first three are edited by people. The Portal is not. Its
+[Dicionário de divisão silábica](http://www.portaldalinguaportuguesa.org/index.php?action=syllables&page=present)
+says that "as regras de divisão silábica para a criação deste dicionário foram
+baseadas" on Base XX of the 1990 Orthographic Agreement. Its data agree with
+that: on every letter shape with two accepted splits, the Portal gives one
+answer to all of the words. The Portal is therefore scored as its own
+`generated` tier and is never gold.
+
+A word can have more than one correct split. Cunha & Cintra accept both
+`a-pto` and `ap-to`; en.wiktionary lists both `sub.li.nhar` and
+`su.bli.nhar`. Each gold entry is a set of accepted splits, and a prediction is
+correct when it is one of them.
+
+| tier | what it holds | accepted match | |
+|---|---|---|---|
+| edge cases | cited splits from grammars and dictionaries, `tests/edge_cases.json` | 97.37% | 74 / 76 |
+| agreement, 3 sources | all three human sources give the split | 99.86% | 18,265 / 18,290 |
+| agreement, 2 sources | two human sources give the split | 99.60% | 29,904 / 30,025 |
+| **agreement (gold)** | the two rows above | **99.70%** | 48,169 / 48,315 |
+| Infopédia only | one human source | 99.12% | 59,792 / 60,325 |
+| Wiktionary only | one human source | 97.83% | 66,376 / 67,850 |
+| conflict | human sources share no split; any of them is accepted | 98.80% | 740 / 749 |
+| generated: Portal | not gold | 99.78% | 51,880 / 51,996 |
+
+All 184,501 scoreable words reconstruct exactly.
+
+The engine scores highest on the Portal. The rules were first tuned on the
+words where Infopédia and the Portal agree, so this number shows how close the
+engine is to one rule system, not how correct it is.
+
+The edge cases cover the classes where the sources disagree: medial clusters
+(`ap.to` and `a.pto`), prefix seams (`sub.li.nhar`, `a.brup.to` and
+`ab.rup.to`), hiatus and diphthong (`gló.ri.a` and `gló.ria`), the productive
+prefixes, the hyphenated prefixes of the Agreement (`ab-rogar`, `sub-reino`),
+and words where one source is wrong. Every accepted split names its source.
+Two cases are known failures: `flu.i.dez` and `flu.iu`.
 
 Stress is measured against a gold the engine cannot see: the lexicon's IPA
 transcriptions, which mark stress with `ˈ`. Nothing in the engine reads IPA.
-A self-check gives a reason to trust that gold. On a simple word, a written
-accent is the stress, by definition of the spelling rules, so the IPA-derived
-answer must agree with it.
 
-[docs/accuracy.md](docs/accuracy.md) holds the numbers. The benchmark writes
-that page, and prints every remaining failure bucketed by cause:
+| | | |
+|---|---|---|
+| stress accuracy | 99.83% | 43,818 / 43,892 |
+| gold self-check | 99.75% | 4,712 / 4,724 |
+
+The self-check gives a reason to trust the gold: on a simple word, a written
+accent is the stress, by definition of the spelling rules, so the IPA-derived
+answer must agree with it, and it does.
+
+To reproduce the numbers and see every remaining failure bucketed by cause,
+run the commands below. The first run downloads the two Wiktionary dumps
+(about 130 MB) into `~/.cache/silabificador`.
 
 ```bash
 pip install -e ".[benchmark]"
-python -m benchmark.report --markdown docs/accuracy.md
+python -m benchmark.report
 ```
-
-The `benchmark` extra downloads the lexicon from Hugging Face on the first
-run.
 
 ## Related projects
 
