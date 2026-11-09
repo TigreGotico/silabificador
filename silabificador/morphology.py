@@ -26,7 +26,9 @@ and an entry that lacks any of them does not belong:
 
 * Entries are **morphemes**, not syllabifications. The tables say *sublocar is
   sub + locar*; the ordinary rules then derive ``sub.lo.car`` from that, exactly
-  as they derive every other word. Nothing here states a syllable boundary.
+  as they derive every other word. Nothing in the tables states a syllable
+  boundary. The stem file ``data/stems.csv`` does, inside a stem only, for the
+  boundaries that a stem inherits from its base (:data:`LISTED_STEMS`).
 * Entries **generalize**. One ``loc`` stem covers *sublocar, sublocação,
   sublocatário, sublocador, sublocatária* -- including the words nobody tested.
   An entry that covers exactly one word is a symptom, not a fix.
@@ -47,7 +49,9 @@ References
 """
 from __future__ import annotations
 
-from typing import Sequence, Set
+import csv
+from importlib import resources
+from typing import Dict, Sequence, Set, Tuple
 
 from .graphemes import Grapheme
 
@@ -163,9 +167,49 @@ def _seam_boundary(word: str) -> int:
     return 0
 
 
+def _load_listed_stems() -> Dict[str, Tuple[int, ...]]:
+    """Read ``data/stems.csv``: each stem, with the offsets where a syllable begins."""
+    listed: Dict[str, Tuple[int, ...]] = {}
+    path = resources.files(__package__).joinpath("data", "stems.csv")
+    with path.open(encoding="utf-8", newline="") as handle:
+        for row in csv.DictReader(handle):
+            pieces = row["split"].split(".")
+            listed[row["stem"]] = tuple(sum(len(p) for p in pieces[:k])
+                                        for k in range(1, len(pieces)))
+    return listed
+
+
+#: Stems whose syllable boundaries no rule reaches, from ``data/stems.csv``.
+#: Each row holds a stem, its split, the base word that explains the split and
+#: a source. Every dot in the split is a point where a syllable must begin; the
+#: edges of the stem are not boundaries. The stem matches anywhere in a word, so
+#: one row reaches every derivative: ``ru.in`` (from *ruína*) gives ar.ru.i.nar,
+#: ar.ru.i.na.do and ru.i.no.so. A row whose stem is a whole word, such as
+#: ``ad.le.ri.a.no``, also reaches its inflections.
+#:
+#: Most rows are a hiatus that a derivative inherits from a base with a
+#: stressed, accented hiatus. AO90 Base X 1 accents the stressed ``i``/``u`` of
+#: the base (ruína, proíbe, raízes, saída), but the derivative moves the stress,
+#: the accent goes, and the letters alone read a falling diphthong: *rui.no.so*.
+#: Mateus & d'Andrade (1998, p. 27) write that the glides of the falling
+#: diphthongs "are lexically marked", so the hiatus is a fact about the stem.
+LISTED_STEMS = _load_listed_stems()
+
+
+def _listed_boundaries(word: str) -> Set[int]:
+    """Character offsets where a listed stem starts a syllable."""
+    found: Set[int] = set()
+    for stem, offsets in LISTED_STEMS.items():
+        start = word.find(stem)
+        if start >= 0:
+            found.update(start + offset for offset in offsets)
+    return found
+
+
 def boundaries(word: str, units: Sequence[Grapheme]) -> Set[int]:
     """Grapheme indices that must begin a syllable, whatever phonotactics says."""
     offsets = {offset for offset in (_prefix_boundary(word), _seam_boundary(word)) if offset}
+    offsets |= _listed_boundaries(word)
     if not offsets:
         return set()
 

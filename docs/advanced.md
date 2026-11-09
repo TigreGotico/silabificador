@@ -186,14 +186,19 @@ gives each.
 Some hiatus-or-diphthong choices are lexical. Mateus & d'Andrade (1998, p. 27)
 write that "the phonetic glides of the falling diphthongs are [-cons] segments
 and are lexically marked". Before the stress, `ai`, `au`, `ei`, `eu`, `oi` and
-`ui` are diphthongs in most words (`cui.da.do`, `sau.da.de`) and a hiatus in
-words whose base has a stressed hiatus (`ru.i.do.so` from *ruído*,
-`a.ba.u.lar` from *baú*) or a morpheme seam (`re.u.nir`, `a.lu.i.men.to`). The
-spelling drops the base's accent, so no rule on the letters can see it, and
-these words stay as known failures. A word that no rule reaches is listed in
-`EXCEPTIONS` in `silabificador/parser.py` with its source: `flu.i.dez`, whose
-base keeps the diphthong (`flui.do`), and `ad.le.ri.a.no`, from the surname
-Adler.
+`ui` are diphthongs in most words (`cui.da.do`, `sau.da.de`). They are a hiatus
+in words whose base has a stressed, accented hiatus (`ru.i.no.so` from *ruína*,
+`pro.i.bir` from *proíbe*) or a morpheme seam (`re.u.nir`, `a.lu.i.men.to`). The
+spelling drops the base's accent, so no rule on the letters can see it.
+
+`silabificador/data/stems.csv` lists these stems, with the columns `stem`,
+`split`, `base` and `source`. Each dot in a split is a point where a syllable
+must begin, and the stem matches anywhere in a word, so the row `ruin,ru.in`
+(base *ruína*) reaches `ar.ru.i.nar`, `ar.ru.i.na.do` and `ru.i.no.so`. Each
+stem is anchored tightly enough to miss words from another root: `ruidoso`, not
+`ruid`, because `drui.da` has no hiatus. The same file holds the words no rule
+reaches, as rows whose stem is the whole word: `flu.i.dez`, whose base keeps
+the diphthong (`flui.do`), and `ad.le.ri.a.no`, from the surname Adler.
 
 Foreign onsets are not in the inventory. Where the gold has `sof.twa.re`, the
 engine writes `soft.wa.re`, because `tw` is not a Portuguese onset. A few
