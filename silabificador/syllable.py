@@ -10,7 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional, Sequence
 
-from .graphemes import Grapheme
+from .graphemes import APOSTROPHES, Grapheme
 
 
 @dataclass(frozen=True)
@@ -62,7 +62,7 @@ class Syllable:
         vowels = [offset + (index - base) for index in nucleus]
 
         head, tail = vowels[0], vowels[-1]
-        onset_units = [u for u in units[:head] if not u.is_separator]
+        onset_units = [u for u in units[:head] if u.text not in APOSTROPHES]
         coda_units = [u for u in units[tail + 1:] if not u.is_separator]
 
         # The glide of qu/gu is spelled inside the onset consonant itself, so it

@@ -100,11 +100,14 @@ def test_a_compound_keeps_a_stress_on_every_element(word, expected):
     ("d'os lusíadas", "d'os .lu.SÍ.a.das"),
     ("bê-á-'bá", "(bê-).(á-').BÁ"),
     ("três pa'anga", "(três ).pa'.AN.ga"),
+    ("enguia-d’água-doce", "en.(gui).a-.(d’á).gua-.DO.ce"),
+    ("d’os lusíadas", "d’os .lu.SÍ.a.das"),
+    ("bê-á-’bá", "(bê-).(á-’).BÁ"),
 ])
 def test_an_apostrophe_does_not_end_a_stress_domain(word, expected):
-    # The elided d' is read with the word after it (AO90 Base XVIII 1 a: d'Os
-    # reads dos), so d'água is one element and every element keeps its stress.
-    # d'Os is the contraction dos, an unstressed monosyllable. A hyphen still
+    # The elided d' is read with the word after it, so d'água is one element
+    # and every element keeps its stress. d'Os reads dos by analogy with AO90
+    # Base XVIII 1 a) (a Os = aos), an unstressed monosyllable. A hyphen still
     # ends its element when an apostrophe follows it, as in bê-á-'bá. The
     # apostrophe inside the one word pa'anga does not split it either.
     assert marked(word) == expected

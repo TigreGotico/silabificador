@@ -46,12 +46,14 @@ def test_a_separator_is_a_hard_boundary(word, expected):
     ("saiu-se-lhe d'aqui", ["sa", "iu-", "se-", "lhe ", "d'a", "qui"]),
     ("sant'ana", ["san", "t'a", "na"]),
     ("nun'álvares", ["nu", "n'ál", "va", "res"]),
+    ("castanha-d’água", ["cas", "ta", "nha-", "d’á", "gua"]),
+    ("caiu d’água", ["ca", "iu ", "d’á", "gua"]),
 ])
 def test_the_consonant_before_an_apostrophe_starts_the_next_syllable(word, expected):
     # AO90 Base XVIII 1 d): the apostrophe marks "a elisão do e da preposição
     # de" (pau-d'alho), and 1 c) the elided final vowel of Sant'Ana. The vowel
-    # is gone, so the consonant is read with the vowel after it, as d'Os is read
-    # dos (1 a). The hyphen and the space before it stay hard boundaries.
+    # is gone, so the consonant is read with the vowel after it. The hyphen and
+    # the space before it stay hard boundaries. U+2019 is an apostrophe too.
     assert syllabify(word) == expected
 
 
@@ -59,8 +61,15 @@ def test_an_elided_consonant_is_an_onset_not_a_separator():
     pau, da, gua = analyze("pau-d'água")
     assert (pau.coda, pau.separator) == ("", "-")
     assert (da.onset, da.nucleus, da.separator) == ("d", "á", "'")
+    assert analyze("pau-d’água")[1].onset == "d"
     (sant, ta, na) = analyze("sant'ana")
     assert (sant.coda, ta.onset, ta.separator) == ("n", "t", "'")
+
+
+def test_only_an_apostrophe_leaves_the_onset():
+    # The apostrophe rule does not reach a hyphen: the onset of cd-rom keeps
+    # the hyphen it has always held.
+    assert analyze("cd-rom")[0].onset == "cd-r"
 
 
 @pytest.mark.parametrize("word", [

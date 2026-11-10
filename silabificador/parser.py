@@ -124,10 +124,11 @@ def _assemble(units: Sequence[Grapheme], groups: Sequence[nucleus.Group],
             between = range(group[-1] + 1, nxt)
             # An apostrophe is not a boundary. AO90 Base XVIII 1 d) uses it "para
             # assinalar, no interior de certos compostos, a elisão do e da
-            # preposição de" (pau-d'alho), and 1 a) adds that "a dissolução
-            # gráfica nunca impede na leitura a combinação fonética". The vowel
-            # is gone, so the consonant is the onset of the next vowel:
-            # pau-.d'a.lho, san.t'a.na.
+            # preposição de" (pau-d'alho). 1 a) calls the apostrophe cisions
+            # "análogas" to the dissolution "a Os", where "a dissolução gráfica
+            # nunca impede na leitura a combinação fonética". Base XX divides
+            # syllables "pela soletração". The vowel is gone, so the consonant
+            # is the onset of the next vowel: pau-.d'a.lho, san.t'a.na.
             separators = [i for i in between
                           if units[i].is_separator and units[i].text not in APOSTROPHES]
             cluster = [i for i in between if units[i].is_consonant]

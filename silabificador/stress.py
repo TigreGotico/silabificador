@@ -64,6 +64,8 @@ from __future__ import annotations
 import dataclasses
 from typing import List, Sequence
 
+from .graphemes import APOSTROPHES
+
 #: An acute or circumflex accent names the stressed syllable outright.
 STRESS_ACCENTS = frozenset("áéíóúâêôîû")
 
@@ -102,11 +104,9 @@ CLITICS = frozenset({
 SEPARATORS = "- '’"
 
 #: The separators that end a word. An apostrophe does not: it marks an elided
-#: vowel, and AO90 Base XVIII 1 a) reads d'Os as the one word dos, because "a
-#: dissolução gráfica nunca impede na leitura a combinação fonética". So
+#: vowel (AO90 Base XVIII; see :func:`silabificador.parser._assemble`), so
 #: *pau-d'alho* has two elements, *pau* and *dalho*.
 WORD_BOUNDARIES = "- "
-APOSTROPHES = "'’"
 
 
 def _elements(word: str) -> List[str]:
@@ -114,7 +114,9 @@ def _elements(word: str) -> List[str]:
 
     *guarda-chuva* is two of them; *chapéu de chuva* is three. A simple word is
     one, which is the ordinary case and needs no special handling. An element
-    is spelled without its apostrophes, as it is read: d'os is *dos*.
+    is spelled without its apostrophes, so d'os is *dos*. Base XVIII 1 a) reads
+    the dissolution "a Os" as "aos" and calls the apostrophe cisions
+    "análogas", so d'Os reads *dos* by that analogy.
     """
     parts, current = [], ""
     for char in word:

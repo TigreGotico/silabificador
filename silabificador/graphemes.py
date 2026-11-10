@@ -26,7 +26,7 @@ SEPARATORS = frozenset("- '’")
 
 #: The separators that mark an elided vowel rather than end a word: pau-d'alho,
 #: Sant'Ana. The consonant before one is read with the vowel after it.
-APOSTROPHES = frozenset("'’")
+APOSTROPHES = "'’"
 
 VOWEL = "vowel"
 CONSONANT = "consonant"
