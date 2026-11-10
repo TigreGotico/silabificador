@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.12a1](https://github.com/TigreGotico/silabificador/tree/2.1.12a1) (2026-11-10)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.11a2...2.1.12a1)
+
+**Merged pull requests:**
+
+- fix\(benchmark\): drop splits printed without division; score Michaelis in the docs [\#48](https://github.com/TigreGotico/silabificador/pull/48) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [2.1.11a2](https://github.com/TigreGotico/silabificador/tree/2.1.11a2) (2026-11-10)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.11a1...2.1.11a2)
