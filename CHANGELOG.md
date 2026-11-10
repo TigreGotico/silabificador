@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.9a1](https://github.com/TigreGotico/silabificador/tree/2.1.9a1) (2026-11-10)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.8a1...2.1.9a1)
+
+**Merged pull requests:**
+
+- fix: read the consonant before an apostrophe with the next vowel [\#40](https://github.com/TigreGotico/silabificador/pull/40) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [2.1.8a1](https://github.com/TigreGotico/silabificador/tree/2.1.8a1) (2026-11-10)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.7a1...2.1.8a1)
