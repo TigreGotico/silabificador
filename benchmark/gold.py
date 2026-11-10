@@ -220,11 +220,13 @@ def load(parquet_path: Optional[str] = None, enwiktionary: Optional[str] = None,
 def summary(gold: GoldSet) -> List[str]:
     """Human-readable provenance breakdown."""
     three = sum(1 for n in gold.support.values() if n == 3)
+    four = sum(1 for n in gold.support.values() if n == 4)
     lines = [f"{name:<16}{len(entries):>7} words" for name, entries in gold.sources.items()]
     lines += [
         f"agreement       {len(gold.agreement):>7}   two or more human sources share a split "
-        f"({three} with three)",
+        f"({three} with three, {four} with four)",
         f"infopedia-only  {len(gold.infopedia_only):>7}   one human source",
+        f"michaelis-only  {len(gold.michaelis_only):>7}   one human source",
         f"wiktionary-only {len(gold.wiktionary_only):>7}   one human source",
         f"conflict        {len(gold.conflict):>7}   human sources share no split; not gold",
         f"generated       {len(gold.generated):>7}   Portal da Língua Portuguesa; not gold",

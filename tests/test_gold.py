@@ -28,7 +28,7 @@ if "benchmark" not in sys.modules:
     _spec.loader.exec_module(_module)
 
 from benchmark import wiktionary  # noqa: E402
-from benchmark.gold import accepts, build, fuse, lexicon_sources  # noqa: E402
+from benchmark.gold import accepts, build, fuse, lexicon_sources, summary  # noqa: E402
 
 URL = "https://www.infopedia.pt/dicionarios/lingua-portuguesa/x"
 MICHAELIS_URL = "https://michaelis.uol.com.br/moderno-espanhol/busca/portugues-espanhol/x/"
@@ -107,6 +107,11 @@ def test_four_sources_record_support_four():
                    en={"casa": ["ca.sa"]}, pt={"casa": ["ca.sa"]})
     assert gold.support["casa"] == 4
     assert dict(gold.tiers())["agreement, 4 sources"] == {"casa": {split("ca.sa")}}
+
+
+def test_the_summary_counts_michaelis_only_words():
+    gold = gold_of([michaelis("azia", "a.zi.a")])
+    assert "michaelis-only        1   one human source" in summary(gold)
 
 
 def test_three_sources_record_support_three():
