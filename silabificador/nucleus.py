@@ -32,7 +32,8 @@ Rules, in order of application:
     The contractions *ao* and *aos* are one syllable: the ``o`` is an offglide.
     AO90 Base VII 1 Obs. admits the diphthong spelled ``ao`` "nas combinações
     da preposição a com as formas masculinas do artigo ou pronome demonstrativo
-    o, ou seja, ao e aos", and in no other word. A hyphen or a space ends the
+    o, ou seja, ao e aos". It names no other word; loan derivatives such as
+    maometano fall outside it and stay open. A hyphen or a space ends the
     word; an apostrophe does not, as in :func:`~silabificador.parser._assemble`.
 
 ``CLOSED-BY-LIQUID-OR-NASAL``

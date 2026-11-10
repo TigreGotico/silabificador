@@ -97,8 +97,10 @@ COMPLEX_ONSETS: FrozenSet[str] = frozenset(
 #: The only words in which ``ao`` is a falling diphthong. AO90 Base VII 1 Obs.
 #: admits it "excecionalmente" as ``âu`` or ``au``, "representado nas
 #: combinações da preposição a com as formas masculinas do artigo ou pronome
-#: demonstrativo o, ou seja, ao e aos". Everywhere else the ``o`` is a mid
-#: vowel, which is never a glide: a.or.ta, ca.os, ma.o.me.ta.no.
+#: demonstrativo o, ou seja, ao e aos". The clause names no other word, so a
+#: word-internal ``ao`` keeps the hiatus: a.or.ta, a.o.ris.to. Loan derivatives
+#: such as maometano, maoismo and tao fall outside the clause; Infopédia reads
+#: them with [aw], and their split is open.
 AO_DIPHTHONG_WORDS: FrozenSet[str] = frozenset({"ao", "aos"})
 
 #: A glide before ``nh`` reverts to a nucleus: ra.i.nha, mo.i.nho, cam.pa.i.nha.

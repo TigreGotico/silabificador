@@ -224,10 +224,15 @@ def test_the_contraction_ao_is_a_falling_diphthong(word, expected):
     assert syllabify(word) == expected
 
 
+def test_a_hyphen_ends_the_word_for_the_contraction_ao():
+    # A hyphen ends a word in every layer, as in stress.WORD_BOUNDARIES.
+    assert syllabify("ao-pé") == ["ao-", "pé"]
+
+
 @pytest.mark.parametrize("word,expected", [
     ("aorta", ["a", "or", "ta"]),
     ("caos", ["ca", "os"]),
-    ("maometano", ["ma", "o", "me", "ta", "no"]),
+    ("aoristo", ["a", "o", "ris", "to"]),
     ("aonde", ["a", "on", "de"]),
     ("daos", ["da", "os"]),
     ("d'aos", ["d'a", "os"]),
@@ -235,7 +240,7 @@ def test_the_contraction_ao_is_a_falling_diphthong(word, expected):
     ("cacau", ["ca", "cau"]),
 ])
 def test_ao_inside_a_word_stays_a_hiatus(word, expected):
-    # Base VII 1 Obs. names the two contractions and no other word: elsewhere
-    # the o is a mid vowel, which is never a glide. An apostrophe does not end a
-    # word (Base XVIII 1), so d'aos is not the free word aos.
+    # Base VII 1 Obs. names the two contractions and no other word. An
+    # apostrophe does not end a word (parser._assemble), so d'aos is not the
+    # free word aos; daos and d'aos test that boundary only.
     assert syllabify(word) == expected
