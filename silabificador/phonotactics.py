@@ -94,8 +94,8 @@ COMPLEX_ONSETS: FrozenSet[str] = frozenset(
 #: closed native coda set would sanction. Constraining the onset is enough;
 #: constraining the coda as well would only reject words the dictionaries spell.
 
-#: The only words in which ``ao`` is a falling diphthong. AO90 Base VII 1 Obs.
-#: admits it "excecionalmente" as ``âu`` or ``au``, "representado nas
+#: The only words that AO90 Base VII 1 Obs. names for the diphthong ``ao``, which
+#: it admits "excecionalmente" as ``âu`` or ``au``, "representado nas
 #: combinações da preposição a com as formas masculinas do artigo ou pronome
 #: demonstrativo o, ou seja, ao e aos". The clause names no other word, so a
 #: word-internal ``ao`` keeps the hiatus: a.or.ta, a.o.ris.to. Loan derivatives
