@@ -36,7 +36,7 @@ class Syllable:
     separator: str = ""
     #: The syllable as it is written. Kept verbatim rather than recomposed from
     #: the constituents above, because a separator can sit anywhere in it
-    #: (``ra-d'``) and reassembling in onset-nucleus-coda order would silently
+    #: (``d'á``) and reassembling in onset-nucleus-coda order would silently
     #: reorder the letters.
     surface: str = ""
     #: Whether this syllable carries the word's primary stress. Exactly one
@@ -62,7 +62,7 @@ class Syllable:
         vowels = [offset + (index - base) for index in nucleus]
 
         head, tail = vowels[0], vowels[-1]
-        onset_units = list(units[:head])
+        onset_units = [u for u in units[:head] if not u.is_separator]
         coda_units = [u for u in units[tail + 1:] if not u.is_separator]
 
         # The glide of qu/gu is spelled inside the onset consonant itself, so it

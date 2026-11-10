@@ -24,6 +24,10 @@ from .phonotactics import (CONSONANT_DIGRAPHS, FOREIGN_DIGRAPHS, FOREIGN_MARKS,
 #: apostrophe of *pau-d'água*. They are carried through, never dropped.
 SEPARATORS = frozenset("- '’")
 
+#: The separators that mark an elided vowel rather than end a word: pau-d'alho,
+#: Sant'Ana. The consonant before one is read with the vowel after it.
+APOSTROPHES = frozenset("'’")
+
 VOWEL = "vowel"
 CONSONANT = "consonant"
 SEPARATOR = "separator"

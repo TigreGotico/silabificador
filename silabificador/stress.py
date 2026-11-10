@@ -101,24 +101,46 @@ CLITICS = frozenset({
 #: Characters that join words without belonging to one.
 SEPARATORS = "- '’"
 
+#: The separators that end a word. An apostrophe does not: it marks an elided
+#: vowel, and AO90 Base XVIII 1 a) reads d'Os as the one word dos, because "a
+#: dissolução gráfica nunca impede na leitura a combinação fonética". So
+#: *pau-d'alho* has two elements, *pau* and *dalho*.
+WORD_BOUNDARIES = "- "
+APOSTROPHES = "'’"
+
 
 def _elements(word: str) -> List[str]:
     """The words inside a compound, in order.
 
     *guarda-chuva* is two of them; *chapéu de chuva* is three. A simple word is
-    one, which is the ordinary case and needs no special handling.
+    one, which is the ordinary case and needs no special handling. An element
+    is spelled without its apostrophes, as it is read: d'os is *dos*.
     """
     parts, current = [], ""
     for char in word:
-        if char in SEPARATORS:
+        if char in WORD_BOUNDARIES:
             if current:
                 parts.append(current)
             current = ""
-        else:
+        elif char not in APOSTROPHES:
             current += char
     if current:
         parts.append(current)
     return parts
+
+
+def _groups(syllables: Sequence[str]) -> List[List[int]]:
+    """The syllable indices of each element of a compound, in order.
+
+    A syllable ends its element when it ends on a hyphen or a space. An
+    apostrophe after the hyphen does not change that: bê-.á-'.bá.
+    """
+    groups: List[List[int]] = [[]]
+    for index, syllable in enumerate(syllables):
+        groups[-1].append(index)
+        if syllable.rstrip(APOSTROPHES)[-1:] in WORD_BOUNDARIES or " " in syllable:
+            groups.append([])
+    return [g for g in groups if g]
 
 
 def _stressed_in(syllables: Sequence[str], word: str) -> int:
@@ -151,15 +173,7 @@ def assign(syllables: List, word: str) -> List:
     if not syllables:
         return syllables
 
-    # Group the syllables by which element of the compound they belong to. A
-    # syllable ends its element when it carries a separator.
-    groups: List[List[int]] = [[]]
-    for index, syllable in enumerate(syllables):
-        groups[-1].append(index)
-        if str(syllable)[-1:] in SEPARATORS or " " in str(syllable):
-            groups.append([])
-    groups = [g for g in groups if g]
-
+    groups = _groups([str(s) for s in syllables])
     words = _elements(word)
     if len(words) != len(groups):
         # The grouping and the spelling disagree; fall back to treating the
@@ -191,13 +205,7 @@ def assign(syllables: List, word: str) -> List:
 
 def stressed_index(syllables: Sequence[str], word: str) -> int:
     """Index of the syllable carrying ``word``'s primary stress."""
-    groups: List[List[int]] = [[]]
-    for index, syllable in enumerate(syllables):
-        groups[-1].append(index)
-        if syllable[-1:] in SEPARATORS or " " in syllable:
-            groups.append([])
-    groups = [g for g in groups if g]
-
+    groups = _groups(syllables)
     words = _elements(word)
     if len(words) != len(groups):
         return _stressed_in([s.rstrip(SEPARATORS) for s in syllables], word)
