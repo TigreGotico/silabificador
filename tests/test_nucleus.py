@@ -156,6 +156,12 @@ def test_an_enclitic_does_not_move_the_stressed_iu(word, expected):
     assert syllabify(word) == expected
 
 
+def test_a_space_ends_the_word_for_the_stressed_iu():
+    # A space is a separator as the enclitic hyphen is, so the verb of a phrase
+    # splits as it does alone.
+    assert syllabify("saiu de casa") == ["sa", "iu ", "de ", "ca", "sa"]
+
+
 @pytest.mark.parametrize("word,expected", [
     ("abaiuca-se", ["a", "bai", "u", "ca-", "se"]),   # Base X 4; Infopédia a.bai.u.car
     ("amiudá-lo", ["a", "mi", "u", "dá-", "lo"]),     # UNSTRESSED-IU; Infopédia a.mi.u.dar
