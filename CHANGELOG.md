@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.10a1](https://github.com/TigreGotico/silabificador/tree/2.1.10a1) (2026-11-10)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.9a1...2.1.10a1)
+
+**Merged pull requests:**
+
+- fix: keep the stress off unstressed words and enclitic pronouns [\#42](https://github.com/TigreGotico/silabificador/pull/42) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [2.1.9a1](https://github.com/TigreGotico/silabificador/tree/2.1.9a1) (2026-11-10)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.8a1...2.1.9a1)
