@@ -143,6 +143,25 @@ def test_splits_that_do_not_reconstruct_the_word_are_dropped():
     assert gold.dropped == {"infopedia": 1, "michaelis": 0, "portal": 1}
 
 
+def test_a_headword_printed_without_division_is_dropped():
+    # Michaelis prints these entries with no syllable division (its <es> element
+    # reads "bacon", "arroz-doce"); pt.wiktionary has "metodismo" undivided.
+    gold = gold_of([michaelis("bacon", "bacon"), michaelis("arroz-doce", "arroz-doce")],
+                   pt={"metodismo": ["metodismo"]})
+    assert not gold.michaelis_only and not gold.wiktionary_only
+    assert gold.dropped["michaelis"] == 2
+    assert gold.dropped["ptwiktionary"] == 1
+
+
+def test_a_monosyllable_and_a_hyphen_divided_compound_are_kept():
+    gold = gold_of([michaelis("pão", "pão"), michaelis("quais", "quais"),
+                    info("bem-te-vi", "bem-te-vi"), info("a-histórico", "a-his.tó.ri.co")])
+    assert gold.michaelis_only == {"pão": {("pão",)}, "quais": {("quais",)}}
+    assert gold.infopedia_only == {"bem-te-vi": {("bem-te-vi",)},
+                                   "a-histórico": {("a-his", "tó", "ri", "co")}}
+    assert gold.dropped == {"infopedia": 0, "michaelis": 0, "portal": 0}
+
+
 def test_a_dictionary_contradicting_itself_is_dropped():
     gold = gold_of([info("casa", "ca.sa"), info("casa", "cas.a")])
     assert gold.dropped["infopedia"] == 1

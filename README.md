@@ -65,17 +65,18 @@ primary stress:
 
 ## Accuracy
 
-Silabificador is measured against four sources of syllabification:
+Silabificador is measured against five sources of syllabification:
 
 - Infopédia (Porto Editora), from the
   [Portuguese Unified Pronunciation Lexicon](https://huggingface.co/datasets/TigreGotico/portuguese-unified-pronunciation-lexicon).
+- Michaelis (Melhoramentos), from the same lexicon.
 - en.wiktionary, from the [Kaikki](https://kaikki.org/dictionary/Portuguese/)
   extract of its `{{hyph|pt}}` templates.
 - pt.wiktionary, from the stress templates (`{{paroxítona|ex|cer|to}}`) in the
   Wikimedia dump.
 - The Portal da Língua Portuguesa, from the same lexicon.
 
-The first three are edited by people. The Portal is not. Its
+The first four are edited by people. The Portal is not. Its
 [Dicionário de divisão silábica](http://www.portaldalinguaportuguesa.org/index.php?action=syllables&page=present)
 says that "as regras de divisão silábica para a criação deste dicionário foram
 baseadas" on Base XX of the 1990 Orthographic Agreement. Its data agree with
@@ -88,18 +89,31 @@ A word can have more than one correct split. Cunha & Cintra accept both
 `su.bli.nhar`. Each gold entry is a set of accepted splits, and a prediction is
 correct when it is one of them.
 
+A source sometimes prints a headword with no division: Michaelis gives `bacon`
+and `arroz-doce` whole, and pt.wiktionary gives `metodismo`. That is no claim
+about the syllables, so a split is dropped when a piece between two separators
+holds more than one run of vowels.
+
 | tier | what it holds | accepted match | |
 |---|---|---|---|
-| edge cases | cited splits from grammars and dictionaries, `tests/edge_cases.json` | 100.00% | 88 / 88 |
-| agreement, 3 sources | all three human sources give the split | 99.87% | 18,266 / 18,290 |
-| agreement, 2 sources | two human sources give the split | 99.68% | 29,928 / 30,025 |
-| **agreement (gold)** | the two rows above | **99.75%** | 48,194 / 48,315 |
-| Infopédia only | one human source | 99.16% | 59,821 / 60,325 |
-| Wiktionary only | one human source | 97.93% | 66,443 / 67,850 |
-| conflict | human sources share no split; any of them is accepted | 98.93% | 741 / 749 |
-| generated: Portal | not gold | 99.72% | 51,852 / 51,996 |
+| edge cases | cited splits from grammars and dictionaries, `tests/edge_cases.json` | 100.00% | 142 / 142 |
+| agreement, 4 sources | all four human sources give the split | 99.97% | 10,785 / 10,788 |
+| agreement, 3 sources | three human sources give the split | 99.90% | 13,340 / 13,354 |
+| agreement, 2 sources | two human sources give the split | 99.70% | 26,180 / 26,260 |
+| **agreement (gold)** | the three rows above | **99.81%** | 50,305 / 50,402 |
+| Infopédia only | one human source | 99.30% | 59,030 / 59,447 |
+| Michaelis only | one human source | 93.37% | 577 / 618 |
+| Wiktionary only | one human source | 98.14% | 65,333 / 66,568 |
+| conflict | human sources share no split; any of them is accepted | 99.30% | 707 / 712 |
+| generated: Portal | not gold | 99.69% | 51,833 / 51,995 |
 
-All 184,501 scoreable words reconstruct exactly.
+All 184,799 scoreable words reconstruct exactly.
+
+Michaelis writes a final unstressed ⟨ia⟩, ⟨io⟩, ⟨ea⟩ or ⟨eo⟩ as one syllable
+(`bul.gá.ria`, `náu.sea`). Infopédia and the engine write a hiatus
+(`bul.gá.ri.a`). The edge cases accept both forms, but a word only Michaelis
+holds has only the Michaelis split. Most of the Michaelis-only misses are this
+difference in convention.
 
 The rules were first tuned on the words where Infopédia and the Portal agree,
 so the Portal score shows how close the engine is to one rule system, not how
@@ -119,7 +133,7 @@ transcriptions, which mark stress with `ˈ`. Nothing in the engine reads IPA.
 
 | | | |
 |---|---|---|
-| stress accuracy | 99.84% | 43,790 / 43,862 |
+| stress accuracy | 99.84% | 43,756 / 43,826 |
 | gold self-check | 99.79% | 4,709 / 4,719 |
 
 The self-check gives a reason to trust the gold: on a simple word, a written
