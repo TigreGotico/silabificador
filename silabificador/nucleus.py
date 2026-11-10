@@ -28,6 +28,13 @@ Rules, in order of application:
     A nasal nucleus licenses an offglide that a plain vowel does not, including
     the mid vowels: mãe, pão, põe, sa.guão. Without this, *mãe* would break.
 
+``CONTRACTION-AO``
+    The contractions *ao* and *aos* are one syllable: the ``o`` is an offglide.
+    AO90 Base VII 1 Obs. admits the diphthong spelled ``ao`` "nas combinações
+    da preposição a com as formas masculinas do artigo ou pronome demonstrativo
+    o, ou seja, ao e aos", and in no other word. A hyphen or a space ends the
+    word; an apostrophe does not, as in :func:`~silabificador.parser._assemble`.
+
 ``CLOSED-BY-LIQUID-OR-NASAL``
     A close vowel closed by ``l m n r z`` is a nucleus: a.in.da, ca.ir, ju.iz,
     ru.im, ra.ul. It is *not* a nucleus when closed by ``s``/``x``, which leave
@@ -91,9 +98,9 @@ from __future__ import annotations
 from itertools import takewhile
 from typing import List, Sequence, Set
 
-from .graphemes import Grapheme
-from .phonotactics import (GLIDE_CAPABLE, HIATUS_BEFORE, HIATUS_CODAS,
-                           NASAL_VOWELS, STRESS_MARKED)
+from .graphemes import APOSTROPHES, Grapheme
+from .phonotactics import (AO_DIPHTHONG_WORDS, GLIDE_CAPABLE, HIATUS_BEFORE,
+                           HIATUS_CODAS, NASAL_VOWELS, STRESS_MARKED)
 
 #: One nucleus and its offglides, as indices into the grapheme list.
 Group = List[int]
@@ -143,6 +150,8 @@ def resolve(units: Sequence[Grapheme], start: int, end: int) -> List[Group]:
                 pass  # PRE-PALATAL: ra.i.nha, mo.i.nho, mã.i.nha
             elif nucleus in NASAL_VOWELS and glide in "eoiu":
                 group.append(i + 1)  # NASAL-OFFGLIDE: mãe, pão, põe
+            elif nucleus + glide == "ao" and _word_at(units, i) in AO_DIPHTHONG_WORDS:
+                group.append(i + 1)  # CONTRACTION-AO: ao, aos
             elif glide not in GLIDE_CAPABLE or glide in STRESS_MARKED:
                 pass  # ACCENT / no mid or low glides: pa.ís, co.e.lho, su.a
             elif glide == nucleus:
@@ -156,6 +165,16 @@ def resolve(units: Sequence[Grapheme], start: int, end: int) -> List[Group]:
         i = group[-1] + 1
 
     return groups
+
+
+def _word_at(units: Sequence[Grapheme], index: int) -> str:
+    """The word that holds ``units[index]``, ended by a hyphen or a space."""
+    def ends_word(unit: Grapheme) -> bool:
+        return unit.is_separator and unit.text not in APOSTROPHES
+
+    before = list(takewhile(lambda unit: not ends_word(unit), reversed(units[:index])))
+    after = takewhile(lambda unit: not ends_word(unit), units[index:])
+    return "".join(unit.text for unit in [*before[::-1], *after])
 
 
 def _next_units(units: Sequence[Grapheme], run_end: int) -> str:

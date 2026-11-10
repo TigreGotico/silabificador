@@ -94,6 +94,13 @@ COMPLEX_ONSETS: FrozenSet[str] = frozenset(
 #: closed native coda set would sanction. Constraining the onset is enough;
 #: constraining the coda as well would only reject words the dictionaries spell.
 
+#: The only words in which ``ao`` is a falling diphthong. AO90 Base VII 1 Obs.
+#: admits it "excecionalmente" as ``âu`` or ``au``, "representado nas
+#: combinações da preposição a com as formas masculinas do artigo ou pronome
+#: demonstrativo o, ou seja, ao e aos". Everywhere else the ``o`` is a mid
+#: vowel, which is never a glide: a.or.ta, ca.os, ma.o.me.ta.no.
+AO_DIPHTHONG_WORDS: FrozenSet[str] = frozenset({"ao", "aos"})
+
 #: A glide before ``nh`` reverts to a nucleus: ra.i.nha, mo.i.nho, cam.pa.i.nha.
 #: The palatal nasal attracts the preceding close vowel into its own syllable.
 HIATUS_BEFORE = frozenset({"nh"})
