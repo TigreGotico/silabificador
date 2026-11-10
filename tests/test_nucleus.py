@@ -135,6 +135,40 @@ def test_a_stressed_iu_or_ui_after_a_vowel_is_the_diphthong(word, expected):
 
 
 @pytest.mark.parametrize("word,expected", [
+    ("saiu-se", ["sa", "iu-", "se"]),
+    ("caiu-lhe", ["ca", "iu-", "lhe"]),
+    ("saiu-lhes", ["sa", "iu-", "lhes"]),
+    ("distraiu-se", ["dis", "tra", "iu-", "se"]),
+    ("distraiu-o", ["dis", "tra", "iu-", "o"]),
+    ("atraiu-nos", ["a", "tra", "iu-", "nos"]),
+    ("atraiu-vos", ["a", "tra", "iu-", "vos"]),
+    ("instruiu-os", ["ins", "tru", "iu-", "os"]),
+    ("possuiu-a", ["pos", "su", "iu-", "a"]),
+    ("contribuiu-lhe", ["con", "tri", "bu", "iu-", "lhe"]),
+    ("atribuiu-lhes", ["a", "tri", "bu", "iu-", "lhes"]),
+    ("atribuiu-se-lhe", ["a", "tri", "bu", "iu-", "se-", "lhe"]),
+])
+def test_an_enclitic_does_not_move_the_stressed_iu(word, expected):
+    # STRESSED-IU-UI reads the end of the verb, not the end of the string. Base
+    # XVII 1 joins an enclitic with a hyphen (dá-se, deixa-o, partir-lhe), and
+    # Base X 3 accents the verb before it as a word of its own (atraí-lo). So
+    # the verb splits as it does alone, and the clitic adds its own syllable.
+    assert syllabify(word) == expected
+
+
+@pytest.mark.parametrize("word,expected", [
+    ("abaiuca-se", ["a", "bai", "u", "ca-", "se"]),   # Base X 4; Infopédia a.bai.u.car
+    ("amiudá-lo", ["a", "mi", "u", "dá-", "lo"]),     # UNSTRESSED-IU; Infopédia a.mi.u.dar
+    ("viu-se", ["viu-", "se"]),                       # no vowel before the iu
+    ("partiu-se", ["par", "tiu-", "se"]),             # C&C p. 83 "par-tiu"
+    ("distraí-lo", ["dis", "tra", "í-", "lo"]),       # ACCENT: Base X 3 "atraí-lo"
+])
+def test_an_enclitic_does_not_make_the_stressed_rule_fire(word, expected):
+    # The rule still needs a stressed iu or ui after a vowel, final in its word.
+    assert syllabify(word) == expected
+
+
+@pytest.mark.parametrize("word,expected", [
     ("baiuca", ["bai", "u", "ca"]),         # AO90 Base X 4
     ("boiuno", ["boi", "u", "no"]),         # AO90 Base X 4
     ("partiu", ["par", "tiu"]),             # C&C p. 83 "par-tiu"

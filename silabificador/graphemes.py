@@ -13,6 +13,7 @@ so every later layer can assume one unit is one segment.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from itertools import takewhile
 from typing import List
 
 from .phonotactics import (CONSONANT_DIGRAPHS, FOREIGN_DIGRAPHS, FOREIGN_MARKS,
@@ -94,8 +95,12 @@ def _foreign_vowel(word: str, index: int) -> str:
       ``ou`` is already a diphthong, but a following ``n`` or ``r`` closes the
       syllable and AO90 Base X 2 reads the ``u`` as a nucleus (go.ur.met); that
       rule describes Portuguese stress, not the donor's spelling.
+
+    A word ends at a separator, so the end of each element of a compound counts:
+    beaux-.arts, as bor.deaux. AO90 Base XV 1 hyphenates compounds whose
+    elements "mantêm acento próprio", each a word of its own.
     """
-    rest = word[index:]
+    rest = "".join(takewhile(lambda char: char not in SEPARATORS, word[index:]))
     if rest.startswith("eau") and rest[3:] in ("", "s", "x"):
         return "eau"
     if rest.startswith("eu") and rest[2:] in ("r", "rs"):

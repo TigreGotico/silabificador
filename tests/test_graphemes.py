@@ -1,6 +1,7 @@
 """Layer 1 -- grapheme tokenization."""
 import pytest
 
+from silabificador import syllabify
 from silabificador.graphemes import CONSONANT, SEPARATOR, VOWEL, tokenize
 
 
@@ -44,6 +45,13 @@ def test_separators_survive_tokenization():
     assert units("guarda-chuva")[5] == ("-", SEPARATOR)
     assert ("'", SEPARATOR) in units("pau-d'água")
     assert (" ", SEPARATOR) in units("anjo da guarda")
+
+
+def test_a_foreign_vowel_at_the_end_of_a_compound_element_is_one_unit():
+    # French eau before a final x is one vowel (bor.deaux), and a word ends at a
+    # separator, so the beaux of beaux-arts ends there.
+    assert [u.text for u in tokenize("beaux-arts")] == ["b", "eau", "x", "-", "a", "r", "t", "s"]
+    assert syllabify("beaux-arts") == ["beaux-", "arts"]
 
 
 def test_accented_and_nasal_vowels_are_vowels():

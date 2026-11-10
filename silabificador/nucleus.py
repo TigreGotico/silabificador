@@ -69,6 +69,14 @@ pass, :func:`by_stress`, after the stress module has read the first one:
     qualifies: in a paroxytone, Base X 4 leaves the lone vowel unaccented after a
     diphthong, and *bai.u.ca* is right as it stands.
 
+    "Final" means final in its own word. An enclitic pronoun joins the verb with
+    a hyphen, Base XVII 1: "Emprega-se o hífen na ênclise e na tmese: amá-lo,
+    dá-se, deixa-o, partir-lhe". Base X reads the verb before the hyphen as a
+    word of its own: Base X 3 applies "as regras anteriores" to it and accents
+    "atraí-lo(s) [de atrair-lo(s)]", where the ``r`` is lost and the ``i`` ends
+    the verb. So the scan for a final syllable stops at a separator, and
+    *saiu-se* is sa.iu-.se, as *saiu* is sa.iu.
+
 ``UNSTRESSED-IU``
     ``iu`` outside the stressed syllable is two nuclei: mi.u.de.za, ci.u.men.to,
     vi.ní.ci.us. Mateus & d'Andrade (1998) list the falling diphthong [iw] among
@@ -80,6 +88,7 @@ pass, :func:`by_stress`, after the stress module has read the first one:
 """
 from __future__ import annotations
 
+from itertools import takewhile
 from typing import List, Sequence, Set
 
 from .graphemes import Grapheme
@@ -169,7 +178,8 @@ def by_stress(units: Sequence[Grapheme], groups: Sequence[Group],
                 and previous and previous[-1] == head - 1
                 and glide in ("i", "u") and glide != units[head].text
                 and head not in hard
-                and all(unit.text == "s" for unit in units[head + 1:])):
+                and all(unit.text == "s" for unit in takewhile(
+                    lambda unit: not unit.is_separator, units[head + 1:]))):
             # STRESSED-IU-UI: flu.iu, dis.tra.iu, pa.uis
             if len(previous) > 1:
                 previous.pop()
