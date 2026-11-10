@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.8a1](https://github.com/TigreGotico/silabificador/tree/2.1.8a1) (2026-11-10)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.7a1...2.1.8a1)
+
+**Merged pull requests:**
+
+- fix: stop the stressed iu/ui scan at the end of the word [\#38](https://github.com/TigreGotico/silabificador/pull/38) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [2.1.7a1](https://github.com/TigreGotico/silabificador/tree/2.1.7a1) (2026-11-09)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.6a1...2.1.7a1)
