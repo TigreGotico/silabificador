@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.11a1](https://github.com/TigreGotico/silabificador/tree/2.1.11a1) (2026-11-10)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.10a1...2.1.11a1)
+
+**Merged pull requests:**
+
+- fix: read the contractions ao and aos as one syllable [\#43](https://github.com/TigreGotico/silabificador/pull/43) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [2.1.10a1](https://github.com/TigreGotico/silabificador/tree/2.1.10a1) (2026-11-10)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.9a1...2.1.10a1)
