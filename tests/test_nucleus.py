@@ -206,3 +206,41 @@ def test_the_unstressed_rule_does_not_reach_ui():
     # Mateus & d'Andrade (1998) p. 18 list a pre-stressed [uj] in cuidado.
     assert syllabify("cuidado") == ["cui", "da", "do"]
     assert syllabify("cuidar") == ["cui", "dar"]
+
+
+@pytest.mark.parametrize("word,expected", [
+    ("ao", ["ao"]),
+    ("aos", ["aos"]),
+    ("ao pé", ["ao ", "pé"]),
+    ("aos poucos", ["aos ", "pou", "cos"]),
+    ("vou ao cinema", ["vou ", "ao ", "ci", "ne", "ma"]),
+    ("ao deus-dará", ["ao ", "deus-", "da", "rá"]),   # AO90 Base XV 6
+    ("ao passo que", ["ao ", "pas", "so ", "que"]),   # AO90 Base XV 6 f)
+])
+def test_the_contraction_ao_is_a_falling_diphthong(word, expected):
+    # CONTRACTION-AO. AO90 Base VII 1 Obs. admits the diphthong spelled ao "nas
+    # combinações da preposição a com as formas masculinas do artigo ou pronome
+    # demonstrativo o, ou seja, ao e aos". Infopédia gives ao as [aw].
+    assert syllabify(word) == expected
+
+
+def test_a_hyphen_ends_the_word_for_the_contraction_ao():
+    # A hyphen ends a word in every layer, as in stress.WORD_BOUNDARIES.
+    assert syllabify("ao-pé") == ["ao-", "pé"]
+
+
+@pytest.mark.parametrize("word,expected", [
+    ("aorta", ["a", "or", "ta"]),
+    ("caos", ["ca", "os"]),
+    ("aoristo", ["a", "o", "ris", "to"]),
+    ("aonde", ["a", "on", "de"]),
+    ("daos", ["da", "os"]),
+    ("d'aos", ["d'a", "os"]),
+    ("macau", ["ma", "cau"]),
+    ("cacau", ["ca", "cau"]),
+])
+def test_ao_inside_a_word_stays_a_hiatus(word, expected):
+    # Base VII 1 Obs. names the two contractions and no other word. An
+    # apostrophe does not end a word (parser._assemble), so d'aos is not the
+    # free word aos; daos and d'aos test that boundary only.
+    assert syllabify(word) == expected

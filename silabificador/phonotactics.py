@@ -94,6 +94,15 @@ COMPLEX_ONSETS: FrozenSet[str] = frozenset(
 #: closed native coda set would sanction. Constraining the onset is enough;
 #: constraining the coda as well would only reject words the dictionaries spell.
 
+#: The only words that AO90 Base VII 1 Obs. names for the diphthong ``ao``, which
+#: it admits "excecionalmente" as ``âu`` or ``au``, "representado nas
+#: combinações da preposição a com as formas masculinas do artigo ou pronome
+#: demonstrativo o, ou seja, ao e aos". The clause names no other word, so a
+#: word-internal ``ao`` keeps the hiatus: a.or.ta, a.o.ris.to. Loan derivatives
+#: such as maometano, maoismo and tao fall outside the clause; Infopédia reads
+#: them with [aw], and their split is open.
+AO_DIPHTHONG_WORDS: FrozenSet[str] = frozenset({"ao", "aos"})
+
 #: A glide before ``nh`` reverts to a nucleus: ra.i.nha, mo.i.nho, cam.pa.i.nha.
 #: The palatal nasal attracts the preceding close vowel into its own syllable.
 HIATUS_BEFORE = frozenset({"nh"})

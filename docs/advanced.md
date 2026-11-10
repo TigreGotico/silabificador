@@ -54,12 +54,14 @@ opposite split.
 | `bai.le` | `ra.i.nha`, `mo.i.nho` | a following `nh` pulls the vowel into its own syllable |
 | `bair.ro` | `ca.ir` | a geminate `rr` spells one consonant, so it closes nothing |
 | `mãe`, `pão`, `põe` | `co.e.lho` | a nasal nucleus licenses a mid offglide; a plain one does not |
+| `ao`, `aos` | `a.or.ta`, `ca.os` | AO90 Base VII 1 Obs. admits the diphthong `ao` in the contractions of `a` with `o`; loan derivatives such as `maometano` are open |
 | `viu`, `par.tiu` | `ci.u.men.to`, `mi.u.de.za` | `iu` is a diphthong only in the stressed syllable |
 | `flu.iu`, `pa.uis` | `flui.do` | a stressed `iu`/`ui` after a vowel is the diphthong, and the vowel before it stands alone |
 
 Rising sequences (`su.a`, `his.tó.ri.a`, `co.e.lho`) need no rule: Portuguese
 has no mid or low glides, so a vowel that is not `i`/`u` is always a
-nucleus, and hiatus follows for free.
+nucleus, and hiatus follows for free. The one exception is the `o` of the
+contractions `ao` and `aos`.
 
 Triphthongs need no rule either. In *quais* and *Uruguai* the leading glide
 is spelled inside the `qu`/`gu` onset, so layer 1 has already absorbed it,
