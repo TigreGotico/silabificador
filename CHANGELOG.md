@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.11a2](https://github.com/TigreGotico/silabificador/tree/2.1.11a2) (2026-11-10)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.11a1...2.1.11a2)
+
+**Merged pull requests:**
+
+- chore\(benchmark\): read Michaelis rows of the unified lexicon as a human source [\#46](https://github.com/TigreGotico/silabificador/pull/46) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [2.1.11a1](https://github.com/TigreGotico/silabificador/tree/2.1.11a1) (2026-11-10)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.10a1...2.1.11a1)
