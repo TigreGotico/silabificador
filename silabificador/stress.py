@@ -115,9 +115,11 @@ CLITIC_PRONOUNS = frozenset({
 #: Cunha & Cintra list them; pelo(s) and pela(s) are two syllables, and AO90
 #: Base IX 9.º names them proclitic. A word that is also spelled like a stressed
 #: word is kept when the unstressed reading is the common one: pelos, pelas, so
-#: the noun *pelos* and the verb *pelas* lose their stress. Four words of the list
-#: are left out, because the stressed reading is common: sob (the prefix of
-#: *sob-roda*), dom (the noun), são (the verb) and seu (the possessive).
+#: the noun *pelos* and the verb *pelas* lose their stress. Three words of the
+#: list are left out, because the stressed reading is common: dom (the noun), são
+#: (the verb) and seu (the possessive). sob is left out because the list also
+#: applies inside compounds, where it would take the secondary stress off the
+#: prefix of *sob-roda*; ab-, ob- and sub- keep theirs.
 CLITICS = CLITIC_PRONOUNS | frozenset({
     "a", "as", "o", "os", "um", "uns", "uma", "umas",          # articles
     "de", "do", "da", "dos", "das", "d", "em", "no", "na",     # prepositions
