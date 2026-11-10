@@ -1,9 +1,10 @@
 """Unit tests for the gold-set builder.
 
 These exercise the tier, provenance and integrity logic on synthetic data; no
-corpus is downloaded. Lexicon rows are ``(word, syllables, infopedia_url)`` --
-an Infopédia row carries a dictionary URL and dot separators, a Portal row has
-neither and uses pipes. Wiktionary sources are word -> set of splits.
+corpus is downloaded. Lexicon rows are
+``(word, syllables, infopedia_url, michaelis_url)`` -- an Infopédia or Michaelis
+row carries its dictionary URL and dot separators, a Portal row has no URL and
+uses pipes. Wiktionary sources are word -> set of splits.
 """
 import importlib.util
 import sys
@@ -27,17 +28,22 @@ if "benchmark" not in sys.modules:
     _spec.loader.exec_module(_module)
 
 from benchmark import wiktionary  # noqa: E402
-from benchmark.gold import accepts, build, fuse, lexicon_sources  # noqa: E402
+from benchmark.gold import accepts, build, fuse, lexicon_sources, summary  # noqa: E402
 
 URL = "https://www.infopedia.pt/dicionarios/lingua-portuguesa/x"
+MICHAELIS_URL = "https://michaelis.uol.com.br/moderno-espanhol/busca/portugues-espanhol/x/"
 
 
 def info(word, syllables):
-    return (word, syllables, URL)
+    return (word, syllables, URL, "")
+
+
+def michaelis(word, syllables):
+    return (word, syllables, "", MICHAELIS_URL)
 
 
 def portal(word, syllables):
-    return (word, syllables, "")
+    return (word, syllables, "", "")
 
 
 def split(text):
@@ -83,6 +89,31 @@ def test_a_split_one_source_alone_gives_is_not_accepted_in_agreement():
     assert gold.agreement["apto"] == {split("ap.to")}
 
 
+def test_a_michaelis_row_is_a_human_source_not_the_portal():
+    gold = gold_of([michaelis("azia", "a.zi.a")])
+    assert gold.michaelis_only == {"azia": {split("a.zi.a")}}
+    assert not gold.generated and not gold.wiktionary_only
+
+
+def test_michaelis_and_infopedia_that_agree_are_gold():
+    gold = gold_of([info("calva", "cal.va"), michaelis("calva", "cal.va"),
+                    portal("calva", "cal|va")])
+    assert gold.agreement == {"calva": {split("cal.va")}}
+    assert gold.support == {"calva": 2}
+
+
+def test_four_sources_record_support_four():
+    gold = gold_of([info("casa", "ca.sa"), michaelis("casa", "ca.sa")],
+                   en={"casa": ["ca.sa"]}, pt={"casa": ["ca.sa"]})
+    assert gold.support["casa"] == 4
+    assert dict(gold.tiers())["agreement, 4 sources"] == {"casa": {split("ca.sa")}}
+
+
+def test_the_summary_counts_michaelis_only_words():
+    gold = gold_of([michaelis("azia", "a.zi.a")])
+    assert "michaelis-only        1   one human source" in summary(gold)
+
+
 def test_three_sources_record_support_three():
     gold = gold_of([info("casa", "ca.sa")], en={"casa": ["ca.sa"]}, pt={"casa": ["ca.sa"]})
     assert gold.support["casa"] == 3
@@ -109,7 +140,7 @@ def test_splits_that_do_not_reconstruct_the_word_are_dropped():
         info("acidentadamente", "a.ci.den.ta.men.te"),
     ])
     assert not gold.infopedia_only and not gold.generated
-    assert gold.dropped == {"infopedia": 1, "portal": 1}
+    assert gold.dropped == {"infopedia": 1, "michaelis": 0, "portal": 1}
 
 
 def test_a_dictionary_contradicting_itself_is_dropped():

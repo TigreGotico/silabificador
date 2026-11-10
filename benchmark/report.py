@@ -164,9 +164,10 @@ def main() -> None:
         pct = 100.0 * correct / total if total else 0.0
         print(f"  {name:<28} {pct:6.2f}%   {correct:>6}/{total:<6}")
 
-    # The taxonomy is printed for the gold and for the two single-source tiers,
+    # The taxonomy is printed for the gold and for the single-source tiers,
     # where most of the unverified mass lives.
-    for name in ("edge cases (cited)", "agreement (gold)", "infopedia-only", "wiktionary-only"):
+    for name in ("edge cases (cited)", "agreement (gold)", "infopedia-only", "michaelis-only",
+                 "wiktionary-only"):
         failures = kept[name]
         print(f"\nERROR TAXONOMY -- {name}: {len(failures)} failures")
         by_bucket: Dict[str, List] = collections.defaultdict(list)
