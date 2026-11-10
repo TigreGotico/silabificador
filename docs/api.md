@@ -32,12 +32,12 @@ or apostrophe stays on the syllable it follows, and is never dropped:
 syllabify("guarda-chuva")       # ['guar', 'da-', 'chu', 'va']
 syllabify("ab-reagir")          # ['ab-', 're', 'a', 'gir']
 syllabify("ajudante de campo")  # ['a', 'ju', 'dan', 'te ', 'de ', 'cam', 'po']
-syllabify("pau-d'água")         # ["pau-d'", 'á', 'gua']
+syllabify("pau-d'água")         # ['pau-', "d'á", 'gua']
 ```
 
-The last split is a known defect: the `d` belongs with `á`, and the syllable
-`pau-d'` spans the hyphen
-([#23](https://github.com/TigreGotico/silabificador/issues/23)).
+An apostrophe marks an elided vowel (AO90 Base XVIII), not the end of a word.
+The consonant before it starts the next syllable, and the stress rules read
+`d'água` as one word.
 
 A word with no vowel in it has no syllable to find, and the function returns
 it whole:
@@ -112,7 +112,7 @@ A frozen dataclass.
 
 `str(syllable)` returns `surface`. The class stores this value rather than
 recomposing it from the fields, because a separator can sit anywhere inside a
-syllable (`ra-d'`), and reassembling in onset-nucleus-coda order would
+syllable (`d'á`), and reassembling in onset-nucleus-coda order would
 reorder the letters.
 
 `glide_on` is reported, not additive: it is already part of `onset`, because

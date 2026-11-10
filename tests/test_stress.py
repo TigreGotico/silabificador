@@ -1,7 +1,7 @@
 """Stress assignment."""
 import pytest
 
-from silabificador import analyze, stressed_index, syllabify
+from silabificador import analyze, stress, stressed_index, syllabify
 
 
 def marked(word):
@@ -86,6 +86,38 @@ def test_a_compound_keeps_a_stress_on_every_element(word, expected):
     # Two words wearing one coat: each keeps its own stress, and the last element
     # takes the primary.
     assert marked(word) == expected
+
+
+@pytest.mark.parametrize("word,expected", [
+    ("pau-d'alho", "(pau-).D'A.lho"),
+    ("estrela-d'alva", "es.(tre).la-.D'AL.va"),
+    ("copo d'água", "(co).po .D'Á.gua"),
+    ("caiu d'água", "ca.(iu ).D'Á.gua"),
+    ("caiu-o d'água", "ca.(iu-).o .D'Á.gua"),
+    ("saiu d'aqui", "sa.(iu ).d'a.QUI"),
+    ("saiu-se-lhe d'aqui", "sa.(iu-).se-.lhe .d'a.QUI"),
+    ("sant'ana", "san.T'A.na"),
+    ("d'os lusíadas", "d'os .lu.SÍ.a.das"),
+    ("bê-á-'bá", "(bê-).(á-').BÁ"),
+    ("três pa'anga", "(três ).pa'.AN.ga"),
+    ("enguia-d’água-doce", "en.(gui).a-.(d’á).gua-.DO.ce"),
+    ("d’os lusíadas", "d’os .lu.SÍ.a.das"),
+    ("bê-á-’bá", "(bê-).(á-’).BÁ"),
+])
+def test_an_apostrophe_does_not_end_a_stress_domain(word, expected):
+    # The elided d' is read with the word after it, so d'água is one element
+    # and every element keeps its stress. d'Os reads dos by analogy with AO90
+    # Base XVIII 1 a) (a Os = aos), an unstressed monosyllable. A hyphen still
+    # ends its element when an apostrophe follows it, as in bê-á-'bá. The
+    # apostrophe inside the one word pa'anga does not split it either.
+    assert marked(word) == expected
+
+
+def test_the_module_stressed_index_reads_the_same_elements():
+    # pé-d'alho has two elements; the last, d'alho, is paroxytone (rule 3), and
+    # the acute of pé belongs to the first element only.
+    assert stress.stressed_index(["pé-", "d'a", "lho"], "pé-d'alho") == 1
+    assert stress.stressed_index(["três ", "pa'", "an", "ga"], "três pa'anga") == 2
 
 
 def test_clitics_inside_a_compound_carry_nothing():
