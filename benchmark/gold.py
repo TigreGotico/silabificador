@@ -25,10 +25,15 @@ A word may have more than one correct split. Cunha & Cintra accept both
 prediction is correct when it is one of them.
 
 Every split must satisfy *join-integrity*: its syllables must reproduce the
-headword. Splits that fail are discarded and counted in
-:attr:`GoldSet.dropped`. A dictionary that gives one word two splits
-contradicts itself, and the word is dropped; a Wiktionary that lists two is
-stating alternatives, and both are kept.
+headword. It must also be *divided*: a piece between two separators holds at
+most one run of vowel letters. A dictionary that prints no division writes the
+headword whole (Michaelis ``bacon`` and ``arroz-doce``, pt.wiktionary
+``metodismo``), and that is no claim about its syllables. The rule also drops
+English loans whose syllable holds a silent ⟨e⟩ (``soft.ware``), and it misses
+an undivided word whose vowels form one run (``voyeur``). Splits that fail
+either test are discarded and counted in :attr:`GoldSet.dropped`. A dictionary
+that gives one word two splits contradicts itself, and the word is dropped; a
+Wiktionary that lists two is stating alternatives, and both are kept.
 
 Tiers, over the four human-edited sources:
 
@@ -43,6 +48,7 @@ Tiers, over the four human-edited sources:
 """
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 from typing import Dict, FrozenSet, Iterable, List, Mapping, Optional, Sequence, Set, Tuple
 
@@ -119,13 +125,23 @@ def fuse(split: Sequence[str]) -> Split:
     return tuple(out)
 
 
+#: A run of vowel letters. ⟨y⟩ is a vowel in loanwords (``byte``, ``hobby``).
+VOWEL_RUN = re.compile(r"[aeiouyáéíóúâêîôûàèòãẽĩõũäëïöüå]+")
+
+
+def divided(split: Sequence[str]) -> bool:
+    """Does every piece of ``split``, cut also at separators, hold one vowel run at most?"""
+    pieces = re.split(f"[.{re.escape(SEPARATORS)}]", ".".join(split))
+    return all(len(VOWEL_RUN.findall(piece)) <= 1 for piece in pieces)
+
+
 def accepts(accepted: Accepted, predicted: Sequence[str]) -> bool:
     """Is ``predicted`` one of the accepted splits?"""
     return fuse(predicted) in accepted
 
 
 def clean(name: str, raw: Mapping[str, Iterable[Split]]) -> Tuple[Dict[str, Accepted], int]:
-    """Keep the splits that spell their headword; drop self-contradictions."""
+    """Keep the divided splits that spell their headword; drop self-contradictions."""
     kept: Dict[str, Accepted] = {}
     dropped = 0
     for word, splits in raw.items():
@@ -133,7 +149,7 @@ def clean(name: str, raw: Mapping[str, Iterable[Split]]) -> Tuple[Dict[str, Acce
         if name in SINGLE_SPLIT and len(splits) > 1:
             dropped += 1
             continue
-        good = frozenset(fuse(s) for s in splits if "".join(s) == word)
+        good = frozenset(fuse(s) for s in splits if "".join(s) == word and divided(s))
         dropped += len(splits) - len(good)
         if good:
             kept[word] = good
@@ -231,6 +247,7 @@ def summary(gold: GoldSet) -> List[str]:
         f"conflict        {len(gold.conflict):>7}   human sources share no split; not gold",
         f"generated       {len(gold.generated):>7}   Portal da Língua Portuguesa; not gold",
         "dropped         " + ", ".join(f"{n} {c}" for n, c in gold.dropped.items())
-        + "   (splits that do not spell their headword, or a dictionary contradicting itself)",
+        + "   (splits that do not spell their headword or print no division,"
+        " or a dictionary contradicting itself)",
     ]
     return lines
