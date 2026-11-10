@@ -92,7 +92,9 @@ correct when it is one of them.
 A source sometimes prints a headword with no division: Michaelis gives `bacon`
 and `arroz-doce` whole, and pt.wiktionary gives `metodismo`. That is no claim
 about the syllables, so a split is dropped when a piece between two separators
-holds more than one run of vowels.
+holds more than one run of vowels. The rule also drops a few English loans
+whose syllable holds a silent ⟨e⟩ (`soft.ware`), and it misses an undivided
+word whose vowels form one run (`voyeur`).
 
 | tier | what it holds | accepted match | |
 |---|---|---|---|
@@ -109,11 +111,13 @@ holds more than one run of vowels.
 
 All 184,799 scoreable words reconstruct exactly.
 
-Michaelis writes a final unstressed ⟨ia⟩, ⟨io⟩, ⟨ea⟩ or ⟨eo⟩ as one syllable
-(`bul.gá.ria`, `náu.sea`). Infopédia and the engine write a hiatus
-(`bul.gá.ri.a`). The edge cases accept both forms, but a word only Michaelis
-holds has only the Michaelis split. Most of the Michaelis-only misses are this
-difference in convention.
+Michaelis writes a final unstressed vowel pair such as ⟨ia⟩, ⟨ie⟩ or ⟨ea⟩ as
+one syllable (`gló.ria`, `sé.rie`, `náu.sea`). Infopédia and the engine write a
+hiatus (`gló.ri.a`, `sé.ri.e`). Cunha & Cintra (p. 63) accept both: final ⟨-ia
+-ie -io⟩ "são normalmente ditongos crescentes" but "podem, no entanto, ser
+emitidos com separação dos dois elementos". The edge case `glória` accepts both
+splits. A word that only Michaelis holds has only the Michaelis split, so 34 of
+the 41 Michaelis-only misses come from this difference.
 
 The rules were first tuned on the words where Infopédia and the Portal agree,
 so the Portal score shows how close the engine is to one rule system, not how

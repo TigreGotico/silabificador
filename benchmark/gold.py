@@ -28,7 +28,8 @@ Every split must satisfy *join-integrity*: its syllables must reproduce the
 headword. It must also be *divided*: a piece between two separators holds at
 most one run of vowel letters. A dictionary that prints no division writes the
 headword whole (Michaelis ``bacon`` and ``arroz-doce``, pt.wiktionary
-``metodismo``), and that is no claim about its syllables. Splits that fail
+``metodismo``), and that is no claim about its syllables. The rule also drops
+English loans whose syllable holds a silent ⟨e⟩ (``soft.ware``). Splits that fail
 either test are discarded and counted in :attr:`GoldSet.dropped`. A dictionary
 that gives one word two splits contradicts itself, and the word is dropped; a
 Wiktionary that lists two is stating alternatives, and both are kept.
@@ -124,7 +125,7 @@ def fuse(split: Sequence[str]) -> Split:
 
 
 #: A run of vowel letters. ⟨y⟩ is a vowel in loanwords (``byte``, ``hobby``).
-VOWEL_RUN = re.compile(r"[aeiouyáéíóúâêîôûàãõäëïöü]+")
+VOWEL_RUN = re.compile(r"[aeiouyáéíóúâêîôûàèòãẽĩõũäëïöüå]+")
 
 
 def divided(split: Sequence[str]) -> bool:
