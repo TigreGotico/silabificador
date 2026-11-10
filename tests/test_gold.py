@@ -158,12 +158,14 @@ def test_a_monosyllable_and_a_hyphen_divided_compound_are_kept():
     gold = gold_of([michaelis("pão", "pão"), michaelis("quais", "quais"),
                     michaelis("cabo verde", "ca.bo ver.de"),
                     info("bem-te-vi", "bem-te-vi"), info("a-histórico", "a-his.tó.ri.co"),
-                    info("saguão", "sa.guão"), info("bahá'í", "ba.há'í")])
+                    info("saguão", "sa.guão"), info("reuniões", "re.u.niões"),
+                    info("bahá'í", "ba.há'í")])
     assert gold.michaelis_only == {"pão": {("pão",)}, "quais": {("quais",)},
                                    "cabo verde": {("ca", "bo ver", "de")}}
     assert gold.infopedia_only == {"bem-te-vi": {("bem-te-vi",)},
                                    "a-histórico": {("a-his", "tó", "ri", "co")},
                                    "saguão": {("sa", "guão")},
+                                   "reuniões": {("re", "u", "niões")},
                                    "bahá'í": {("ba", "há'í")}}
     assert gold.dropped == {"infopedia": 0, "michaelis": 0, "portal": 0}
 

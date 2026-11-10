@@ -29,7 +29,8 @@ headword. It must also be *divided*: a piece between two separators holds at
 most one run of vowel letters. A dictionary that prints no division writes the
 headword whole (Michaelis ``bacon`` and ``arroz-doce``, pt.wiktionary
 ``metodismo``), and that is no claim about its syllables. The rule also drops
-English loans whose syllable holds a silent ⟨e⟩ (``soft.ware``). Splits that fail
+English loans whose syllable holds a silent ⟨e⟩ (``soft.ware``), and it misses
+an undivided word whose vowels form one run (``voyeur``). Splits that fail
 either test are discarded and counted in :attr:`GoldSet.dropped`. A dictionary
 that gives one word two splits contradicts itself, and the word is dropped; a
 Wiktionary that lists two is stating alternatives, and both are kept.
