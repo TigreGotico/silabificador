@@ -1,12 +1,14 @@
 """Gold set construction: several sources, several accepted splits per word.
 
-Four sources give a syllabification:
+Five sources give a syllabification:
 
 * **Infopédia** (Porto Editora), in the ``syllables`` column of the
   ``TigreGotico/portuguese-unified-pronunciation-lexicon`` rows that carry an
   Infopédia URL. Dot-separated.
+* **Michaelis** (Melhoramentos), in the rows of the same lexicon that carry a
+  Michaelis URL. Dot-separated.
 * **Portal da Língua Portuguesa**, in the rows of the same lexicon that carry no
-  URL. Pipe-separated, repeated once per phonetic region.
+  dictionary URL. Pipe-separated, repeated once per phonetic region.
 * **en.wiktionary** and **pt.wiktionary**, read from their public dumps by
   :mod:`benchmark.wiktionary`.
 
@@ -14,7 +16,7 @@ The Portal is not gold. Its *Dicionário de divisão silábica* says that "as
 regras de divisão silábica para a criação deste dicionário foram baseadas" on
 Base XX of the 1990 Orthographic Agreement, and its data give one answer to
 every word of the same letter shape, as a rule system does. It is scored as a
-separate ``generated`` tier and is never gold on its own. The three other
+separate ``generated`` tier and is never gold on its own. The four other
 sources are edited by people, independently of each other.
 
 A word may have more than one correct split. Cunha & Cintra accept both
@@ -28,12 +30,13 @@ headword. Splits that fail are discarded and counted in
 contradicts itself, and the word is dropped; a Wiktionary that lists two is
 stating alternatives, and both are kept.
 
-Tiers, over the three human-edited sources:
+Tiers, over the four human-edited sources:
 
 * **agreement** -- two or more sources give the same split. The accepted set is
   every split that at least two of them give. :attr:`GoldSet.support` records
-  whether two or three sources stand behind it.
-* **infopedia-only** / **wiktionary-only** -- one human source holds the word.
+  how many sources stand behind it.
+* **infopedia-only** / **michaelis-only** / **wiktionary-only** -- one human
+  source holds the word.
 * **conflict** -- two or more sources hold the word and share no split. Scored
   against the union of their splits, and never called gold.
 * **generated** -- the Portal, scored against its own split.
@@ -49,11 +52,11 @@ Accepted = FrozenSet[Split]
 REPO_ID = "TigreGotico/portuguese-unified-pronunciation-lexicon"
 PARQUET = "train.parquet"
 
-HUMAN = ("infopedia", "enwiktionary", "ptwiktionary")
+HUMAN = ("infopedia", "michaelis", "enwiktionary", "ptwiktionary")
 GENERATED = ("portal",)
 #: Sources that state one split per word. Two splits from one of these is a
 #: contradiction, not an alternative.
-SINGLE_SPLIT = ("infopedia", "portal")
+SINGLE_SPLIT = ("infopedia", "michaelis", "portal")
 
 
 @dataclass
@@ -63,6 +66,7 @@ class GoldSet:
     agreement: Dict[str, Accepted] = field(default_factory=dict)
     support: Dict[str, int] = field(default_factory=dict)
     infopedia_only: Dict[str, Accepted] = field(default_factory=dict)
+    michaelis_only: Dict[str, Accepted] = field(default_factory=dict)
     wiktionary_only: Dict[str, Accepted] = field(default_factory=dict)
     conflict: Dict[str, Accepted] = field(default_factory=dict)
     generated: Dict[str, Accepted] = field(default_factory=dict)
@@ -72,10 +76,12 @@ class GoldSet:
     def tiers(self) -> List[Tuple[str, Dict[str, Accepted]]]:
         """Every scored tier, in report order."""
         return [
+            ("agreement, 4 sources", {w: a for w, a in self.agreement.items() if self.support[w] == 4}),
             ("agreement, 3 sources", {w: a for w, a in self.agreement.items() if self.support[w] == 3}),
             ("agreement, 2 sources", {w: a for w, a in self.agreement.items() if self.support[w] == 2}),
             ("agreement (gold)", self.agreement),
             ("infopedia-only", self.infopedia_only),
+            ("michaelis-only", self.michaelis_only),
             ("wiktionary-only", self.wiktionary_only),
             ("conflict (any human split)", self.conflict),
             ("generated: Portal", self.generated),
@@ -134,15 +140,16 @@ def clean(name: str, raw: Mapping[str, Iterable[Split]]) -> Tuple[Dict[str, Acce
     return kept, dropped
 
 
-def lexicon_sources(rows: Iterable[Tuple[str, str, str]]) -> Dict[str, Dict[str, Set[Split]]]:
-    """Infopédia and Portal splits from ``(word, syllables, infopedia_url)`` rows."""
-    sources: Dict[str, Dict[str, Set[Split]]] = {"infopedia": {}, "portal": {}}
-    for word, raw, infopedia_url in rows:
+def lexicon_sources(rows: Iterable[Tuple[str, str, str, str]]) -> Dict[str, Dict[str, Set[Split]]]:
+    """Infopédia, Michaelis and Portal splits from
+    ``(word, syllables, infopedia_url, michaelis_url)`` rows."""
+    sources: Dict[str, Dict[str, Set[Split]]] = {"infopedia": {}, "michaelis": {}, "portal": {}}
+    for word, raw, infopedia_url, michaelis_url in rows:
         if not raw:
             continue
-        # Infopédia rows carry a dictionary URL; Portal rows do not. The
+        # Dictionary rows carry a dictionary URL; Portal rows do not. The
         # separator alone is ambiguous for monosyllables, which have neither.
-        name = "infopedia" if infopedia_url else "portal"
+        name = "infopedia" if infopedia_url else "michaelis" if michaelis_url else "portal"
         sources[name].setdefault(word.lower(), set()).add(parse(raw))
     return sources
 
@@ -161,7 +168,8 @@ def build(raw_sources: Mapping[str, Mapping[str, Iterable[Split]]]) -> GoldSet:
     for word, held in held_by.items():
         if len(held) == 1:
             (name, splits), = held.items()
-            tier = gold.infopedia_only if name == "infopedia" else gold.wiktionary_only
+            tier = {"infopedia": gold.infopedia_only,
+                    "michaelis": gold.michaelis_only}.get(name, gold.wiktionary_only)
             tier[word] = splits
             continue
         votes: Dict[Split, int] = {}
@@ -198,9 +206,10 @@ def load(parquet_path: Optional[str] = None, enwiktionary: Optional[str] = None,
 
         parquet_path = hf_hub_download(REPO_ID, PARQUET, repo_type="dataset")
 
-    frame = pd.read_parquet(parquet_path, columns=["word", "syllables", "infopedia_url"])
-    raw: Dict[str, Mapping[str, Iterable[Split]]] = dict(
-        lexicon_sources(zip(frame.word, frame.syllables, frame.infopedia_url)))
+    frame = pd.read_parquet(parquet_path,
+                            columns=["word", "syllables", "infopedia_url", "michaelis_url"])
+    raw: Dict[str, Mapping[str, Iterable[Split]]] = dict(lexicon_sources(
+        zip(frame.word, frame.syllables, frame.infopedia_url, frame.michaelis_url)))
     if enwiktionary:
         raw["enwiktionary"] = wiktionary.load_enwiktionary(enwiktionary)
     if ptwiktionary:
