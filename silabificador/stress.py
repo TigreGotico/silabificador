@@ -61,7 +61,8 @@ plus article -- and it is unstressed.
 References
 ----------
 * Cunha, C. & Cintra, L. (1984). *Nova Gramática do Português Contemporâneo*,
-  "Acentuação" and "Monossílabos átonos" (pp. 56-57).
+  "Acentuação", and "Monossílabos átonos" (pp. 56-57, as quoted in Ciberdúvidas
+  answer 35988; the edition itself was not consulted).
 * Acordo Ortográfico da Língua Portuguesa (1990), Bases VIII-XI (when an accent
   is obligatory, and therefore when its absence is informative), Base IX 9.º
   (pelo(s), pela(s) are proclitic), Base XIII 1.º (an adverb in ``-mente`` drops
@@ -111,9 +112,11 @@ CLITIC_PRONOUNS = frozenset({
 #: The *monossílabos átonos*: a closed class of function words that carry no
 #: stress of their own. They matter inside compounds -- *chapéu de chuva*, *pão
 #: de ló* -- where an element that is one of these is not a stress domain.
-#: Cunha & Cintra (pp. 56-57) list them; pelo(s) and pela(s) are two syllables,
-#: and AO90 Base IX 9.º names them proclitic. Four words of their list are left
-#: out, because each has the spelling of a stressed word: sob (the prefix of
+#: Cunha & Cintra list them; pelo(s) and pela(s) are two syllables, and AO90
+#: Base IX 9.º names them proclitic. A word that is also spelled like a stressed
+#: word is kept when the unstressed reading is the common one: pelos, pelas, so
+#: the noun *pelos* and the verb *pelas* lose their stress. Four words of the list
+#: are left out, because the stressed reading is common: sob (the prefix of
 #: *sob-roda*), dom (the noun), são (the verb) and seu (the possessive).
 CLITICS = CLITIC_PRONOUNS | frozenset({
     "a", "as", "o", "os", "um", "uns", "uma", "umas",          # articles
@@ -180,7 +183,7 @@ def _primary_element(syllables: Sequence[str], groups: Sequence[List[int]],
     """
     host = len(words) - 1
     while (host and words[host] in CLITIC_PRONOUNS
-           and syllables[groups[host - 1][-1]].rstrip(APOSTROPHES).endswith("-")):
+           and syllables[groups[host - 1][-1]].endswith("-")):
         host -= 1
     return len(words) - 1 if words[host] in CLITIC_PRONOUNS else host
 
