@@ -56,7 +56,7 @@ def test_a_foreign_vowel_at_the_end_of_a_compound_element_is_one_unit():
 
 
 def test_a_foreign_eu_at_the_end_of_a_compound_element_is_one_unit():
-    # The eu of a marked loanword ends at the separator too (chauf.feur).
+    # The eu before a final r ends at the separator too (chauf.feur).
     assert syllabify("chauffeur-chefe") == ["chauf", "feur-", "che", "fe"]
 
 
