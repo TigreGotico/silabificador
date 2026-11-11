@@ -2554,6 +2554,90 @@
      "reason": "pneumo- + ultra-: the u closed by l is a nucleus at the seam. The foreign ou unit needs a word that AO90 Base I 2-3 and 5 mark as foreign, and this word has no such mark"
     }
    ]
+  },
+  {
+   "word": "facebookiano",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "fa.ce.boo.ki.a.no",
+     "sources": [
+      "Infopédia"
+     ],
+     "reason": "English oo spells one vowel [u] in a word marked as foreign; Infopédia transcribes [fɐjsəbuˈkjɐnu], one [u]"
+    }
+   ]
+  },
+  {
+   "word": "hollywoodesco",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "hol.ly.woo.des.co",
+     "sources": [
+      "Infopédia",
+      "Portal"
+     ],
+     "reason": "English oo spells one vowel [u] in a word marked as foreign; the Portal transcribes [ɔljudˈeʃkʊ], one [u]"
+    }
+   ]
+  },
+  {
+   "word": "halloween",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "hal.lo.ween",
+     "sources": [
+      "en.wiktionary"
+     ],
+     "reason": "English ee spells one vowel [i] in a word marked as foreign"
+    }
+   ]
+  },
+  {
+   "word": "shampoo",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "sham.poo",
+     "sources": [
+      "pt.wiktionary"
+     ],
+     "reason": "English oo spells one vowel [u] in a word marked as foreign"
+    }
+   ]
+  },
+  {
+   "word": "voo",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "vo.o",
+     "sources": [
+      "Infopédia",
+      "Portal",
+      "en.wiktionary",
+      "pt.wiktionary"
+     ],
+     "reason": "in a Portuguese word oo is a hiatus"
+    }
+   ]
+  },
+  {
+   "word": "preencher",
+   "class": "hiatus vs diphthong",
+   "accepted": [
+    {
+     "split": "pre.en.cher",
+     "sources": [
+      "Infopédia",
+      "Portal",
+      "pt.wiktionary"
+     ],
+     "reason": "in a Portuguese word ee is a hiatus at the prefix seam pre-"
+    }
+   ]
   }
  ]
 }

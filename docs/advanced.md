@@ -206,6 +206,12 @@ Foreign onsets are not in the inventory. Where the gold has `sof.twa.re`, the
 engine writes `soft.wa.re`, because `tw` is not a Portuguese onset. A few
 loanwords in the lexicon fail for this reason.
 
+An English silent `e` is not read either. The dictionaries transcribe no vowel
+for it inside a compound (Infopédia *software* [sɔˈftwɛr], *freeware*
+[friˈwɛr]), so en.wiktionary writes `soft.ware`, and the engine writes
+`soft.wa.re`. At the end of a word the transcriptions vary (Infopédia *site*
+[ˈsajt] and [ˈsajtə]), so no spelling rule decides it.
+
 The engine counts these classes rather than hiding them: `python -m
 benchmark.report` prints every remaining failure bucketed by cause.
 

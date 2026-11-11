@@ -98,16 +98,16 @@ word whose vowels form one run (`voyeur`).
 
 | tier | what it holds | accepted match | |
 |---|---|---|---|
-| edge cases | cited splits from grammars and dictionaries, `tests/edge_cases.json` | 100.00% | 142 / 142 |
+| edge cases | cited splits from grammars and dictionaries, `tests/edge_cases.json` | 100.00% | 148 / 148 |
 | agreement, 4 sources | all four human sources give the split | 99.97% | 10,785 / 10,788 |
 | agreement, 3 sources | three human sources give the split | 99.90% | 13,340 / 13,354 |
 | agreement, 2 sources | two human sources give the split | 99.70% | 26,180 / 26,260 |
 | **agreement (gold)** | the three rows above | **99.81%** | 50,305 / 50,402 |
-| Infopédia only | one human source | 99.30% | 59,030 / 59,447 |
+| Infopédia only | one human source | 99.30% | 59,033 / 59,447 |
 | Michaelis only | one human source | 93.37% | 577 / 618 |
-| Wiktionary only | one human source | 98.14% | 65,333 / 66,568 |
+| Wiktionary only | one human source | 98.16% | 65,340 / 66,568 |
 | conflict | human sources share no split; any of them is accepted | 99.30% | 707 / 712 |
-| generated: Portal | not gold | 99.69% | 51,833 / 51,995 |
+| generated: Portal | not gold | 99.69% | 51,835 / 51,995 |
 
 All 184,799 scoreable words reconstruct exactly.
 

@@ -15,16 +15,16 @@ own tier, never as gold.
 
 | set | accepted match | |
 |---|---|---|
-| edge cases (cited) | 100.00% | 142 / 142 |
+| edge cases (cited) | 100.00% | 148 / 148 |
 | agreement, 4 sources | 99.97% | 10,785 / 10,788 |
 | agreement, 3 sources | 99.90% | 13,340 / 13,354 |
 | agreement, 2 sources | 99.70% | 26,180 / 26,260 |
 | agreement (gold) | 99.81% | 50,305 / 50,402 |
-| infopedia-only | 99.30% | 59,030 / 59,447 |
+| infopedia-only | 99.30% | 59,033 / 59,447 |
 | michaelis-only | 93.37% | 577 / 618 |
-| wiktionary-only | 98.14% | 65,333 / 66,568 |
+| wiktionary-only | 98.16% | 65,340 / 66,568 |
 | conflict (any human split) | 99.30% | 707 / 712 |
-| generated: Portal | 99.69% | 51,833 / 51,995 |
+| generated: Portal | 99.69% | 51,835 / 51,995 |
 
 184,799 of 184,799 scoreable words reconstruct exactly.
 
