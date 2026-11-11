@@ -9,7 +9,7 @@ description = "A lightweight, dependency-free Portuguese syllabifier built on ha
 readme = "README.md"
 license = { text = "MIT" }
 authors = [{ name = "JarbasAi", email = "jarbasai@mailfence.com" }]
-requires-python = ">=3.8"
+requires-python = ">=3.11"
 keywords = ["portuguese", "syllabifier", "syllabification", "phonetics", "nlp", "tts"]
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -30,6 +30,9 @@ Repository = "https://github.com/TigreGotico/silabificador"
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["silabificador*"]
+
+[tool.setuptools.package-data]
+silabificador = ["data/*.csv"]
 
 [tool.setuptools.dynamic]
 version = { attr = "silabificador.version.VERSION_STR" }

@@ -118,3 +118,129 @@ def test_onset_glides_never_reach_this_layer(word, expected):
     # That is why "quais" needs no triphthong rule: it arrives here as a plain
     # nucleus plus one offglide.
     assert syllabify(word) == expected
+
+
+@pytest.mark.parametrize("word,expected", [
+    ("fluiu", ["flu", "iu"]),               # AO90 Base XX 4 "flu-iu"
+    ("distraiu", ["dis", "tra", "iu"]),     # AO90 Base X 6
+    ("instruiu", ["ins", "tru", "iu"]),     # AO90 Base X 6
+    ("pauis", ["pa", "uis"]),               # AO90 Base X 6
+    ("possuiu", ["pos", "su", "iu"]),       # en.wiktionary, pt.wiktionary
+])
+def test_a_stressed_iu_or_ui_after_a_vowel_is_the_diphthong(word, expected):
+    # STRESSED-IU-UI. The stressed diphthong takes no accent after a vowel (Base X
+    # 6); read as flui.u, the final u would be a stressed vowel in hiatus, which
+    # Base X 5 accents (tuiuiú).
+    assert syllabify(word) == expected
+
+
+@pytest.mark.parametrize("word,expected", [
+    ("saiu-se", ["sa", "iu-", "se"]),
+    ("caiu-lhe", ["ca", "iu-", "lhe"]),
+    ("saiu-lhes", ["sa", "iu-", "lhes"]),
+    ("distraiu-se", ["dis", "tra", "iu-", "se"]),
+    ("distraiu-o", ["dis", "tra", "iu-", "o"]),
+    ("atraiu-nos", ["a", "tra", "iu-", "nos"]),
+    ("atraiu-vos", ["a", "tra", "iu-", "vos"]),
+    ("instruiu-os", ["ins", "tru", "iu-", "os"]),
+    ("possuiu-a", ["pos", "su", "iu-", "a"]),
+    ("contribuiu-lhe", ["con", "tri", "bu", "iu-", "lhe"]),
+    ("atribuiu-lhes", ["a", "tri", "bu", "iu-", "lhes"]),
+    ("atribuiu-se-lhe", ["a", "tri", "bu", "iu-", "se-", "lhe"]),
+])
+def test_an_enclitic_does_not_move_the_stressed_iu(word, expected):
+    # STRESSED-IU-UI reads the end of the verb, not the end of the string. Base
+    # XVII 1 joins an enclitic with a hyphen (dá-se, deixa-o, partir-lhe), and
+    # Base X 3 accents the verb before it as a word of its own (atraí-lo). So
+    # the verb splits as it does alone, and the clitic adds its own syllable.
+    assert syllabify(word) == expected
+
+
+def test_a_space_ends_the_word_for_the_stressed_iu():
+    # A space is a separator as the enclitic hyphen is, so the verb of a phrase
+    # splits as it does alone.
+    assert syllabify("saiu de casa") == ["sa", "iu ", "de ", "ca", "sa"]
+
+
+@pytest.mark.parametrize("word,expected", [
+    ("abaiuca-se", ["a", "bai", "u", "ca-", "se"]),   # Base X 4; Infopédia a.bai.u.car
+    ("amiudá-lo", ["a", "mi", "u", "dá-", "lo"]),     # UNSTRESSED-IU; Infopédia a.mi.u.dar
+    ("viu-se", ["viu-", "se"]),                       # no vowel before the iu
+    ("partiu-se", ["par", "tiu-", "se"]),             # C&C p. 83 "par-tiu"
+    ("distraí-lo", ["dis", "tra", "í-", "lo"]),       # ACCENT: Base X 3 "atraí-lo"
+])
+def test_an_enclitic_does_not_make_the_stressed_rule_fire(word, expected):
+    # The rule still needs a stressed iu or ui after a vowel, final in its word.
+    assert syllabify(word) == expected
+
+
+@pytest.mark.parametrize("word,expected", [
+    ("baiuca", ["bai", "u", "ca"]),         # AO90 Base X 4
+    ("boiuno", ["boi", "u", "no"]),         # AO90 Base X 4
+    ("partiu", ["par", "tiu"]),             # C&C p. 83 "par-tiu"
+    ("viu", ["viu"]),                       # Mateus & d'Andrade 1998 p. 18
+    ("maláui", ["ma", "láu", "i"]),         # pt.wiktionary
+])
+def test_the_stressed_rule_leaves_a_paroxytone_and_a_plain_diphthong_alone(word, expected):
+    # Base X 4: in a paroxytone the stressed vowel after a diphthong stands alone
+    # unaccented, so only a final syllable is regrouped. Base X 6 names tonic
+    # diphthongs only: in maláui the accent puts the stress on láu, and the final
+    # i is left alone.
+    assert syllabify(word) == expected
+
+
+@pytest.mark.parametrize("word,expected", [
+    ("ciumento", ["ci", "u", "men", "to"]),           # Infopédia, pt.wiktionary
+    ("amiudar", ["a", "mi", "u", "dar"]),             # Infopédia, pt.wiktionary
+    ("poliuretano", ["po", "li", "u", "re", "ta", "no"]),  # Infopédia, pt.wiktionary
+    ("abiulense", ["a", "bi", "u", "len", "se"]),     # Infopédia, pt.wiktionary
+    ("vinícius", ["vi", "ní", "ci", "us"]),           # en.wiktionary, pt.wiktionary
+])
+def test_iu_outside_the_stressed_syllable_is_a_hiatus(word, expected):
+    # UNSTRESSED-IU. Mateus & d'Andrade (1998) give [iw] as stressed only, and the
+    # unstressed iu of miudeza as glide + vowel, two nuclei at the base level.
+    assert syllabify(word) == expected
+
+
+def test_the_unstressed_rule_does_not_reach_ui():
+    # Mateus & d'Andrade (1998) p. 18 list a pre-stressed [uj] in cuidado.
+    assert syllabify("cuidado") == ["cui", "da", "do"]
+    assert syllabify("cuidar") == ["cui", "dar"]
+
+
+@pytest.mark.parametrize("word,expected", [
+    ("ao", ["ao"]),
+    ("aos", ["aos"]),
+    ("ao pé", ["ao ", "pé"]),
+    ("aos poucos", ["aos ", "pou", "cos"]),
+    ("vou ao cinema", ["vou ", "ao ", "ci", "ne", "ma"]),
+    ("ao deus-dará", ["ao ", "deus-", "da", "rá"]),   # AO90 Base XV 6
+    ("ao passo que", ["ao ", "pas", "so ", "que"]),   # AO90 Base XV 6 f)
+])
+def test_the_contraction_ao_is_a_falling_diphthong(word, expected):
+    # CONTRACTION-AO. AO90 Base VII 1 Obs. admits the diphthong spelled ao "nas
+    # combinações da preposição a com as formas masculinas do artigo ou pronome
+    # demonstrativo o, ou seja, ao e aos". Infopédia gives ao as [aw].
+    assert syllabify(word) == expected
+
+
+def test_a_hyphen_ends_the_word_for_the_contraction_ao():
+    # A hyphen ends a word in every layer, as in stress.WORD_BOUNDARIES.
+    assert syllabify("ao-pé") == ["ao-", "pé"]
+
+
+@pytest.mark.parametrize("word,expected", [
+    ("aorta", ["a", "or", "ta"]),
+    ("caos", ["ca", "os"]),
+    ("aoristo", ["a", "o", "ris", "to"]),
+    ("aonde", ["a", "on", "de"]),
+    ("daos", ["da", "os"]),
+    ("d'aos", ["d'a", "os"]),
+    ("macau", ["ma", "cau"]),
+    ("cacau", ["ca", "cau"]),
+])
+def test_ao_inside_a_word_stays_a_hiatus(word, expected):
+    # Base VII 1 Obs. names the two contractions and no other word. An
+    # apostrophe does not end a word (parser._assemble), so d'aos is not the
+    # free word aos; daos and d'aos test that boundary only.
+    assert syllabify(word) == expected
