@@ -106,26 +106,24 @@ def _foreign_vowel(word: str, index: int) -> str:
       letters are a hiatus (vo.o, le.em, co.o.pe.rar), and so is the ``ee`` of
       an ``-ear`` verb before the endings ``-ei``, ``-eis``, ``-emos``, where the
       stem ``e`` meets the ending: pas.se.ei, and on a loan stem hac.ke.ei
-      (en.wiktionary *hackear* [ʁa.kiˈa(ʁ)], ``hac.ke.ar``).
+      (en.wiktionary *hackear* /ʁa.kiˈa(ʁ)/, ``hac.ke.ar``).
 
     A word ends at a separator, so the end of each element of a compound counts:
     beaux-.arts, as bor.deaux. AO90 Base XV 1 hyphenates compounds whose
     elements "mantêm acento próprio", each a word of its own. The foreign
-    marks are read in the same element only: the ``k`` of *zoo-kart* says
-    nothing about *zoo*.
+    marks are read over the whole input, because a loan phrase often marks
+    only one of its words: *happy hour* /ˈʁɛ.pi ˈaw.eʁ/ and *baby boom*
+    /ˈbej.bi ˈbũ/ (en.wiktionary). The cost is a Portuguese word next to a
+    marked one, which joins: *enjoo de kart* gives en.joo.
     """
     rest = "".join(takewhile(lambda char: char not in SEPARATORS, word[index:]))
-    start = index
-    while start and word[start - 1] not in SEPARATORS:
-        start -= 1
-    element = word[start:index] + rest
     if rest.startswith("eau") and rest[3:] in ("", "s", "x"):
         return "eau"
     if rest.startswith("eu") and rest[2:] in ("r", "rs"):
         return "eu"
-    if rest in ("eei", "eeis", "eemos"):
+    if rest in ("eei", "eeis", "eemos", "eemo"):
         return ""
-    if rest[:2] in ("ou", "oo", "ee") and FOREIGN_MARKS.search(element):
+    if rest[:2] in ("ou", "oo", "ee") and FOREIGN_MARKS.search(word):
         return rest[:2]
     return ""
 

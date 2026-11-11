@@ -35,17 +35,24 @@ def test_empty_and_single_char():
 
 
 @pytest.mark.parametrize("word, expected", [
-    # The infinitive is hac.ke.ar (Infopédia ha.cke.ar, en.wiktionary
-    # hac.ke.ar): the stem e is a nucleus of its own, and the endings -ei,
+    # The sources write the infinitive with the stem e in its own syllable
+    # (Infopédia ha.cke.ar, en.wiktionary hac.ke.ar), and the endings -ei,
     # -eis, -emos follow it as they do in pas.se.ei.
     ("hackeei", ["hac", "ke", "ei"]),
     ("hackeeis", ["hac", "ke", "eis"]),
     ("hackeemos", ["hac", "ke", "e", "mos"]),
+    ("hackeemo-nos", ["hac", "ke", "e", "mo-", "nos"]),
 ])
 def test_an_ear_verb_ending_on_a_loan_stem_is_a_hiatus(word, expected):
     assert syllabify(word) == expected
 
 
-def test_a_foreign_mark_in_another_element_does_not_join_oo():
-    # enjoo is en.jo.o in all five sources; the k of kart is in another word.
-    assert syllabify("enjoo de kart")[:3] == ["en", "jo", "o "]
+@pytest.mark.parametrize("phrase, word", [
+    # en.wiktionary: happy hour /ˈʁɛ.pi ˈaw.eʁ/, ou is one diphthong [aw];
+    # baby boom /ˈbej.bi ˈbũ/, oo is one vowel. A mark in the first word
+    # makes the second one foreign too.
+    ("happy hour", "hour"),
+    ("baby boom", "boom"),
+])
+def test_a_mark_in_one_word_of_a_loan_phrase_reaches_the_others(phrase, word):
+    assert syllabify(phrase)[-1] == word
