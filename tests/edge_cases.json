@@ -1060,7 +1060,7 @@
   },
   {
    "word": "booleano",
-   "class": "error in one source",
+   "class": "hiatus vs diphthong",
    "accepted": [
     {
      "split": "bo.o.le.a.no",
@@ -1069,16 +1069,14 @@
       "pt.wiktionary"
      ],
      "reason": "AO90 Base XX 4: vowels outside a falling diphthong 'podem, se a primeira delas não é u precedido de g ou q, e mesmo que sejam iguais, separar-se na escrita: ala-úde, áre-as, ca-apeba, co-ordenar, do-er, flu-idez, perdo-as, vo-os ... cai-ais, caí-eis, ensai-os, flu-iu'"
-    }
-   ],
-   "rejected": [
+    },
     {
      "split": "boo.le.a.no",
      "sources": [
       "Infopédia",
       "Portal"
      ],
-     "reason": "joins two identical vowels into one syllable, against AO90 Base XX 4"
+     "reason": "from the English name Boole, whose oo is one vowel: Infopédia transcribes [buˈljɐnu], one [u]; AO90 Base I 3 keeps the graphic combinations of a foreign name in its derivatives"
     }
    ]
   },

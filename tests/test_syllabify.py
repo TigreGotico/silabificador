@@ -32,3 +32,20 @@ def test_class_wrapper_matches_function():
 def test_empty_and_single_char():
     assert syllabify("a") == ["a"]
     assert isinstance(syllabify(""), list)
+
+
+@pytest.mark.parametrize("word, expected", [
+    # The infinitive is hac.ke.ar (Infopédia ha.cke.ar, en.wiktionary
+    # hac.ke.ar): the stem e is a nucleus of its own, and the endings -ei,
+    # -eis, -emos follow it as they do in pas.se.ei.
+    ("hackeei", ["hac", "ke", "ei"]),
+    ("hackeeis", ["hac", "ke", "eis"]),
+    ("hackeemos", ["hac", "ke", "e", "mos"]),
+])
+def test_an_ear_verb_ending_on_a_loan_stem_is_a_hiatus(word, expected):
+    assert syllabify(word) == expected
+
+
+def test_a_foreign_mark_in_another_element_does_not_join_oo():
+    # enjoo is en.jo.o in all five sources; the k of kart is in another word.
+    assert syllabify("enjoo de kart")[:3] == ["en", "jo", "o "]
