@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.13a1](https://github.com/TigreGotico/silabificador/tree/2.1.13a1) (2026-11-11)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.12a1...2.1.13a1)
+
+**Merged pull requests:**
+
+- fix: read English oo and ee as one vowel in a foreign word [\#50](https://github.com/TigreGotico/silabificador/pull/50) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [2.1.12a1](https://github.com/TigreGotico/silabificador/tree/2.1.12a1) (2026-11-10)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.11a2...2.1.12a1)
