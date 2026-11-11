@@ -202,9 +202,15 @@ stem is anchored tightly enough to miss words from another root: `ruidoso`, not
 reaches, as rows whose stem is the whole word: `flu.i.dez`, whose base keeps
 the diphthong (`flui.do`), and `ad.le.ri.a.no`, from the surname Adler.
 
-Foreign onsets are not in the inventory. Where the gold has `sof.twa.re`, the
-engine writes `soft.wa.re`, because `tw` is not a Portuguese onset. A few
+Foreign onsets are not in the inventory. Where Infopédia has `sof.twa.ri.zar`,
+the engine writes `soft.wa.ri.zar`, because `tw` is not a Portuguese onset. A few
 loanwords in the lexicon fail for this reason.
+
+An English silent `e` is not read either. The dictionaries transcribe no vowel
+for it inside a compound (Infopédia *software* [sɔˈftwɛr], *freeware*
+[friˈwɛr]), and en.wiktionary writes `soft.ware`, but the engine writes
+`soft.wa.re`. At the end of a word the transcriptions vary (Infopédia *site*
+[ˈsajt] and [ˈsajtə]), so no spelling rule decides it.
 
 The engine counts these classes rather than hiding them: `python -m
 benchmark.report` prints every remaining failure bucketed by cause.
