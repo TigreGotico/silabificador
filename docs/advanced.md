@@ -193,14 +193,19 @@ in words whose base has a stressed, accented hiatus (`ru.i.no.so` from *ruína*,
 `pro.i.bir` from *proíbe*) or a morpheme seam (`re.u.nir`, `a.lu.i.men.to`). The
 spelling drops the base's accent, so no rule on the letters can see it.
 
-`silabificador/data/stems.csv` lists these stems, with the columns `stem`,
-`split`, `base` and `source`. Each dot in a split is a point where a syllable
+`silabificador/data/stems.csv` lists the stems of the first class, with the
+columns `stem`, `split`, `base` and `source`. Each dot in a split is a point where a syllable
 must begin, and the stem matches anywhere in a word, so the row `ruin,ru.in`
 (base *ruína*) reaches `ar.ru.i.nar`, `ar.ru.i.na.do` and `ru.i.no.so`. Each
 stem is anchored tightly enough to miss words from another root: `ruidoso`, not
 `ruid`, because `drui.da` has no hiatus. The same file holds the words no rule
 reaches, as rows whose stem is the whole word: `flu.i.dez`, whose base keeps
 the diphthong (`flui.do`), and `ad.le.ri.a.no`, from the surname Adler.
+
+`silabificador.morphology` covers two kinds of seam: the stem of an `-uir` or
+`-air` verb before an `i` (`dis.tri.bu.i.dor`, `a.ju.i.zar`), and the `-idade`
+noun of an `-uo` or `-ue` adjective (`ar.du.i.da.de`). Other seams have no
+entry, so the engine writes `reu.nir` and `a.lui.men.to`.
 
 Foreign onsets are not in the inventory. Where Infopédia has `sof.twa.ri.zar`,
 the engine writes `soft.wa.ri.zar`, because `tw` is not a Portuguese onset. A few
