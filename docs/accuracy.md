@@ -24,15 +24,15 @@ own tier, never as gold.
 | michaelis-only | 93.37% | 577 / 618 |
 | wiktionary-only | 98.16% | 65,340 / 66,568 |
 | conflict (any human split) | 99.30% | 707 / 712 |
-| generated: Portal | 99.69% | 51,835 / 51,995 |
+| generated: Portal | 99.69% | 51,830 / 51,990 |
 
-184,799 of 184,799 scoreable words reconstruct exactly.
+184,796 of 184,796 scoreable words reconstruct exactly.
 
 ## Stress
 
 | | | |
 |---|---|---|
-| stress accuracy | 99.84% | 43,756 / 43,826 |
+| stress accuracy | 99.85% | 43,772 / 43,839 |
 | gold self-check | 99.79% | 4,709 / 4,719 |
 
 

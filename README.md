@@ -7,8 +7,8 @@ loads no model.
 ## Features
 
 - Syllabification for Portuguese, derived from the licit onset inventory and
-  the diphthong/hiatus rules. A short list holds only the words no rule
-  reaches, each with its source.
+  the diphthong/hiatus rules. A short list, `silabificador/data/stems.csv`,
+  holds only the stems and words no rule reaches, each with its source.
 - Stress, primary and secondary, read from the orthography that encodes it.
 - Syllable structure, not just strings: onset, glide, nucleus, coda.
 - The output always reconstructs the input. Hyphens, spaces, and apostrophes
@@ -107,9 +107,9 @@ word whose vowels form one run (`voyeur`).
 | Michaelis only | one human source | 93.37% | 577 / 618 |
 | Wiktionary only | one human source | 98.16% | 65,340 / 66,568 |
 | conflict | human sources share no split; any of them is accepted | 99.30% | 707 / 712 |
-| generated: Portal | not gold | 99.69% | 51,835 / 51,995 |
+| generated: Portal | not gold | 99.69% | 51,830 / 51,990 |
 
-All 184,799 scoreable words reconstruct exactly.
+All 184,796 scoreable words reconstruct exactly.
 
 Michaelis writes a final unstressed vowel pair such as ⟨ia⟩, ⟨ie⟩ or ⟨ea⟩ as
 one syllable (`gló.ria`, `sé.rie`, `náu.sea`). Infopédia and the engine write a
@@ -137,7 +137,7 @@ transcriptions, which mark stress with `ˈ`. Nothing in the engine reads IPA.
 
 | | | |
 |---|---|---|
-| stress accuracy | 99.84% | 43,756 / 43,826 |
+| stress accuracy | 99.85% | 43,772 / 43,839 |
 | gold self-check | 99.79% | 4,709 / 4,719 |
 
 The self-check gives a reason to trust the gold: on a simple word, a written
@@ -158,7 +158,11 @@ python -m benchmark.report
 Silabificador is part of the [TigreGotico](https://github.com/TigreGotico)
 Portuguese phonetics toolchain, alongside:
 
-- [tugaphone](https://github.com/TigreGotico/tugaphone): depends on silabificador.
+- [orthography2ipa](https://github.com/TigreGotico/orthography2ipa): its
+  `portuguese` extra installs silabificador for `SilabificadorSyllabifier`, a
+  syllabifier plugin that a caller passes to one engine.
+- [tugaphone](https://github.com/TigreGotico/tugaphone): depends on
+  silabificador for its deprecated token tree.
 - [bifonia](https://github.com/TigreGotico/bifonia)
 
 ## Development
