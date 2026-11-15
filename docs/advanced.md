@@ -202,7 +202,7 @@ stem is anchored tightly enough to miss words from another root: `ruidoso`, not
 reaches, as rows whose stem is the whole word: `flu.i.dez`, whose base keeps
 the diphthong (`flui.do`), and `ad.le.ri.a.no`, from the surname Adler.
 
-`silabificador.morphology` covers two kinds of seam: the stem of an `-uir` or
+`silabificador.morphology` covers two kinds of hiatus seam: the stem of an `-uir` or
 `-air` verb before an `i` (`dis.tri.bu.i.dor`, `a.ju.i.zar`), and the `-idade`
 noun of an `-uo` or `-ue` adjective (`ar.du.i.da.de`). Other seams have no
 entry, so the engine writes `reu.nir` and `a.lui.men.to`.
