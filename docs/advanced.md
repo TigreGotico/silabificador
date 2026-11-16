@@ -97,8 +97,8 @@ syllabify("abstrair")   # ['abs', 'tra', 'ir']  tr is licit, str is not
 ```
 
 The engine does not treat codas as an inventory. Portuguese spelling admits
-whatever the onset rule strands, for example *ap.to*, *rit.mo*, *ab.sur.do*,
-*sof.twa.re*. Constraining the coda too would reject words the dictionaries
+whatever the onset rule strands, for example *ap.to*, *rit.mo* and
+*ab.sur.do*. Constraining the coda too would reject words the dictionaries
 spell.
 
 ## The lexical layer, and why it exists
@@ -136,7 +136,7 @@ a statement too.
 1. ACCENT    a syllable with an acute or circumflex is the stressed one
 2. TILDE     failing that, a nasal ã/õ carries it (ir.MÃ, co.ra.ÇÃO)
 3. ENDING    failing both, the ending chooses between the last two syllables
-             oxytone:    r l z x n ps, i u (+s), im um om (+s)
+             oxytone:    r l z x n ps, i u (+s), im um om (+s), y w
              paroxytone: everything else, and -as -es -os -am -em -ens
 ```
 
@@ -202,10 +202,12 @@ stem is anchored tightly enough to miss words from another root: `ruidoso`, not
 reaches, as rows whose stem is the whole word: `flu.i.dez`, whose base keeps
 the diphthong (`flui.do`), and `ad.le.ri.a.no`, from the surname Adler.
 
-`silabificador.morphology` covers two kinds of seam: the stem of an `-uir` or
-`-air` verb before an `i` (`dis.tri.bu.i.dor`, `a.ju.i.zar`), and the `-idade`
-noun of an `-uo` or `-ue` adjective (`ar.du.i.da.de`). Other seams have no
-entry, so the engine writes `reu.nir` and `a.lui.men.to`.
+`silabificador.morphology` covers two kinds of hiatus seam. The first is a
+listed verb stem before an `i`: some `-uir` and `-air` verbs
+(`dis.tri.bu.i.dor`), and the stem of *juízo* (`a.ju.i.zar`). The second is
+the `-idade` noun of an `-uo` or `-ue` adjective (`ar.du.i.da.de`). A seam
+outside these cases has no entry, so the engine writes `reu.nir`, and it
+writes `a.lui.men.to` because the stem of *aluir* is not in the list.
 
 Foreign onsets are not in the inventory. Where Infopédia has `sof.twa.ri.zar`,
 the engine writes `soft.wa.ri.zar`, because `tw` is not a Portuguese onset. A few

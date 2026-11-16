@@ -21,8 +21,8 @@ loads no model.
 pip install silabificador
 ```
 
-Silabificador needs Python 3.11 or later. The `--pre` flag of `pip` installs
-the latest alpha.
+Silabificador needs Python 3.11 or later. With the `--pre` flag, `pip`
+installs the newest release, alphas included.
 
 ## Usage
 
@@ -41,8 +41,8 @@ from silabificador import analyze, stressed_index
 for s in analyze("transportar"):
     print(s.onset, s.nucleus, s.coda, s.stressed)
 # tr a ns False
-# p  o r  False
-# t  a r  True      -> trans.por.TAR
+# p o r False
+# t a r True      -> trans.por.TAR
 
 stressed_index("sílaba")   # 0   SÍ.la.ba
 ```
@@ -122,8 +122,8 @@ the 41 Michaelis-only misses come from this difference.
 The rules were first tuned on the words where Infopédia and the Portal agree,
 so the Portal score shows how close the engine is to one rule system, not how
 correct it is. Where a cited rule and the Portal disagree, the rule wins: the
-Portal joins every `iu` (`miu.de.za`), and the engine follows the human sources
-(`mi.u.de.za`).
+Portal joins the unstressed `iu` of `miu.de.za` and `ciu.men.to`, and the
+engine follows the human sources (`mi.u.de.za`).
 
 The edge cases cover the classes where the sources disagree: medial clusters
 (`ap.to` and `a.pto`), prefix seams (`sub.li.nhar`, `a.brup.to` and
