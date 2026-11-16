@@ -9,10 +9,14 @@ If an entry is ever deleted, the left-hand column breaks and the right-hand
 column keeps working. That is the test that a lexicon entry is doing real work
 rather than memorizing an answer.
 """
+import csv
+from importlib import resources
+
 import pytest
 
 from silabificador import syllabify
-from silabificador.morphology import LATINATE_PREFIX_STEMS, VOWEL_FINAL_STEMS
+from silabificador.graphemes import tokenize
+from silabificador.morphology import LATINATE_PREFIX_STEMS, LISTED_STEMS, VOWEL_FINAL_STEMS
 
 
 @pytest.mark.parametrize("analysable,expected,opaque,opaque_expected", [
@@ -80,3 +84,23 @@ def test_the_lexicon_stays_small():
     # failed -- and either way it should be visible in review.
     entries = sum(len(stems) for stems in LATINATE_PREFIX_STEMS.values())
     assert entries + len(VOWEL_FINAL_STEMS) < 60
+
+
+def test_every_listed_stem_row_parses_cites_its_base_and_spells_its_stem():
+    path = resources.files("silabificador").joinpath("data", "stems.csv")
+    with path.open(encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    assert rows
+    assert len({row["stem"] for row in rows}) == len(rows) == len(LISTED_STEMS)
+    for row in rows:
+        assert list(row) == ["stem", "split", "base", "source"], row
+        assert row["base"].strip() and row["source"].strip(), row
+        pieces = row["split"].split(".")
+        assert len(pieces) > 1 and all(pieces), row
+        assert "".join(pieces) == row["stem"], row
+        # A dot inside a digraph would be ignored, so each must fall between units.
+        starts, offset = set(), 0
+        for unit in tokenize(row["stem"]):
+            starts.add(offset)
+            offset += len(unit)
+        assert set(LISTED_STEMS[row["stem"]]) <= starts, row

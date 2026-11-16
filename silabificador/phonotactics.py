@@ -15,6 +15,7 @@ References
 """
 from __future__ import annotations
 
+import re
 from typing import FrozenSet
 
 #: Letters that can head a syllable nucleus.
@@ -42,8 +43,27 @@ CONSONANTS: FrozenSet[str] = frozenset("bcdfghjklmnpqrstvwxyzçñ")
 #: boundary inside a single segment: fi.lho, chu.va, ba.nha.
 CONSONANT_DIGRAPHS: FrozenSet[str] = frozenset({"ch", "lh", "nh"})
 
-#: Loanword spellings that behave as single consonants: show, thriller, graffiti.
-FOREIGN_DIGRAPHS: FrozenSet[str] = frozenset({"sh", "th", "ff", "ph"})
+#: Loanword spellings that behave as single consonants: show, thriller, photo,
+#: and ``zh`` (pinyin zh, the romanization of Russian ж): gui.zhou, kru.zha.nov.
+#: Before a vowel its ``h`` is mute in Portuguese, so al.zhei.mer opens on z.
+#: A doubled ``ff`` is not one of them. The Portal da Língua Portuguesa divides
+#: loans "segundo as regras de divisão silábica do português", where a doubled
+#: consonant splits like ``rr`` and ``ss`` (Cunha & Cintra, p. 83): graf.fi.ti.
+FOREIGN_DIGRAPHS: FrozenSet[str] = frozenset({"sh", "th", "ph", "zh"})
+
+#: A loanword consonant spelled with four letters: German ``tsch``, one
+#: affricate [tʃ] (ku.bi.tschek, pu.tschis.ta).
+FOREIGN_TETRAGRAPHS: FrozenSet[str] = frozenset({"tsch"})
+
+#: A word that holds one of these is foreign or derived from a foreign name.
+#: AO90 Base I 2 keeps ``k``, ``w`` and ``y`` for "antropónimos/antropônimos
+#: originários de outras línguas e seus derivados" and for foreign place names.
+#: Base I 3 keeps in such derivatives "quaisquer combinações gráficas ou sinais
+#: diacríticos não peculiares à nossa escrita" (comtista, garrettiano,
+#: mülleriano, shakespeariano). Base I 4 and 5 admit a final ``ch``, ``ph``,
+#: ``th``, ``b``, ``c``, ``d``, ``g`` or ``t`` only in names that usage has
+#: fixed (Moloch, Jacob, Isaac, David, Gog, Calecut).
+FOREIGN_MARKS = re.compile(r"[kwyäöüë]|ck|sch|sh|th|ph|tz|eau|[bcdgt]$|ch$")
 
 #: Consonants that can be followed by a liquid to form a complex onset. This is
 #: the sonority sequencing principle: onset sonority must rise toward the
@@ -73,6 +93,15 @@ COMPLEX_ONSETS: FrozenSet[str] = frozenset(
 #: learned and loan clusters (ap.to, rit.mo, ab.sur.do, sof.twa.re) that no
 #: closed native coda set would sanction. Constraining the onset is enough;
 #: constraining the coda as well would only reject words the dictionaries spell.
+
+#: The only words that AO90 Base VII 1 Obs. names for the diphthong ``ao``, which
+#: it admits "excecionalmente" as ``âu`` or ``au``, "representado nas
+#: combinações da preposição a com as formas masculinas do artigo ou pronome
+#: demonstrativo o, ou seja, ao e aos". The clause names no other word, so a
+#: word-internal ``ao`` keeps the hiatus: a.or.ta, a.o.ris.to. Loan derivatives
+#: such as maometano, maoismo and tao fall outside the clause; Infopédia reads
+#: them with [aw], and their split is open.
+AO_DIPHTHONG_WORDS: FrozenSet[str] = frozenset({"ao", "aos"})
 
 #: A glide before ``nh`` reverts to a nucleus: ra.i.nha, mo.i.nho, cam.pa.i.nha.
 #: The palatal nasal attracts the preceding close vowel into its own syllable.

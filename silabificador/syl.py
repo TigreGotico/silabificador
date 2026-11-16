@@ -55,6 +55,8 @@ def stressed_index(word: str) -> int:
         0
         >>> stressed_index("sílaba")       # SÍ.la.ba
         0
+
+    An empty word has no syllable, and returns ``0``.
     """
     for index, syllable in enumerate(analyze(word)):
         if syllable.stressed:

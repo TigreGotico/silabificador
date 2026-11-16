@@ -26,8 +26,8 @@ from __future__ import annotations
 
 from typing import List, Sequence, Set
 
-from . import morphology, nucleus
-from .graphemes import Grapheme, tokenize
+from . import morphology, nucleus, stress
+from .graphemes import APOSTROPHES, Grapheme, tokenize
 from .phonotactics import is_complex_onset
 from .syllable import Syllable
 
@@ -83,7 +83,6 @@ def parse(word: str) -> List[Syllable]:
     units = tokenize(word)
     if not units:
         return []
-
     # Indices that a morpheme boundary forces to begin a syllable.
     hard = morphology.boundaries(word, units)
 
@@ -101,6 +100,20 @@ def parse(word: str) -> List[Syllable]:
         # syllable to find, and inventing one would only corrupt the word.
         return [Syllable.of(units)]
 
+    syllables = _assemble(units, groups, hard)
+    # The stress rules read the first pass, and the nucleus rules that depend on
+    # stress regroup it. The regrouping never moves the stress: it only touches
+    # a syllable that is not stressed, or a final one that stays stressed.
+    stressed = [s.stressed or s.secondary for s in stress.assign(syllables, word)]
+    regrouped = nucleus.by_stress(units, groups, stressed, hard)
+    if regrouped == groups:
+        return syllables
+    return _assemble(units, regrouped, hard)
+
+
+def _assemble(units: Sequence[Grapheme], groups: Sequence[nucleus.Group],
+              hard: Set[int]) -> List[Syllable]:
+    """Place every consonant around the nuclei in ``groups``."""
     syllables: List[Syllable] = []
     start = 0  # first unit not yet placed
     for position, group in enumerate(groups):
@@ -109,7 +122,15 @@ def parse(word: str) -> List[Syllable]:
         else:
             nxt = groups[position + 1][0]
             between = range(group[-1] + 1, nxt)
-            separators = [i for i in between if units[i].is_separator]
+            # An apostrophe is not a boundary. AO90 Base XVIII 1 d) uses it "para
+            # assinalar, no interior de certos compostos, a elisão do e da
+            # preposição de" (pau-d'alho). 1 a) calls the apostrophe cisions
+            # "análogas" to the dissolution "a Os", where "a dissolução gráfica
+            # nunca impede na leitura a combinação fonética". Base XX divides
+            # syllables "pela soletração". The vowel is gone, so the consonant
+            # is the onset of the next vowel: pau-.d'a.lho, san.t'a.na.
+            separators = [i for i in between
+                          if units[i].is_separator and units[i].text not in APOSTROPHES]
             cluster = [i for i in between if units[i].is_consonant]
             crossing = [i for i in hard if group[-1] < i <= nxt]
 
@@ -120,10 +141,11 @@ def parse(word: str) -> List[Syllable]:
                 # ci.ber.as.sé.di.o, not ci.be.ras.sé.di.o.
                 end = min(crossing) - 1
             elif separators:
-                # A separator is a hard boundary: no syllable spans it, and no
-                # onset reaches back across it. In *ab-reagir* the ``b`` cannot
-                # join the ``r`` to form the ``br`` onset it would otherwise make
-                # -- the syllable closes on the hyphen: ab-.re.a.gir.
+                # A hyphen or a space is a hard boundary: no syllable spans it,
+                # and no onset reaches back across it. In *ab-reagir* the ``b``
+                # cannot join the ``r`` to form the ``br`` onset it would
+                # otherwise make -- the syllable closes on the hyphen:
+                # ab-.re.a.gir.
                 end = separators[-1]
             elif not cluster:
                 end = group[-1]
