@@ -29,13 +29,16 @@ Primary stress, within one word
 ``a``, ``e`` and ``o`` are the unmarked Portuguese endings, and the unmarked case
 is paroxytone. That asymmetry is the whole of rule 3.
 
-``y`` and ``w`` end a word only in old or foreign spellings, and they count as the
+``y`` and ``w`` end a word in pre-1943 Portuguese spellings, and they count as the
 vowels they write. The Formulário Ortográfico of the Academia Brasileira de Letras
 (1943) says "O y, que é substituído pelo i" (9.) and "O w substitui-se, em palavras
 portuguêsas ou aportuguesadas, por u ou v, conforme o seu valor fonético" (6.).
 Figueiredo's Novo Diccionário (1913) reads y the same way: it sends *Paraguay*
 and *Uruguay* to *Paraguai* and *Uruguai*, and *Piauhy* to *Piauí*, and it writes
-an accent on the paroxytones *Júry* and *Móly*.
+an accent on the paroxytones *Júry* and *Móly*. A final ``w`` is a vowel, so it
+takes the ``u`` reading of rule 6. English loans such as *hobby* and *rugby* keep
+the stress of their source language; these rules do not cover them, and they read
+as oxytones here.
 
 Secondary stress
 ----------------
@@ -96,8 +99,8 @@ TILDE = frozenset("ãõ")
 SECONDARY_ACCENTS = frozenset("èìòù")
 
 #: Endings that put the stress on the last syllable. ``i`` and ``u`` are here and
-#: ``a``/``e``/``o`` are not, which is the whole of the asymmetry. ``y`` and ``w``
-#: stand for ``i`` and ``u`` (see the module docstring).
+#: ``a``/``e``/``o`` are not, which is the whole of the asymmetry. ``y`` stands
+#: for ``i``, and a word-final ``w`` for ``u`` (see the module docstring).
 OXYTONE_ENDINGS = (
     "r", "l", "z", "x", "n", "ps",
     "i", "is", "u", "us",
