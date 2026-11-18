@@ -90,7 +90,7 @@ COMPLEX_ONSETS: FrozenSet[str] = frozenset(
 
 #: Codas are deliberately *not* an inventory. Portuguese spelling admits a coda
 #: consonant wherever the following cluster is not a licit onset -- including
-#: learned and loan clusters (ap.to, rit.mo, ab.sur.do, sof.twa.re) that no
+#: learned and loan clusters (ap.to, rit.mo, ab.sur.do, soft.wa.re) that no
 #: closed native coda set would sanction. Constraining the onset is enough;
 #: constraining the coda as well would only reject words the dictionaries spell.
 

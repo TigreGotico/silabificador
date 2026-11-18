@@ -20,13 +20,22 @@ Primary stress, within one word
                    no accent cannot be stressed further back, because the
                    spelling rules would have required an accent to say so.
 
-                   Oxytone (last):       r l z x n ps, i u (+s), im um om (+s)
+                   Oxytone (last):       r l z x n ps, i u (+s), im um om (+s),
+                                         y w
                    Paroxytone (default): everything else, and the inflections
                                          -as -es -os -am -em -ens, which do not
                                          move the stress: fa.lam, jo.vens.
 
 ``a``, ``e`` and ``o`` are the unmarked Portuguese endings, and the unmarked case
 is paroxytone. That asymmetry is the whole of rule 3.
+
+``y`` and ``w`` end a word only in old or foreign spellings, and they count as the
+vowels they write. The Formulário Ortográfico of the Academia Brasileira de Letras
+(1943) says "O y, que é substituído pelo i" (9.) and "O w substitui-se, em palavras
+portuguêsas ou aportuguesadas, por u ou v, conforme o seu valor fonético" (6.).
+Figueiredo's Novo Diccionário (1913) reads y the same way: it sends *Paraguay*
+and *Uruguay* to *Paraguai* and *Uruguai*, and *Piauhy* to *Piauí*, and it writes
+an accent on the paroxytones *Júry* and *Móly*.
 
 Secondary stress
 ----------------
@@ -87,7 +96,8 @@ TILDE = frozenset("ãõ")
 SECONDARY_ACCENTS = frozenset("èìòù")
 
 #: Endings that put the stress on the last syllable. ``i`` and ``u`` are here and
-#: ``a``/``e``/``o`` are not, which is the whole of the asymmetry.
+#: ``a``/``e``/``o`` are not, which is the whole of the asymmetry. ``y`` and ``w``
+#: stand for ``i`` and ``u`` (see the module docstring).
 OXYTONE_ENDINGS = (
     "r", "l", "z", "x", "n", "ps",
     "i", "is", "u", "us",

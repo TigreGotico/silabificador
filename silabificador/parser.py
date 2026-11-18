@@ -19,7 +19,7 @@ COMPLEX_ONSETS` says which clusters are licit, the rule derives on its own:
     cons.tru.ir   likewise
 
 Codas are not checked against an inventory, because Portuguese spelling admits
-whatever the onset rule strands -- ap.to, rit.mo, ab.sur.do, sof.twa.re. Onsets
+whatever the onset rule strands -- ap.to, rit.mo, ab.sur.do, soft.wa.re. Onsets
 are the constrained edge; the coda is the remainder.
 """
 from __future__ import annotations

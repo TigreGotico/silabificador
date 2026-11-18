@@ -59,6 +59,20 @@ def test_ending_puts_the_stress_last(word, expected):
 
 
 @pytest.mark.parametrize("word,expected", [
+    # Formulário Ortográfico 1943, 9.: "O y, que é substituído pelo i". Figueiredo
+    # 1913 sends each old spelling to its i form, whose stress is last.
+    ("Paraguay", 2),      # pa.ra.GUAY, as Paraguai
+    ("Uruguay", 2),       # u.ru.GUAY, as Uruguai
+    ("Piauhy", 2),        # pi.au.HY, as Piauí
+    # Figueiredo 1913 writes the paroxytones with an accent, so the bare -y is last.
+    ("Júry", 0),
+    ("jury", 1),
+])
+def test_a_final_y_stresses_like_a_final_i(word, expected):
+    assert stressed_index(word) == expected
+
+
+@pytest.mark.parametrize("word,expected", [
     ("casa", 0),
     ("computador", 3),    # ...-r, so oxytone after all
     ("homem", 0),         # -em is an inflection: it does not move the stress
