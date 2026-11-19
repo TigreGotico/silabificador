@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.15a1](https://github.com/TigreGotico/silabificador/tree/2.1.15a1) (2026-11-19)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.14a1...2.1.15a1)
+
+**Merged pull requests:**
+
+- fix: write software as soft.wa.re and list y and w as oxytone endings [\#57](https://github.com/TigreGotico/silabificador/pull/57) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [2.1.14a1](https://github.com/TigreGotico/silabificador/tree/2.1.14a1) (2026-11-16)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.13...2.1.14a1)
