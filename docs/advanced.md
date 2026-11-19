@@ -145,8 +145,9 @@ proparoxytone, because the spelling rules would have required an accent to
 say so. That is why `sá.bi.a`, `sa.bi.a`, and `sa.bi.á` are three different
 words.
 
-A final `y` or `w` comes from a spelling older than 1943, and it counts as the
-vowel it writes. The Formulário Ortográfico of the Academia Brasileira de
+A final `y` or `w` comes from a spelling older than 1943. A final `y` is the
+`i` that the 1943 Formulário puts in its place. Item 6. lets `w` become `u` or
+`v` by its sound, and the library reads a final `w` as `u`. The Formulário Ortográfico of the Academia Brasileira de
 Letras (1943) says "O y, que é substituído pelo i" (9.) and "O w substitui-se,
 em palavras portuguêsas ou aportuguesadas, por u ou v, conforme o seu valor
 fonético" (6.).
