@@ -145,6 +145,26 @@ proparoxytone, because the spelling rules would have required an accent to
 say so. That is why `sá.bi.a`, `sa.bi.a`, and `sa.bi.á` are three different
 words.
 
+A final `y` or `w` comes from a spelling older than 1943, and it counts as the
+vowel it writes. The Formulário Ortográfico of the Academia Brasileira de
+Letras (1943) says "O y, que é substituído pelo i" (9.) and "O w substitui-se,
+em palavras portuguêsas ou aportuguesadas, por u ou v, conforme o seu valor
+fonético" (6.).
+
+Figueiredo's Novo Diccionário (1913) sends *Paraguay* to *Paraguai* and
+*Piauhy* to *Piauí*, and it writes an accent on the paroxytone *Júry*:
+
+```python
+from silabificador import stressed_index
+
+stressed_index("Paraguay")   # 2   pa.ra.GUAY, as Paraguai
+stressed_index("Júry")       # 0   JÚ.ry
+stressed_index("hobby")      # 1   hob.BY
+```
+
+English loans such as *hobby* and *rugby* keep the stress of English. The
+rules do not cover them, so they read as oxytones.
+
 ### Secondary stress
 
 A hyphenated compound is two words wearing one coat, and each element keeps
