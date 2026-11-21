@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.15a3](https://github.com/TigreGotico/silabificador/tree/2.1.15a3) (2026-11-21)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.15a2...2.1.15a3)
+
+**Merged pull requests:**
+
+- docs: README, docs index, navigation and agent hints [\#61](https://github.com/TigreGotico/silabificador/pull/61) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [2.1.15a2](https://github.com/TigreGotico/silabificador/tree/2.1.15a2) (2026-11-19)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.15a1...2.1.15a2)
