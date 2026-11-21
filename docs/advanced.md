@@ -1,5 +1,13 @@
 # Advanced
 
+<!-- agent-hint
+covers: how the engine decides a split and a stress, and where it is known to be wrong
+source: `silabificador/*.py`, `silabificador/data/stems.csv`, `tests/edge_cases.json`
+generated: no
+verify: sed -n '/^\x60\x60\x60python/,/^\x60\x60\x60/p' docs/advanced.md | grep -vP '^\x60{3}' | python -I - && python -m pytest -q tests/test_edge_cases.py
+see: `docs/api.md`, `docs/accuracy.md`
+-->
+
 This page explains how the split is decided, and where it is known to be
 wrong.
 
@@ -244,4 +252,4 @@ The engine counts these classes rather than hiding them: `python -m
 benchmark.report` prints every remaining failure bucketed by cause.
 
 ---
-[← API Reference](api.md) · [Home](../README.md) · [Accuracy →](accuracy.md)
+[← API Reference](api.md) · [Index](index.md) · [Accuracy →](accuracy.md)

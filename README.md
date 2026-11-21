@@ -1,5 +1,13 @@
 # Silabificador
 
+<!-- agent-hint
+covers: what the package does, how to install it and the accuracy it reaches
+source: `silabificador/__init__.py`, `benchmark/report.py`, `docs/accuracy.md`
+generated: no
+verify: diff <(sed -n '/^\x60\x60\x60python/,/^\x60\x60\x60/p' README.md | grep -vP '^\x60{3}' | python -I -) <(sed -n '/^\x60\x60\x60python/,/^\x60\x60\x60/p' README.md | grep -oP '(print\(.*\)\s+|^)# \K.*')
+see: `docs/index.md`, `docs/quickstart.md`
+-->
+
 Silabificador splits a Portuguese word into syllables. It uses hand-crafted
 rules based on Portuguese phonotactics. It has no runtime dependencies and
 loads no model.
@@ -18,22 +26,24 @@ loads no model.
 ## Installation
 
 ```bash
-pip install silabificador
+uv pip install --prerelease=allow silabificador
 ```
 
-Silabificador needs Python 3.11 or later. With the `--pre` flag, `pip`
-installs the newest release, alphas included.
+Silabificador needs Python 3.11 or later. The project publishes alpha
+releases, so the install needs `--prerelease=allow`.
 
 ## Usage
 
 ```python
 from silabificador import syllabify
 
-syllabify("computador")     # ['com', 'pu', 'ta', 'dor']
-syllabify("guarda-chuva")   # ['guar', 'da-', 'chu', 'va']
+print(syllabify("computador"))     # ['com', 'pu', 'ta', 'dor']
+print(syllabify("guarda-chuva"))   # ['guar', 'da-', 'chu', 'va']
 ```
 
-Use `analyze` for the constituents, or `stressed_index` for the stress:
+Use `analyze` for the constituents, or `stressed_index` for the stress. The
+stress of `transportar` falls on the last syllable (`trans.por.TAR`), and the
+stress of `sílaba` on the first (`SÍ.la.ba`):
 
 ```python
 from silabificador import analyze, stressed_index
@@ -42,20 +52,24 @@ for s in analyze("transportar"):
     print(s.onset, s.nucleus, s.coda, s.stressed)
 # tr a ns False
 # p o r False
-# t a r True      -> trans.por.TAR
+# t a r True
 
-stressed_index("sílaba")   # 0   SÍ.la.ba
+print(stressed_index("sílaba"))   # 0
 ```
 
 A compound keeps a stress on every element. The last element takes the
 primary stress:
 
 ```python
-[str(s) for s in analyze("guarda-chuva") if s.secondary]   # ['guar']
-[str(s) for s in analyze("guarda-chuva") if s.stressed]    # ['chu']
+from silabificador import analyze
+
+print([str(s) for s in analyze("guarda-chuva") if s.secondary])   # ['guar']
+print([str(s) for s in analyze("guarda-chuva") if s.stressed])    # ['chu']
 ```
 
 ## Documentation
+
+[docs/index.md](docs/index.md) lists every page in reading order:
 
 - [docs/quickstart.md](docs/quickstart.md), install and first calls
 - [docs/api.md](docs/api.md), every public symbol with its signature
@@ -149,7 +163,7 @@ run the commands below. The first run downloads the two Wiktionary dumps
 (about 130 MB) into `~/.cache/silabificador`.
 
 ```bash
-pip install -e ".[benchmark]"
+uv pip install --prerelease=allow -e ".[benchmark]"
 python -m benchmark.report
 ```
 
@@ -168,7 +182,7 @@ Portuguese phonetics toolchain, alongside:
 ## Development
 
 ```bash
-pip install -e ".[test]"
+uv pip install --prerelease=allow -e ".[test]"
 python -m pytest tests
 ```
 

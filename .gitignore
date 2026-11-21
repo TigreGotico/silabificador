@@ -12,6 +12,5 @@ venv/
 .ruff_cache/
 
 # --- Agent pipeline / local-only docs (not part of the published package) ---
-AGENTS.md
 TODO.md
 ROADMAP.md
