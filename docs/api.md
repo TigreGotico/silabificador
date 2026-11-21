@@ -1,5 +1,13 @@
 # API Reference
 
+<!-- agent-hint
+covers: every public name with its signature and return shape
+source: `silabificador/__init__.py`, `silabificador/syllable.py`, `silabificador/stress.py`
+generated: no
+verify: python -I -c 'import re, silabificador as s; n = re.findall(r"^## \x60(\w+)\x60", open("docs/api.md").read(), re.M); assert sorted(n) == sorted(s.__all__)'
+see: `docs/quickstart.md`, `docs/advanced.md`
+-->
+
 This page lists everything importable from `silabificador`. Signatures and
 return shapes match the implementation exactly.
 
@@ -151,4 +159,4 @@ reading them documents the rules directly.
 | `silabificador.stress` | which syllable bears the stress |
 
 ---
-[← Quickstart](quickstart.md) · [Home](../README.md) · [Advanced →](advanced.md)
+[← Quickstart](quickstart.md) · [Index](index.md) · [Advanced →](advanced.md)

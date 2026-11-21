@@ -1,5 +1,13 @@
 # Quickstart
 
+<!-- agent-hint
+covers: how to install the package and split a first word
+source: `silabificador/__init__.py`, `examples/`
+generated: no
+verify: sed -n '/^\x60\x60\x60python/,/^\x60\x60\x60/p' docs/quickstart.md | grep -vP '^\x60{3}' | python -I -
+see: `docs/api.md`, `docs/advanced.md`
+-->
+
 `silabificador` splits a Portuguese word into syllables. The main entry point
 is one function, `syllabify`, in pure Python with no runtime dependencies. If
 you can call `str.split`, you already know the shape of the API.
@@ -7,13 +15,13 @@ you can call `str.split`, you already know the shape of the API.
 ## 1. Install
 
 ```bash
-pip install silabificador
+uv pip install --prerelease=allow silabificador
 ```
 
 From a checkout:
 
 ```bash
-pip install -e .
+uv pip install --prerelease=allow -e .
 ```
 
 This requires Python 3.11 or later. Nothing else is needed. The algorithm is a
@@ -95,4 +103,4 @@ print("hyphenated:", "-".join(syls))   # ex-tra-or-di-ná-ri-o
 - [advanced.md](advanced.md), digraphs, diphthong vs. hiatus, stress, and the known limits
 
 ---
-[Home](../README.md) · [API Reference →](api.md)
+[Index](index.md) · [API Reference →](api.md)
