@@ -1,9 +1,7 @@
 """Stress assignment.
 
-Portuguese stress is not guessed. The orthography is *designed* to encode it: the
-spelling rules require an accent on any word whose stress departs from the
-default, so a written accent is not a hint about stress, it is a statement of it.
-What remains is to know the default, and the default is fixed by the ending.
+The spelling encodes stress: it requires an accent on any word whose stress
+departs from the default, and the ending fixes the default.
 
 Primary stress, within one word
 -------------------------------
@@ -42,9 +40,9 @@ as oxytones here.
 
 Secondary stress
 ----------------
-A hyphenated compound is two words wearing one coat, and each element keeps the
-stress it had alone. The last element carries the primary stress and the earlier
-ones are demoted to secondary: *guàr.da-CHU.va*, *ca.fè-con.CER.to*.
+Each element of a hyphenated compound keeps the stress it had alone. The last
+element carries the primary stress and the earlier ones a secondary stress:
+*guàr.da-CHU.va*, *ca.fè-con.CER.to*.
 
 Elements that are unstressed monosyllables carry nothing at all. Portuguese
 grammar names this class -- the *monossílabos átonos*, the articles,
@@ -87,6 +85,7 @@ import dataclasses
 from typing import List, Sequence
 
 from .graphemes import APOSTROPHES
+from .syllable import Syllable
 
 #: An acute or circumflex accent names the stressed syllable outright.
 STRESS_ACCENTS = frozenset("áéíóúâêôîû")
@@ -223,7 +222,7 @@ def _stressed_in(syllables: Sequence[str], word: str) -> int:
     return len(syllables) - 2
 
 
-def assign(syllables: List, word: str) -> List:
+def assign(syllables: List[Syllable], word: str) -> List[Syllable]:
     """Mark the stressed syllables of ``word``.
 
     Exactly one syllable is primary-stressed. In a compound, every element that
@@ -243,8 +242,8 @@ def assign(syllables: List, word: str) -> List:
         # whole thing as one word rather than marking something arbitrary.
         groups, words = [list(range(len(syllables)))], ["".join(texts)]
 
-    primary: set = set()
-    secondary: set = set()
+    primary: set[int] = set()
+    secondary: set[int] = set()
     host = _primary_element(texts, groups, words)
     for position, (group, element) in enumerate(zip(groups, words)):
         if position != host and (element in CLITICS or not element):
@@ -254,10 +253,9 @@ def assign(syllables: List, word: str) -> List:
         (primary if position == host else secondary).add(target)
 
     # The pre-1990 grave states a secondary stress outright, wherever it falls.
-    for index, syllable in enumerate(syllables):
-        if any(char in SECONDARY_ACCENTS for char in str(syllable)):
-            if index not in primary:
-                secondary.add(index)
+    for index, text in enumerate(texts):
+        if index not in primary and any(char in SECONDARY_ACCENTS for char in text):
+            secondary.add(index)
 
     return [dataclasses.replace(syllable,
                                 stressed=index in primary,

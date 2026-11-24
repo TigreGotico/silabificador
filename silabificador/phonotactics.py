@@ -71,19 +71,10 @@ FOREIGN_MARKS = re.compile(r"[kwyäöüë]|ck|sch|sh|th|ph|tz|eau|[bcdgt]$|ch$")
 _OBSTRUENTS = "pbtdcgfv"
 _LIQUIDS = "lr"
 
-#: Every complex onset Portuguese licenses -- obstruent + liquid, and nothing
-#: else. Membership here is the *whole* of the boundary rule for a consonant
-#: cluster: a cluster's final units go to the onset if and only if they are in
-#: this set. That single fact derives, with no further stipulation:
-#:
-#:   a.tle.ta   -- ``tl`` is a licit onset, so it does not split
-#:   pac.to     -- ``ct`` is not, so ``c`` is forced into the coda
-#:   car.ro     -- ``rr`` is not, so it splits; likewise ``ss``, ``sc``, ``xc``
-#:   abs.tra.ir -- ``tr`` is licit, ``str`` is not; ``bs`` is left in the coda
-#:
-#: There is no companion list of clusters that *must* split. A cluster splits
-#: precisely when it is not in this set, so stating which onsets exist states
-#: both.
+#: Every complex onset Portuguese licenses: obstruent + liquid, and nothing
+#: else. A cluster's final two units go to the onset if and only if they are in
+#: this set, so no list of clusters that must split is needed (see
+#: :mod:`silabificador.parser`: a.tle.ta, pac.to, car.ro, abs.tra.ir).
 COMPLEX_ONSETS: FrozenSet[str] = frozenset(
     o + liquid for o in _OBSTRUENTS for liquid in _LIQUIDS
 )
