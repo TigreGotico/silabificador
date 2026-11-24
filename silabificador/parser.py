@@ -36,19 +36,6 @@ from .syllable import Syllable
 MAX_ONSET = 2
 
 
-def _onset_size(cluster: Sequence[Grapheme]) -> int:
-    """How many of ``cluster``'s trailing units the next syllable may claim."""
-    if not cluster:
-        return 0
-    if len(cluster) == 1:
-        # A single consonant between nuclei is always an onset: ca.sa, never cas.a.
-        return 1
-    tail = cluster[-2].text + cluster[-1].text
-    if is_complex_onset(tail):
-        return MAX_ONSET
-    return 1
-
-
 def _split_runs(units: Sequence[Grapheme]) -> List[List[int]]:
     """Every maximal run of vowels, as index lists."""
     runs: List[List[int]] = []
@@ -150,7 +137,11 @@ def _assemble(units: Sequence[Grapheme], groups: Sequence[nucleus.Group],
             elif not cluster:
                 end = group[-1]
             else:
-                onset = _onset_size([units[i] for i in cluster])
+                # The next syllable takes the last two units when they are a
+                # licit onset, else the last one: ca.sa, never cas.a.
+                onset = 1
+                if len(cluster) > 1 and is_complex_onset(units[cluster[-2]].text + units[cluster[-1]].text):
+                    onset = MAX_ONSET
                 end = cluster[-onset - 1] if onset < len(cluster) else group[-1]
 
         # A hyphen, space or apostrophe belongs to the syllable it follows, so

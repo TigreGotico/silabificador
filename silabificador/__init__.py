@@ -16,35 +16,13 @@ class Syllabifier:
     """
 
     def syllabify(self, word: str) -> List[str]:
-        """Split a Portuguese word into syllables.
-
-        Args:
-            word (str): The input word to be syllabified.
-
-        Returns:
-            List[str]: A list of syllables as strings.
-        """
+        """Split a Portuguese word into syllable strings; see :func:`silabificador.syllabify`."""
         return syllabify(word)
 
     def analyze(self, word: str) -> List[Syllable]:
-        """Split a word into syllables decomposed into onset, nucleus and coda.
-
-        Args:
-            word (str): The input word to be syllabified.
-
-        Returns:
-            List[Syllable]: One :class:`Syllable` per syllable, with the stressed
-            one marked.
-        """
+        """One :class:`Syllable` per syllable, with the stressed one marked; see :func:`silabificador.analyze`."""
         return analyze(word)
 
     def stressed_index(self, word: str) -> int:
-        """Index of the syllable carrying the word's primary stress.
-
-        Args:
-            word (str): The input word.
-
-        Returns:
-            int: The index into the syllable list.
-        """
+        """Index of the syllable carrying the word's primary stress; see :func:`silabificador.stressed_index`."""
         return stressed_index(word)

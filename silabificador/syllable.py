@@ -1,9 +1,7 @@
-"""The syllable as a structure, not a string.
+"""The syllable as a structure: onset, nucleus with its glides, and coda.
 
-A syllable is not an opaque chunk of letters. It is an onset, a nucleus with its
-glides, and a coda -- and consumers of this library (phonemizers, stress rules,
-rhyme and metre tools) need those constituents. Returning only ``"trans"`` makes
-every one of them re-derive what was already known here.
+Phonemizers, stress rules and rhyme tools need the constituents, not only the
+string ``"trans"``.
 """
 from __future__ import annotations
 
