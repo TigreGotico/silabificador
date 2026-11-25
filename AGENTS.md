@@ -33,19 +33,19 @@ uv pip install --python .venv --prerelease=allow -e '.[test,benchmark]'
 .venv/bin/python -m benchmark.report --markdown docs/accuracy.md
 ```
 
-Use uv, never pip. The test suite runs offline. The benchmark downloads two Wiktionary dumps, about 130 MB, into `~/.cache/silabificador`.
+Use uv, never pip. The test suite runs offline. `tests/test_accuracy_regression.py` scores a fixed sample of the gold in `tests/gold_sample.json`, and the full scoreboard comes from `python -m benchmark.report`. The benchmark downloads two Wiktionary dumps, about 130 MB, into `~/.cache/silabificador`.
 
 ## Hard rules
 
-1. The package has no runtime dependencies and needs Python 3.11 or later ([README](README.md)).
+1. The package has no runtime dependencies and needs Python 3.11 or later ([quickstart.md](docs/quickstart.md)).
 2. Rules decide the split. `stems.csv` holds only words and stems that no rule reaches, and each carries its source ([advanced.md](docs/advanced.md#the-lexical-layer-and-why-it-exists)).
-3. The output always reconstructs the input. Hyphens, spaces and apostrophes stay in place ([README](README.md)).
-4. Every accepted split in `tests/edge_cases.json` names its source ([README](README.md#accuracy)).
-5. A cited rule outranks the Portal da Língua Portuguesa. The Portal is a generated tier and is never gold ([README](README.md#accuracy)).
+3. The output always reconstructs the input. Hyphens, spaces and apostrophes stay in place ([api.md](docs/api.md)).
+4. Every accepted split in `tests/edge_cases.json` names its source ([gold.md](docs/gold.md)).
+5. A cited rule outranks the Portal da Língua Portuguesa. The Portal is a generated tier and is never gold ([gold.md](docs/gold.md)).
 6. Never edit `docs/accuracy.md` by hand. Fix `benchmark/report.py` and run it ([accuracy.md](docs/accuracy.md)).
 
 ## Before you push
 
 1. Run the full test suite.
-2. If you change a split or a stress rule, regenerate `docs/accuracy.md` and update the table in the README to match.
+2. If you change a split or a stress rule, regenerate `docs/accuracy.md` and check that the numbers in `docs/gold.md` still hold.
 3. If you add a docs page, list it in `docs/index.md`, give it an `agent-hint` comment after its H1, and add a footer with the index, previous and next links.

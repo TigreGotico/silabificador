@@ -252,4 +252,4 @@ The engine counts these classes rather than hiding them: `python -m
 benchmark.report` prints every remaining failure bucketed by cause.
 
 ---
-[← API Reference](api.md) · [Index](index.md) · [Accuracy →](accuracy.md)
+[← API Reference](api.md) · [Index](index.md) · [Gold sets and method →](gold.md)
