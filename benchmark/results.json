@@ -1,0 +1,17 @@
+{
+ "scores": [
+  ["edge cases (cited)", 148, 148],
+  ["agreement, 4 sources", 10785, 10788],
+  ["agreement, 3 sources", 13340, 13354],
+  ["agreement, 2 sources", 26180, 26260],
+  ["agreement (gold)", 50305, 50402],
+  ["infopedia-only", 59033, 59447],
+  ["michaelis-only", 577, 618],
+  ["wiktionary-only", 65340, 66568],
+  ["conflict (any human split)", 707, 712],
+  ["generated: Portal", 51830, 51990]
+ ],
+ "stress": [80449, 81225],
+ "self_check": [11588, 11659],
+ "round_trip": [184796, 184796]
+}
