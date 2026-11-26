@@ -22,7 +22,7 @@ Anything else is dropped rather than guessed at.
 Three further restrictions:
 
 * **Infopédia rows only**: the ``pt-PT`` rows that carry an Infopédia URL and
-  no ``phones`` value. Porto Editora edits these transcriptions by hand. The
+  no ``phones`` value, read as the IPA of the Infopédia (Porto Editora) entry. The
   ``pt-PT-x-lisboa`` rows are Portal da Língua Portuguesa rows, the output of
   its rule-based generator, and :mod:`benchmark.gold` classes the Portal as
   generated. They are not used.
