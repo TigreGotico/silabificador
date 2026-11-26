@@ -19,10 +19,15 @@ line up: the IPA must contain exactly as many vowels as the word has syllables,
 and the index counted from the left must equal the index counted from the right.
 Anything else is dropped rather than guessed at.
 
-Two further restrictions:
+Three further restrictions:
 
-* **European Portuguese only** (``pt-PT-x-lisboa``). The Brazilian and African
-  transcriptions insert epenthetic vowels that have no syllable in the spelling.
+* **Infopédia rows only**: the ``pt-PT`` rows that carry an Infopédia URL and
+  no ``phones`` value. Porto Editora edits these transcriptions by hand. The
+  ``pt-PT-x-lisboa`` rows are Portal da Língua Portuguesa rows, the output of
+  its rule-based generator, and :mod:`benchmark.gold` classes the Portal as
+  generated. They are not used.
+* **European Portuguese only**. The Brazilian and African transcriptions insert
+  epenthetic vowels that have no syllable in the spelling.
 * Compounds **are** included. The lexicon transcribes one ``ˈ`` per compound and
   puts it on the last element, which is where the primary stress belongs; the
   secondary stress of the earlier elements is not transcribed, so it is not
@@ -36,7 +41,7 @@ to believe the alignment above is sound.
 from __future__ import annotations
 
 import unicodedata
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, Iterable, List, Optional, Tuple
 
 from silabificador import syllabify
 
@@ -48,7 +53,8 @@ from .gold import PARQUET, REPO_ID
 IPA_VOWELS = frozenset("aɐɑeɛɨəiɪoɔuʊʌɜy")
 
 STRESS_MARK = "ˈ"
-REGION = "pt-PT-x-lisboa"
+REGION = "pt-PT"
+COLUMNS = ("word", "region", "ipa_narrow", "phones", "infopedia_url")
 
 #: An accent names the stressed syllable outright, which is what makes the
 #: self-check possible.
@@ -82,25 +88,34 @@ def stressed_syllable(word: str, ipa: str) -> Optional[int]:
     return from_left
 
 
-def load(parquet_path: Optional[str] = None) -> Dict[str, int]:
-    """Word -> index of the stressed syllable."""
-    import pandas as pd
+def from_rows(rows: Iterable[Tuple[str, str, str, str, str]]) -> Dict[str, int]:
+    """Word -> index of the stressed syllable.
 
-    if parquet_path is None:
-        from huggingface_hub import hf_hub_download
-        parquet_path = hf_hub_download(REPO_ID, PARQUET, repo_type="dataset")
-
-    frame = pd.read_parquet(parquet_path, columns=["word", "region", "ipa_narrow"])
-    frame = frame[(frame.region == REGION) & frame.ipa_narrow.astype(bool)]
-
+    Rows are ``(word, region, ipa_narrow, phones, infopedia_url)``. A word whose
+    rows stress two different syllables is dropped.
+    """
     found: Dict[str, set] = {}
-    for word, ipa in zip(frame.word, frame.ipa_narrow):
+    for word, region, ipa, phones, url in rows:
+        if region != REGION or not url or phones or not ipa:
+            continue
         key = word.lower()
         index = stressed_syllable(key, ipa)
         if index is not None:
             found.setdefault(key, set()).add(index)
 
     return {word: next(iter(v)) for word, v in found.items() if len(v) == 1}
+
+
+def load(parquet_path: Optional[str] = None) -> Dict[str, int]:
+    """Word -> index of the stressed syllable, from the lexicon parquet."""
+    import pandas as pd
+
+    if parquet_path is None:
+        from huggingface_hub import hf_hub_download
+        parquet_path = hf_hub_download(REPO_ID, PARQUET, repo_type="dataset")
+
+    frame = pd.read_parquet(parquet_path, columns=list(COLUMNS)).fillna("")
+    return from_rows(zip(*(frame[c] for c in COLUMNS)))
 
 
 def self_check(gold: Dict[str, int]) -> Tuple[int, int, List[str]]:
