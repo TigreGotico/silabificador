@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.15a6](https://github.com/TigreGotico/silabificador/tree/2.1.15a6) (2026-11-26)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.15a5...2.1.15a6)
+
+**Merged pull requests:**
+
+- test: strict xfails fail only on their assertion [\#67](https://github.com/TigreGotico/silabificador/pull/67) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [2.1.15a5](https://github.com/TigreGotico/silabificador/tree/2.1.15a5) (2026-11-25)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.15a4...2.1.15a5)
