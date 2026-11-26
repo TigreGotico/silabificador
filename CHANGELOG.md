@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.16a1](https://github.com/TigreGotico/silabificador/tree/2.1.16a1) (2026-11-26)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.15a6...2.1.16a1)
+
+**Merged pull requests:**
+
+- fix: take the stress gold from Infopédia rows, not the Portal [\#69](https://github.com/TigreGotico/silabificador/pull/69) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [2.1.15a6](https://github.com/TigreGotico/silabificador/tree/2.1.15a6) (2026-11-26)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.15a5...2.1.15a6)
