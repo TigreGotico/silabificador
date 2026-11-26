@@ -129,6 +129,9 @@ def write_markdown(path: str, gold: GoldSet, scores: List[Tuple[str, int, int]],
         "",
         "## Stress",
         "",
+        "The stress gold is the IPA of the Infopédia pt-PT rows of the lexicon.",
+        "The engine reads no IPA.",
+        "",
         "| | | |",
         "|---|---|---|",
         _row("stress accuracy", *stress),
@@ -188,11 +191,11 @@ def main() -> None:
             for word, expected, predicted in sorted(by_bucket[bucket])[:args.examples]:
                 print(f"           {word:<24} gold={'.'.join(expected):<26} got={'.'.join(predicted)}")
 
-    print("\nSTRESS (independent gold: the lexicon's IPA, which the engine never reads)")
+    print("\nSTRESS (gold: the Infopédia IPA of the lexicon, which the engine never reads)")
     stress = stresslib.load(args.parquet)
     agree, checked, _ = stresslib.self_check(stress)
     print(f"  gold                {len(stress):>6} words   "
-          f"(EP only; IPA and spelling verified to align)")
+          f"(Infopédia pt-PT rows only; IPA and spelling verified to align)")
     print(f"  gold self-check     {100.0 * agree / checked:6.2f}%   {agree}/{checked}   "
           f"on simple words, the written accent IS the stress -- and it agrees")
 

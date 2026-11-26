@@ -77,8 +77,10 @@ prefixes, the hyphenated prefixes of the Agreement (`ab-rogar`, `sub-reino`),
 the hiatus that depends on stress (`flu.iu`, `ci.u.men.to`), and words where
 one source is wrong. Every accepted split names its source.
 
-Stress is measured against a gold the engine cannot see: the lexicon's IPA
-transcriptions, which mark stress with `ˈ`. Nothing in the engine reads IPA.
+Stress is measured against a gold the engine cannot see: the IPA of the
+Infopédia pt-PT rows of the lexicon, which marks stress with `ˈ`. Nothing in
+the engine reads IPA. The `pt-PT-x-lisboa` rows are not used. They are Portal
+rows, made by the LUPo rule-based generator, so they are not human gold.
 
 [Accuracy](accuracy.md) gives the stress score and the gold self-check score. The self-check gives a reason to trust the gold: on a simple word, a written
 accent is the stress, by definition of the spelling rules, so the IPA-derived

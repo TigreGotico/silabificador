@@ -38,10 +38,13 @@ own tier, never as gold.
 
 ## Stress
 
+The stress gold is the IPA of the Infopédia pt-PT rows of the lexicon.
+The engine reads no IPA.
+
 | | | |
 |---|---|---|
-| stress accuracy | 99.85% | 43,772 / 43,839 |
-| gold self-check | 99.79% | 4,709 / 4,719 |
+| stress accuracy | 99.04% | 80,449 / 81,225 |
+| gold self-check | 99.39% | 11,588 / 11,659 |
 
 
 ---
