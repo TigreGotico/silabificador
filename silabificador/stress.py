@@ -82,7 +82,7 @@ References
 from __future__ import annotations
 
 import dataclasses
-from typing import List, Sequence
+from typing import List, Sequence, Set, Tuple
 
 from .graphemes import APOSTROPHES
 from .syllable import Syllable
@@ -208,11 +208,11 @@ def _stressed_in(syllables: Sequence[str], word: str) -> int:
         return 0
 
     for index in range(len(syllables) - 1, -1, -1):
-        if any(char in STRESS_ACCENTS for char in syllables[index]):
+        if not STRESS_ACCENTS.isdisjoint(syllables[index]):
             return index  # 1. ACCENT
 
     for index in range(len(syllables) - 1, -1, -1):
-        if any(char in TILDE for char in syllables[index]):
+        if not TILDE.isdisjoint(syllables[index]):
             return index  # 2. TILDE
 
     if word.endswith(PAROXYTONE_ENDINGS):  # 3. ENDING
@@ -222,8 +222,8 @@ def _stressed_in(syllables: Sequence[str], word: str) -> int:
     return len(syllables) - 2
 
 
-def assign(syllables: List[Syllable], word: str) -> List[Syllable]:
-    """Mark the stressed syllables of ``word``.
+def marks(syllables: Sequence[Syllable], word: str) -> Tuple[Set[int], Set[int]]:
+    """The indices of the primary and the secondary stressed syllables of ``word``.
 
     Exactly one syllable is primary-stressed. In a compound, every element that
     is not a clitic is a stress domain of its own: the last one keeps the primary
@@ -231,10 +231,7 @@ def assign(syllables: List[Syllable], word: str) -> List[Syllable]:
     a verb is an enclitic: it is not a stress domain, and the primary stays on
     the verb.
     """
-    if not syllables:
-        return syllables
-
-    texts = [str(s) for s in syllables]
+    texts = [s.surface for s in syllables]
     groups = _groups(texts)
     words = _elements(word)
     if len(words) != len(groups):
@@ -254,9 +251,16 @@ def assign(syllables: List[Syllable], word: str) -> List[Syllable]:
 
     # The pre-1990 grave states a secondary stress outright, wherever it falls.
     for index, text in enumerate(texts):
-        if index not in primary and any(char in SECONDARY_ACCENTS for char in text):
+        if index not in primary and not SECONDARY_ACCENTS.isdisjoint(text):
             secondary.add(index)
+    return primary, secondary
 
+
+def assign(syllables: List[Syllable], word: str) -> List[Syllable]:
+    """Mark the stressed syllables of ``word``; see :func:`marks`."""
+    if not syllables:
+        return syllables
+    primary, secondary = marks(syllables, word)
     return [dataclasses.replace(syllable,
                                 stressed=index in primary,
                                 secondary=index in secondary)

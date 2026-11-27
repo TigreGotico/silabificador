@@ -130,8 +130,6 @@ def _closes_syllable(units: Sequence[Grapheme], run_end: int) -> str:
 
 def resolve(units: Sequence[Grapheme], start: int, end: int) -> List[Group]:
     """Group the vowel run ``units[start:end + 1]`` into syllable nuclei."""
-    if start > end:
-        return []
     groups: List[Group] = []
     following = units[end + 1].text if end + 1 < len(units) else ""
     i = start
