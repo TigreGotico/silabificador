@@ -13,6 +13,8 @@ syllable, for phonemizers, rhyme tools and text-to-speech front ends. It uses
 hand-crafted rules based on Portuguese phonotactics. It has no runtime
 dependencies and loads no model.
 
+Try it in your browser: [TigreGotico/silabificador on Hugging Face](https://huggingface.co/spaces/TigreGotico/silabificador).
+
 ## Installation
 
 ```bash
