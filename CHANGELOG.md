@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.16a3](https://github.com/TigreGotico/silabificador/tree/2.1.16a3) (2026-11-27)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.16a2...2.1.16a3)
+
+**Merged pull requests:**
+
+- refactor: round 1 [\#74](https://github.com/TigreGotico/silabificador/pull/74) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [2.1.16a2](https://github.com/TigreGotico/silabificador/tree/2.1.16a2) (2026-11-27)
 
 [Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.16a1...2.1.16a2)
