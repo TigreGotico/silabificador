@@ -100,6 +100,7 @@ LATINATE_PREFIX_STEMS = {
     "sub": ("limin", "loc", "lig", "lunar", "lacustre", "lamelar", "lenhoso",
             "licenc", "licenç", "linh", "linear", "lux"),
 }
+_PREFIXES_LONGEST_FIRST = sorted(LATINATE_PREFIX_STEMS, key=len, reverse=True)
 
 # Not implemented, deliberately: the *productive* prefixes (ciber-, hiper-,
 # super-, inter-). Infopédia often keeps them intact -- ci.ber.as.sé.di.o,
@@ -152,7 +153,7 @@ _UO_IDADE = re.compile(r"(?<=[^gq]u)idades?$")
 
 def _prefix_boundary(word: str) -> int:
     """Character offset of a prefix boundary, or 0 for none."""
-    for prefix in sorted(LATINATE_PREFIX_STEMS, key=len, reverse=True):
+    for prefix in _PREFIXES_LONGEST_FIRST:
         if word.startswith(prefix):
             stem = word[len(prefix):]
             if stem[:1] in _LIQUIDS and stem.startswith(LATINATE_PREFIX_STEMS[prefix]):

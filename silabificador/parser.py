@@ -28,7 +28,7 @@ from typing import List, Sequence, Set
 
 from . import morphology, nucleus, stress
 from .graphemes import APOSTROPHES, Grapheme, tokenize
-from .phonotactics import is_complex_onset
+from .phonotactics import COMPLEX_ONSETS
 from .syllable import Syllable
 
 #: Portuguese onsets hold at most two units (an obstruent and a liquid). ``qu``,
@@ -91,7 +91,8 @@ def parse(word: str) -> List[Syllable]:
     # The stress rules read the first pass, and the nucleus rules that depend on
     # stress regroup it. The regrouping never moves the stress: it only touches
     # a syllable that is not stressed, or a final one that stays stressed.
-    stressed = [s.stressed or s.secondary for s in stress.assign(syllables, word)]
+    primary, secondary = stress.marks(syllables, word)
+    stressed = [i in primary or i in secondary for i in range(len(syllables))]
     regrouped = nucleus.by_stress(units, groups, stressed, hard)
     if regrouped == groups:
         return syllables
@@ -140,7 +141,7 @@ def _assemble(units: Sequence[Grapheme], groups: Sequence[nucleus.Group],
                 # The next syllable takes the last two units when they are a
                 # licit onset, else the last one: ca.sa, never cas.a.
                 onset = 1
-                if len(cluster) > 1 and is_complex_onset(units[cluster[-2]].text + units[cluster[-1]].text):
+                if len(cluster) > 1 and units[cluster[-2]].text + units[cluster[-1]].text in COMPLEX_ONSETS:
                     onset = MAX_ONSET
                 end = cluster[-onset - 1] if onset < len(cluster) else group[-1]
 
