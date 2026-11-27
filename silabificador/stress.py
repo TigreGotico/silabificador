@@ -1,9 +1,7 @@
 """Stress assignment.
 
-Portuguese stress is not guessed. The orthography is *designed* to encode it: the
-spelling rules require an accent on any word whose stress departs from the
-default, so a written accent is not a hint about stress, it is a statement of it.
-What remains is to know the default, and the default is fixed by the ending.
+The spelling encodes stress: it requires an accent on any word whose stress
+departs from the default, and the ending fixes the default.
 
 Primary stress, within one word
 -------------------------------
@@ -20,7 +18,8 @@ Primary stress, within one word
                    no accent cannot be stressed further back, because the
                    spelling rules would have required an accent to say so.
 
-                   Oxytone (last):       r l z x n ps, i u (+s), im um om (+s)
+                   Oxytone (last):       r l z x n ps, i u (+s), im um om (+s),
+                                         y w
                    Paroxytone (default): everything else, and the inflections
                                          -as -es -os -am -em -ens, which do not
                                          move the stress: fa.lam, jo.vens.
@@ -28,11 +27,22 @@ Primary stress, within one word
 ``a``, ``e`` and ``o`` are the unmarked Portuguese endings, and the unmarked case
 is paroxytone. That asymmetry is the whole of rule 3.
 
+``y`` and ``w`` end a word in pre-1943 Portuguese spellings, and they count as the
+vowels they write. The Formulário Ortográfico of the Academia Brasileira de Letras
+(1943) says "O y, que é substituído pelo i" (9.) and "O w substitui-se, em palavras
+portuguêsas ou aportuguesadas, por u ou v, conforme o seu valor fonético" (6.).
+Figueiredo's Novo Diccionário (1913) reads y the same way: it sends *Paraguay*
+and *Uruguay* to *Paraguai* and *Uruguai*, and *Piauhy* to *Piauí*, and it writes
+an accent on the paroxytones *Júry* and *Móly*. A final ``w`` is a vowel, so it
+takes the ``u`` reading of rule 6. English loans such as *hobby* and *rugby* keep
+the stress of their source language; these rules do not cover them, and they read
+as oxytones here.
+
 Secondary stress
 ----------------
-A hyphenated compound is two words wearing one coat, and each element keeps the
-stress it had alone. The last element carries the primary stress and the earlier
-ones are demoted to secondary: *guàr.da-CHU.va*, *ca.fè-con.CER.to*.
+Each element of a hyphenated compound keeps the stress it had alone. The last
+element carries the primary stress and the earlier ones a secondary stress:
+*guàr.da-CHU.va*, *ca.fè-con.CER.to*.
 
 Elements that are unstressed monosyllables carry nothing at all. Portuguese
 grammar names this class -- the *monossílabos átonos*, the articles,
@@ -72,9 +82,10 @@ References
 from __future__ import annotations
 
 import dataclasses
-from typing import List, Sequence
+from typing import List, Sequence, Set, Tuple
 
 from .graphemes import APOSTROPHES
+from .syllable import Syllable
 
 #: An acute or circumflex accent names the stressed syllable outright.
 STRESS_ACCENTS = frozenset("áéíóúâêôîû")
@@ -87,7 +98,8 @@ TILDE = frozenset("ãõ")
 SECONDARY_ACCENTS = frozenset("èìòù")
 
 #: Endings that put the stress on the last syllable. ``i`` and ``u`` are here and
-#: ``a``/``e``/``o`` are not, which is the whole of the asymmetry.
+#: ``a``/``e``/``o`` are not, which is the whole of the asymmetry. ``y`` stands
+#: for ``i``, and a word-final ``w`` for ``u`` (see the module docstring).
 OXYTONE_ENDINGS = (
     "r", "l", "z", "x", "n", "ps",
     "i", "is", "u", "us",
@@ -196,11 +208,11 @@ def _stressed_in(syllables: Sequence[str], word: str) -> int:
         return 0
 
     for index in range(len(syllables) - 1, -1, -1):
-        if any(char in STRESS_ACCENTS for char in syllables[index]):
+        if not STRESS_ACCENTS.isdisjoint(syllables[index]):
             return index  # 1. ACCENT
 
     for index in range(len(syllables) - 1, -1, -1):
-        if any(char in TILDE for char in syllables[index]):
+        if not TILDE.isdisjoint(syllables[index]):
             return index  # 2. TILDE
 
     if word.endswith(PAROXYTONE_ENDINGS):  # 3. ENDING
@@ -210,8 +222,8 @@ def _stressed_in(syllables: Sequence[str], word: str) -> int:
     return len(syllables) - 2
 
 
-def assign(syllables: List, word: str) -> List:
-    """Mark the stressed syllables of ``word``.
+def marks(syllables: Sequence[Syllable], word: str) -> Tuple[Set[int], Set[int]]:
+    """The indices of the primary and the secondary stressed syllables of ``word``.
 
     Exactly one syllable is primary-stressed. In a compound, every element that
     is not a clitic is a stress domain of its own: the last one keeps the primary
@@ -219,10 +231,7 @@ def assign(syllables: List, word: str) -> List:
     a verb is an enclitic: it is not a stress domain, and the primary stays on
     the verb.
     """
-    if not syllables:
-        return syllables
-
-    texts = [str(s) for s in syllables]
+    texts = [s.surface for s in syllables]
     groups = _groups(texts)
     words = _elements(word)
     if len(words) != len(groups):
@@ -230,8 +239,8 @@ def assign(syllables: List, word: str) -> List:
         # whole thing as one word rather than marking something arbitrary.
         groups, words = [list(range(len(syllables)))], ["".join(texts)]
 
-    primary: set = set()
-    secondary: set = set()
+    primary: set[int] = set()
+    secondary: set[int] = set()
     host = _primary_element(texts, groups, words)
     for position, (group, element) in enumerate(zip(groups, words)):
         if position != host and (element in CLITICS or not element):
@@ -241,11 +250,17 @@ def assign(syllables: List, word: str) -> List:
         (primary if position == host else secondary).add(target)
 
     # The pre-1990 grave states a secondary stress outright, wherever it falls.
-    for index, syllable in enumerate(syllables):
-        if any(char in SECONDARY_ACCENTS for char in str(syllable)):
-            if index not in primary:
-                secondary.add(index)
+    for index, text in enumerate(texts):
+        if index not in primary and not SECONDARY_ACCENTS.isdisjoint(text):
+            secondary.add(index)
+    return primary, secondary
 
+
+def assign(syllables: List[Syllable], word: str) -> List[Syllable]:
+    """Mark the stressed syllables of ``word``; see :func:`marks`."""
+    if not syllables:
+        return syllables
+    primary, secondary = marks(syllables, word)
     return [dataclasses.replace(syllable,
                                 stressed=index in primary,
                                 secondary=index in secondary)

@@ -100,6 +100,7 @@ LATINATE_PREFIX_STEMS = {
     "sub": ("limin", "loc", "lig", "lunar", "lacustre", "lamelar", "lenhoso",
             "licenc", "licenç", "linh", "linear", "lux"),
 }
+_PREFIXES_LONGEST_FIRST = sorted(LATINATE_PREFIX_STEMS, key=len, reverse=True)
 
 # Not implemented, deliberately: the *productive* prefixes (ciber-, hiper-,
 # super-, inter-). Infopédia often keeps them intact -- ci.ber.as.sé.di.o,
@@ -138,10 +139,6 @@ VOWEL_FINAL_STEMS = (
     "ju",
 )
 
-#: The suffixes that open with the ``i`` of the seam above.
-_VOCALIC_SUFFIXES = ("i",)
-
-
 #: Nouns in -idade from adjectives in -uo and -ue: ár.du.o gives ar.du.i.da.de,
 #: in.gé.nu.o gives in.ge.nu.i.da.de, té.nu.e gives te.nu.i.da.de. The ``u`` is a
 #: nucleus in the base: Mateus & d'Andrade (1998, p. 20) write that a [+high]
@@ -156,15 +153,12 @@ _UO_IDADE = re.compile(r"(?<=[^gq]u)idades?$")
 
 def _prefix_boundary(word: str) -> int:
     """Character offset of a prefix boundary, or 0 for none."""
-    for prefix in sorted(LATINATE_PREFIX_STEMS, key=len, reverse=True):
-        if not word.startswith(prefix):
-            continue
-        stem = word[len(prefix):]
-        if stem[:1] in _LIQUIDS and any(stem.startswith(s)
-                                        for s in LATINATE_PREFIX_STEMS[prefix]):
-            return len(prefix)
-        return 0
-
+    for prefix in _PREFIXES_LONGEST_FIRST:
+        if word.startswith(prefix):
+            stem = word[len(prefix):]
+            if stem[:1] in _LIQUIDS and stem.startswith(LATINATE_PREFIX_STEMS[prefix]):
+                return len(prefix)
+            return 0
     return 0
 
 
@@ -178,7 +172,7 @@ def _seam_boundary(word: str) -> int:
         if start < 0:
             continue
         end = start + len(stem)
-        if any(word[end:].startswith(s) for s in _VOCALIC_SUFFIXES) and len(word) > end + 1:
+        if word.startswith("i", end) and len(word) > end + 1:
             return end
     return 0
 

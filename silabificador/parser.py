@@ -19,7 +19,7 @@ COMPLEX_ONSETS` says which clusters are licit, the rule derives on its own:
     cons.tru.ir   likewise
 
 Codas are not checked against an inventory, because Portuguese spelling admits
-whatever the onset rule strands -- ap.to, rit.mo, ab.sur.do, sof.twa.re. Onsets
+whatever the onset rule strands -- ap.to, rit.mo, ab.sur.do, soft.wa.re. Onsets
 are the constrained edge; the coda is the remainder.
 """
 from __future__ import annotations
@@ -28,25 +28,12 @@ from typing import List, Sequence, Set
 
 from . import morphology, nucleus, stress
 from .graphemes import APOSTROPHES, Grapheme, tokenize
-from .phonotactics import is_complex_onset
+from .phonotactics import COMPLEX_ONSETS
 from .syllable import Syllable
 
 #: Portuguese onsets hold at most two units (an obstruent and a liquid). ``qu``,
 #: ``gu``, ``ch``, ``lh``, ``nh`` are single units by the time they get here.
 MAX_ONSET = 2
-
-
-def _onset_size(cluster: Sequence[Grapheme]) -> int:
-    """How many of ``cluster``'s trailing units the next syllable may claim."""
-    if not cluster:
-        return 0
-    if len(cluster) == 1:
-        # A single consonant between nuclei is always an onset: ca.sa, never cas.a.
-        return 1
-    tail = cluster[-2].text + cluster[-1].text
-    if is_complex_onset(tail):
-        return MAX_ONSET
-    return 1
 
 
 def _split_runs(units: Sequence[Grapheme]) -> List[List[int]]:
@@ -104,7 +91,8 @@ def parse(word: str) -> List[Syllable]:
     # The stress rules read the first pass, and the nucleus rules that depend on
     # stress regroup it. The regrouping never moves the stress: it only touches
     # a syllable that is not stressed, or a final one that stays stressed.
-    stressed = [s.stressed or s.secondary for s in stress.assign(syllables, word)]
+    primary, secondary = stress.marks(syllables, word)
+    stressed = [i in primary or i in secondary for i in range(len(syllables))]
     regrouped = nucleus.by_stress(units, groups, stressed, hard)
     if regrouped == groups:
         return syllables
@@ -150,7 +138,11 @@ def _assemble(units: Sequence[Grapheme], groups: Sequence[nucleus.Group],
             elif not cluster:
                 end = group[-1]
             else:
-                onset = _onset_size([units[i] for i in cluster])
+                # The next syllable takes the last two units when they are a
+                # licit onset, else the last one: ca.sa, never cas.a.
+                onset = 1
+                if len(cluster) > 1 and units[cluster[-2]].text + units[cluster[-1]].text in COMPLEX_ONSETS:
+                    onset = MAX_ONSET
                 end = cluster[-onset - 1] if onset < len(cluster) else group[-1]
 
         # A hyphen, space or apostrophe belongs to the syllable it follows, so

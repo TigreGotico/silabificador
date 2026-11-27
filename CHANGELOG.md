@@ -1,149 +1,92 @@
 # Changelog
 
-## [2.1.13a2](https://github.com/TigreGotico/silabificador/tree/2.1.13a2) (2026-11-15)
+## [2.1.16a4](https://github.com/TigreGotico/silabificador/tree/2.1.16a4) (2026-11-27)
 
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.13a1...2.1.13a2)
-
-**Merged pull requests:**
-
-- docs: sync README and docs with dev [\#52](https://github.com/TigreGotico/silabificador/pull/52) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
-
-## [2.1.13a1](https://github.com/TigreGotico/silabificador/tree/2.1.13a1) (2026-11-11)
-
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.12a1...2.1.13a1)
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.16a3...2.1.16a4)
 
 **Merged pull requests:**
 
-- fix: read English oo and ee as one vowel in a foreign word [\#50](https://github.com/TigreGotico/silabificador/pull/50) ([JarbasAl](https://github.com/JarbasAl))
+- docs: link the demo Space from the README [\#77](https://github.com/TigreGotico/silabificador/pull/77) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
 
-## [2.1.12a1](https://github.com/TigreGotico/silabificador/tree/2.1.12a1) (2026-11-10)
+## [2.1.16a3](https://github.com/TigreGotico/silabificador/tree/2.1.16a3) (2026-11-27)
 
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.11a2...2.1.12a1)
-
-**Merged pull requests:**
-
-- fix\(benchmark\): drop splits printed without division; score Michaelis in the docs [\#48](https://github.com/TigreGotico/silabificador/pull/48) ([JarbasAl](https://github.com/JarbasAl))
-
-## [2.1.11a2](https://github.com/TigreGotico/silabificador/tree/2.1.11a2) (2026-11-10)
-
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.11a1...2.1.11a2)
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.16a2...2.1.16a3)
 
 **Merged pull requests:**
 
-- chore\(benchmark\): read Michaelis rows of the unified lexicon as a human source [\#46](https://github.com/TigreGotico/silabificador/pull/46) ([JarbasAl](https://github.com/JarbasAl))
+- refactor: round 1 [\#74](https://github.com/TigreGotico/silabificador/pull/74) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
 
-## [2.1.11a1](https://github.com/TigreGotico/silabificador/tree/2.1.11a1) (2026-11-10)
+## [2.1.16a2](https://github.com/TigreGotico/silabificador/tree/2.1.16a2) (2026-11-27)
 
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.10a1...2.1.11a1)
-
-**Merged pull requests:**
-
-- fix: read the contractions ao and aos as one syllable [\#43](https://github.com/TigreGotico/silabificador/pull/43) ([JarbasAl](https://github.com/JarbasAl))
-
-## [2.1.10a1](https://github.com/TigreGotico/silabificador/tree/2.1.10a1) (2026-11-10)
-
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.9a1...2.1.10a1)
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.16a1...2.1.16a2)
 
 **Merged pull requests:**
 
-- fix: keep the stress off unstressed words and enclitic pronouns [\#42](https://github.com/TigreGotico/silabificador/pull/42) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+- docs: test the generated accuracy page, scope line [\#72](https://github.com/TigreGotico/silabificador/pull/72) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
 
-## [2.1.9a1](https://github.com/TigreGotico/silabificador/tree/2.1.9a1) (2026-11-10)
+## [2.1.16a1](https://github.com/TigreGotico/silabificador/tree/2.1.16a1) (2026-11-26)
 
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.8a1...2.1.9a1)
-
-**Merged pull requests:**
-
-- fix: read the consonant before an apostrophe with the next vowel [\#40](https://github.com/TigreGotico/silabificador/pull/40) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
-
-## [2.1.8a1](https://github.com/TigreGotico/silabificador/tree/2.1.8a1) (2026-11-10)
-
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.7a1...2.1.8a1)
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.15a6...2.1.16a1)
 
 **Merged pull requests:**
 
-- fix: stop the stressed iu/ui scan at the end of the word [\#38](https://github.com/TigreGotico/silabificador/pull/38) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+- fix: take the stress gold from Infopédia rows, not the Portal [\#69](https://github.com/TigreGotico/silabificador/pull/69) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
 
-## [2.1.7a1](https://github.com/TigreGotico/silabificador/tree/2.1.7a1) (2026-11-09)
+## [2.1.15a6](https://github.com/TigreGotico/silabificador/tree/2.1.15a6) (2026-11-26)
 
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.6a1...2.1.7a1)
-
-**Merged pull requests:**
-
-- fix: read five foreign spellings as one grapheme unit [\#33](https://github.com/TigreGotico/silabificador/pull/33) ([JarbasAl](https://github.com/JarbasAl))
-
-## [2.1.6a1](https://github.com/TigreGotico/silabificador/tree/2.1.6a1) (2026-11-09)
-
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.5a1...2.1.6a1)
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.15a5...2.1.15a6)
 
 **Merged pull requests:**
 
-- fix: keep the u of an -uo adjective as a nucleus before -idade [\#32](https://github.com/TigreGotico/silabificador/pull/32) ([JarbasAl](https://github.com/JarbasAl))
+- test: strict xfails fail only on their assertion [\#67](https://github.com/TigreGotico/silabificador/pull/67) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
 
-## [2.1.5a1](https://github.com/TigreGotico/silabificador/tree/2.1.5a1) (2026-11-09)
+## [2.1.15a5](https://github.com/TigreGotico/silabificador/tree/2.1.15a5) (2026-11-25)
 
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.4a1...2.1.5a1)
-
-**Merged pull requests:**
-
-- fix: let PRE-PALATAL outrank NASAL-OFFGLIDE \(mã.i.nha\) [\#31](https://github.com/TigreGotico/silabificador/pull/31) ([JarbasAl](https://github.com/JarbasAl))
-
-## [2.1.4a1](https://github.com/TigreGotico/silabificador/tree/2.1.4a1) (2026-11-09)
-
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.3a1...2.1.4a1)
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.15a4...2.1.15a5)
 
 **Merged pull requests:**
 
-- fix: keep the hiatus that a derivative inherits from an accented base [\#30](https://github.com/TigreGotico/silabificador/pull/30) ([JarbasAl](https://github.com/JarbasAl))
+- docs: keep the README short and move the details into docs/ [\#65](https://github.com/TigreGotico/silabificador/pull/65) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
 
-## [2.1.3a1](https://github.com/TigreGotico/silabificador/tree/2.1.3a1) (2026-11-09)
+## [2.1.15a4](https://github.com/TigreGotico/silabificador/tree/2.1.15a4) (2026-11-24)
 
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a5...2.1.3a1)
-
-**Merged pull requests:**
-
-- fix: split iu by stress and regroup the stressed iu/ui of -iu verbs [\#28](https://github.com/TigreGotico/silabificador/pull/28) ([JarbasAl](https://github.com/JarbasAl))
-- fix: score against a multi-split gold and treat the Portal as generated [\#26](https://github.com/TigreGotico/silabificador/pull/26) ([JarbasAl](https://github.com/JarbasAl))
-
-## [2.1.1a5](https://github.com/TigreGotico/silabificador/tree/2.1.1a5) (2026-11-04)
-
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a4...2.1.1a5)
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.15a3...2.1.15a4)
 
 **Merged pull requests:**
 
-- docs: correct claims that no longer match dev [\#24](https://github.com/TigreGotico/silabificador/pull/24) ([JarbasAl](https://github.com/JarbasAl))
+- refactor: simplify silabificador for readers [\#63](https://github.com/TigreGotico/silabificador/pull/63) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
 
-## [2.1.1a4](https://github.com/TigreGotico/silabificador/tree/2.1.1a4) (2026-11-02)
+## [2.1.15a3](https://github.com/TigreGotico/silabificador/tree/2.1.15a3) (2026-11-21)
 
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a3...2.1.1a4)
-
-**Merged pull requests:**
-
-- chore: require Python 3.11, the oldest version not past end of life [\#21](https://github.com/TigreGotico/silabificador/pull/21) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
-
-## [2.1.1a3](https://github.com/TigreGotico/silabificador/tree/2.1.1a3) (2026-11-02)
-
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a2...2.1.1a3)
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.15a2...2.1.15a3)
 
 **Merged pull requests:**
 
-- docs: cite AO1990 Base XIII for the accent dropped in derived words [\#19](https://github.com/TigreGotico/silabificador/pull/19) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+- docs: README, docs index, navigation and agent hints [\#61](https://github.com/TigreGotico/silabificador/pull/61) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
 
-## [2.1.1a2](https://github.com/TigreGotico/silabificador/tree/2.1.1a2) (2026-10-29)
+## [2.1.15a2](https://github.com/TigreGotico/silabificador/tree/2.1.15a2) (2026-11-19)
 
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.1a1...2.1.1a2)
-
-**Merged pull requests:**
-
-- test: load the benchmark harness by path, not through sys.path [\#17](https://github.com/TigreGotico/silabificador/pull/17) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
-
-## [2.1.1a1](https://github.com/TigreGotico/silabificador/tree/2.1.1a1) (2026-07-30)
-
-[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.0...2.1.1a1)
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.15a1...2.1.15a2)
 
 **Merged pull requests:**
 
-- docs: rewrite README in Simplified Technical English [\#15](https://github.com/TigreGotico/silabificador/pull/15) ([JarbasAl](https://github.com/JarbasAl))
+- docs: sync README and docs with dev [\#59](https://github.com/TigreGotico/silabificador/pull/59) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
+## [2.1.15a1](https://github.com/TigreGotico/silabificador/tree/2.1.15a1) (2026-11-18)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.14a1...2.1.15a1)
+
+**Merged pull requests:**
+
+- fix: write software as soft.wa.re and list y and w as oxytone endings [\#57](https://github.com/TigreGotico/silabificador/pull/57) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
+## [2.1.14a1](https://github.com/TigreGotico/silabificador/tree/2.1.14a1) (2026-11-16)
+
+[Full Changelog](https://github.com/TigreGotico/silabificador/compare/2.1.13...2.1.14a1)
+
+**Merged pull requests:**
+
+- docs: correct the hiatus seam, iu, --pre and coda claims [\#54](https://github.com/TigreGotico/silabificador/pull/54) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
 
 
 

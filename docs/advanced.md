@@ -1,5 +1,13 @@
 # Advanced
 
+<!-- agent-hint
+covers: how the engine decides a split and a stress, and where it is known to be wrong
+source: `silabificador/*.py`, `silabificador/data/stems.csv`, `tests/edge_cases.json`
+generated: no
+verify: sed -n '/^\x60\x60\x60python/,/^\x60\x60\x60/p' docs/advanced.md | grep -vP '^\x60{3}' | python -I - && python -m pytest -q tests/test_edge_cases.py
+see: `docs/api.md`, `docs/accuracy.md`
+-->
+
 This page explains how the split is decided, and where it is known to be
 wrong.
 
@@ -97,8 +105,8 @@ syllabify("abstrair")   # ['abs', 'tra', 'ir']  tr is licit, str is not
 ```
 
 The engine does not treat codas as an inventory. Portuguese spelling admits
-whatever the onset rule strands, for example *ap.to*, *rit.mo*, *ab.sur.do*,
-*sof.twa.re*. Constraining the coda too would reject words the dictionaries
+whatever the onset rule strands, for example *ap.to*, *rit.mo* and
+*ab.sur.do*. Constraining the coda too would reject words the dictionaries
 spell.
 
 ## The lexical layer, and why it exists
@@ -136,7 +144,7 @@ a statement too.
 1. ACCENT    a syllable with an acute or circumflex is the stressed one
 2. TILDE     failing that, a nasal ã/õ carries it (ir.MÃ, co.ra.ÇÃO)
 3. ENDING    failing both, the ending chooses between the last two syllables
-             oxytone:    r l z x n ps, i u (+s), im um om (+s)
+             oxytone:    r l z x n ps, i u (+s), im um om (+s), y w
              paroxytone: everything else, and -as -es -os -am -em -ens
 ```
 
@@ -144,6 +152,27 @@ Rule 3 is a two-way choice, not a guess: an unaccented word cannot be
 proparoxytone, because the spelling rules would have required an accent to
 say so. That is why `sá.bi.a`, `sa.bi.a`, and `sa.bi.á` are three different
 words.
+
+A final `y` or `w` comes from a spelling older than 1943. A final `y` is the
+`i` that the 1943 Formulário puts in its place. Item 6. lets `w` become `u` or
+`v` by its sound, and the library reads a final `w` as `u`. The Formulário Ortográfico of the Academia Brasileira de
+Letras (1943) says "O y, que é substituído pelo i" (9.) and "O w substitui-se,
+em palavras portuguêsas ou aportuguesadas, por u ou v, conforme o seu valor
+fonético" (6.).
+
+Figueiredo's Novo Diccionário (1913) sends *Paraguay* to *Paraguai* and
+*Piauhy* to *Piauí*, and it writes an accent on the paroxytone *Júry*:
+
+```python
+from silabificador import stressed_index
+
+stressed_index("Paraguay")   # 2   pa.ra.GUAY, as Paraguai
+stressed_index("Júry")       # 0   JÚ.ry
+stressed_index("hobby")      # 1   hob.BY
+```
+
+English loans such as *hobby* and *rugby* keep the stress of English. The
+rules do not cover them, so they read as oxytones.
 
 ### Secondary stress
 
@@ -202,10 +231,12 @@ stem is anchored tightly enough to miss words from another root: `ruidoso`, not
 reaches, as rows whose stem is the whole word: `flu.i.dez`, whose base keeps
 the diphthong (`flui.do`), and `ad.le.ri.a.no`, from the surname Adler.
 
-`silabificador.morphology` covers two kinds of seam: the stem of an `-uir` or
-`-air` verb before an `i` (`dis.tri.bu.i.dor`, `a.ju.i.zar`), and the `-idade`
-noun of an `-uo` or `-ue` adjective (`ar.du.i.da.de`). Other seams have no
-entry, so the engine writes `reu.nir` and `a.lui.men.to`.
+`silabificador.morphology` covers two kinds of hiatus seam. The first is a
+listed verb stem before an `i`: some `-uir` and `-air` verbs
+(`dis.tri.bu.i.dor`), and the stem of *juízo* (`a.ju.i.zar`). The second is
+the `-idade` noun of an `-uo` or `-ue` adjective (`ar.du.i.da.de`). A seam
+outside these cases has no entry, so the engine writes `reu.nir`, and it
+writes `a.lui.men.to` because the stem of *aluir* is not in the list.
 
 Foreign onsets are not in the inventory. Where Infopédia has `sof.twa.ri.zar`,
 the engine writes `soft.wa.ri.zar`, because `tw` is not a Portuguese onset. A few
@@ -221,4 +252,4 @@ The engine counts these classes rather than hiding them: `python -m
 benchmark.report` prints every remaining failure bucketed by cause.
 
 ---
-[← API Reference](api.md) · [Home](../README.md) · [Accuracy →](accuracy.md)
+[← API Reference](api.md) · [Index](index.md) · [Gold sets and method →](gold.md)

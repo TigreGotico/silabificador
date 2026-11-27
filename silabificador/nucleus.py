@@ -108,18 +108,13 @@ Group = List[int]
 
 
 def _closes_syllable(units: Sequence[Grapheme], run_end: int) -> str:
-    """The consonant that would close the syllable ending at ``run_end``, if any.
+    """The consonant that would close the syllable ending at ``run_end``, or ``""``.
 
-    A consonant only closes a syllable when it cannot be handed to the next one:
-    in *bai.le* the ``l`` has a vowel after it, so it is an onset and the ``ai``
-    survives as a diphthong; in *a.in.da* the ``n`` is followed by ``d``, so it
-    is stuck in the coda, and the ``i`` is a nucleus. Same letters, opposite
-    outcomes, one rule.
-
-    A geminate is the exception, and not an arbitrary one: ``rr`` and ``ss``
-    spell a *single* consonant, which the orthography splits across the boundary
-    for reasons of spelling, not of sound. Nothing closes the syllable, so the
-    diphthong stands -- bair.ro, bair.ris.mo, not *ba.ir.ro.
+    A consonant closes a syllable only when it cannot be the next onset: in
+    *bai.le* the ``l`` has a vowel after it and the ``ai`` stays a diphthong; in
+    *a.in.da* the ``n`` is followed by ``d`` and the ``i`` is a nucleus. A
+    geminate (``rr``, ``ss``) spells one consonant split only by the spelling,
+    so it closes nothing: bair.ro, not *ba.ir.ro.
     """
     first = run_end + 1
     if first >= len(units) or not units[first].is_consonant:
@@ -136,6 +131,7 @@ def _closes_syllable(units: Sequence[Grapheme], run_end: int) -> str:
 def resolve(units: Sequence[Grapheme], start: int, end: int) -> List[Group]:
     """Group the vowel run ``units[start:end + 1]`` into syllable nuclei."""
     groups: List[Group] = []
+    following = units[end + 1].text if end + 1 < len(units) else ""
     i = start
 
     while i <= end:
@@ -144,10 +140,9 @@ def resolve(units: Sequence[Grapheme], start: int, end: int) -> List[Group]:
 
         if i < end:
             glide = units[i + 1].text
-            is_last = (i + 1) == end
-            after = _closes_syllable(units, end) if is_last else ""
+            is_last = i + 1 == end
 
-            if is_last and glide in GLIDE_CAPABLE and _next_units(units, end) in HIATUS_BEFORE:
+            if is_last and glide in GLIDE_CAPABLE and following in HIATUS_BEFORE:
                 pass  # PRE-PALATAL: ra.i.nha, mo.i.nho, mã.i.nha
             elif nucleus in NASAL_VOWELS and glide in "eoiu":
                 group.append(i + 1)  # NASAL-OFFGLIDE: mãe, pão, põe
@@ -157,7 +152,7 @@ def resolve(units: Sequence[Grapheme], start: int, end: int) -> List[Group]:
                 pass  # ACCENT / no mid or low glides: pa.ís, co.e.lho, su.a
             elif glide == nucleus:
                 pass  # IDENTICAL-VOWELS: xi.i.ta, va.di.i.ce
-            elif is_last and after in HIATUS_CODAS:
+            elif is_last and _closes_syllable(units, end) in HIATUS_CODAS:
                 pass  # CLOSED-BY-LIQUID-OR-NASAL: a.in.da, ca.ir, ju.iz
             else:
                 group.append(i + 1)  # FALLING-DIPHTHONG: pai, sau.da.de, cui.da.do
@@ -176,11 +171,6 @@ def _word_at(units: Sequence[Grapheme], index: int) -> str:
     before = list(takewhile(lambda unit: not ends_word(unit), reversed(units[:index])))
     after = takewhile(lambda unit: not ends_word(unit), units[index:])
     return "".join(unit.text for unit in [*before[::-1], *after])
-
-
-def _next_units(units: Sequence[Grapheme], run_end: int) -> str:
-    nxt = run_end + 1
-    return units[nxt].text if nxt < len(units) else ""
 
 
 def by_stress(units: Sequence[Grapheme], groups: Sequence[Group],

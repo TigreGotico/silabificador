@@ -1,14 +1,11 @@
 """Layer 1 -- orthography to grapheme units.
 
-Portuguese spelling is not one letter per segment. ``lh`` is a single consonant;
-so is the ``qu`` of *quero*, whose ``u`` spells nothing at all. A scanner that
-walks letters therefore keeps tripping over sequences that are one unit, and the
-usual fix -- rewriting ``ch``/``lh``/``nh``/``gu``/``qu`` to placeholder symbols
-before scanning -- is context-blind: it collapses the ``gu`` of *agudo*, where
-the ``u`` is a full vowel, exactly as it collapses the ``gu`` of *guerra*.
-
-This layer tokenizes the real string instead, deciding each digraph in context,
-so every later layer can assume one unit is one segment.
+Portuguese spelling is not one letter per segment: ``lh`` is one consonant, and
+so is the ``qu`` of *quero*, whose ``u`` spells nothing. Rewriting digraphs to
+placeholders before scanning is context-blind: it would collapse the ``gu`` of
+*agudo*, where the ``u`` is a full vowel, like the ``gu`` of *guerra*. This layer
+decides each digraph in context, so every later layer can assume one unit is
+one segment.
 """
 from __future__ import annotations
 
@@ -60,26 +57,16 @@ class Grapheme:
 
 
 def _u_is_mute(word: str, index: int) -> bool:
-    """Is the ``u`` at ``index``, following q/g, spelling nothing of its own?
+    """Is the ``u`` at ``index``, following q/g, part of the onset?
 
-    After ``q`` or ``g``, a ``u`` that is immediately followed by another vowel
-    never heads a syllable: it is either silent (*quero*, *guerra*) or a glide
-    riding in the onset (*quadro*, *água*). Either way it belongs to the onset,
-    so ``qu``/``gu`` is one consonant unit.
-
-    A ``u`` followed by a consonant is a plain vowel and keeps its nucleus --
-    which is the whole difference between *a.gu.do* and *guer.ra*, and the
-    reason this decision cannot be made by string replacement.
-
-    The pre-1990 trema marks the same ``u`` as pronounced (*agüentar*,
-    *qüinqüenal*). It is still a glide in the onset, never a nucleus: AO90 Base
-    XX 5 keeps ``gu`` and ``qu`` with the following vowel whether the ``u`` is
-    pronounced or not.
+    Before another vowel it never heads a syllable: it is silent (*quero*,
+    *guerra*) or a glide in the onset (*quadro*, *água*), so ``qu``/``gu`` is one
+    consonant unit. Before a consonant it is a plain vowel: *a.gu.do* against
+    *guer.ra*. The pre-1990 trema (*agüentar*, *qüinqüenal*) marks the ``u`` as
+    pronounced, but it is still in the onset: AO90 Base XX 5 keeps ``gu`` and
+    ``qu`` with the following vowel whether the ``u`` is pronounced or not.
     """
-    if word[index] not in "uü":
-        return False
-    nxt = index + 1
-    return nxt < len(word) and word[nxt] in VOWELS
+    return word[index] in "uü" and index + 1 < len(word) and word[index + 1] in VOWELS
 
 
 def _foreign_vowel(word: str, index: int) -> str:
@@ -138,15 +125,13 @@ def tokenize(word: str) -> List[Grapheme]:
         char = word[i]
         pair = word[i:i + 2]
 
-        foreign_vowel = _foreign_vowel(word, i) if char in VOWELS else ""
-
         if char in SEPARATORS:
             units.append(Grapheme(char, SEPARATOR))
             i += 1
         elif word[i:i + 4] in FOREIGN_TETRAGRAPHS:
             units.append(Grapheme(word[i:i + 4], CONSONANT))
             i += 4
-        elif foreign_vowel:
+        elif char in VOWELS and (foreign_vowel := _foreign_vowel(word, i)):
             units.append(Grapheme(foreign_vowel, VOWEL))
             i += len(foreign_vowel)
         elif pair in CONSONANT_DIGRAPHS or pair in FOREIGN_DIGRAPHS:

@@ -14,6 +14,7 @@ from silabificador import Syllabifier, analyze, syllabify
     ("construir", ["cons", "tru", "ir"]),
     ("apto", ["ap", "to"]),                # whatever the onset strands, the coda takes
     ("ritmo", ["rit", "mo"]),
+    ("software", ["soft", "wa", "re"]),    # tw is no obstruent + liquid onset, so ft is the coda
 ])
 def test_onset_maximization_bounded_by_the_onset_inventory(word, expected):
     # One principle, and every one of these follows from it. Nothing states that

@@ -27,7 +27,7 @@ def _params():
     for entry in ENTRIES:
         marks = []
         if "engine_gap" in entry:
-            marks.append(pytest.mark.xfail(strict=True, reason=entry["engine_gap"]))
+            marks.append(pytest.mark.xfail(raises=AssertionError, strict=True, reason=entry["engine_gap"]))
         yield pytest.param(entry, id=entry["word"], marks=marks)
 
 
